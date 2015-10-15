@@ -1,0 +1,38 @@
+{
+	"ReferralCollection": [
+		{
+			"Page": "Page 1",
+			"Referrals": "404"
+		},
+		{
+			"Page": "Page 2",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 3",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 4",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 5",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 6",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 7",
+			"Referrals":"20"
+		},
+		{
+			"Page": "Page 8",
+			"Referrals":"20"
+		}
+		
+	]
+	
+}

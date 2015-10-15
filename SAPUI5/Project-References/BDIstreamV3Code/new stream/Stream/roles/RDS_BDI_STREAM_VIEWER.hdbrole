@@ -1,0 +1,20 @@
+role sap.rds-bdi.stream.roles::RDS_BDI_STREAM_VIEWER {
+	// schema privileges
+	catalog schema "_SYS_BI","_SYS_BIC": SELECT, EXECUTE;
+	catalog schema "SAP_RDS_BDI_STREAM": EXECUTE, SELECT;
+	//catalog schema "SAP_RDS_BDI_STREAM_SOURCE": SELECT,EXECUTE;
+	catalog schema "SAP_RDS_BDI_CONFIG": SELECT,EXECUTE;
+	
+	catalog sql object 	"SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures::STREAM_PROC_CLEAN_HIS_ALERT": 
+						EXECUTE;
+	catalog sql object 	"SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures::STREAM_PROC_CLEAN_HIS_PAGE_HIT": 
+						EXECUTE;			
+	catalog sql object 	"SYS"."REPOSITORY_REST": 
+						 EXECUTE;
+	
+	// package privileges
+	package sap.rds-bdi.stream: REPO.READ;
+	
+	// analytic privileges
+	analytic privilege: sap.rds-bdi.stream.roles:ADMIN_VIEWER_MODEL_ACCESS.analyticprivilege;
+}

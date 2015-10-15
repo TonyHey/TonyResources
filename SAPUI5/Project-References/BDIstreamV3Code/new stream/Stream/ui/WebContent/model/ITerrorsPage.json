@@ -1,0 +1,46 @@
+{
+	"ErrorsCollection": [
+		{
+			"Page": "Page 1",
+			"Errors": "404",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 2",
+			"Errors": "403",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 3",
+			"Errors": "402",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 4",
+			"Errors": "403",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 5",
+			"Errors": "404",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 6",
+			"Errors": "404",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 7",
+			"Errors": "404",
+			"Count":"20"
+		},
+		{
+			"Page": "Page 8",
+			"Errors": "404",
+			"Count":"20"
+		}
+		
+	]
+	
+}

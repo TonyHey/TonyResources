@@ -1,0 +1,195 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.polygon::STREAM_PROC_UPDATE_HEADER_PAGES_ANAL" (
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SERVER_IP_IN NVARCHAR(100),
+IN MULTI_POLYGON NVARCHAR(5000),
+IN MULTI_SELECT_INPUT NVARCHAR(5000),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_update_header_kpi_output"
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	AS
+	
+
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ DECLARE source_table NVARCHAR(100);
+ 
+ if :SOURCE_IN = 'HADOOP' then
+ 
+ source_table := '_SYS_BIC"."sap.rds-bdi.stream/CA_PAGE_HIT_HIVE'; 
+ else
+ 
+ source_table := '_SYS_BIC"."sap.rds-bdi.stream/CA_PAGE_HIT'; 
+ 
+ end if;
+ 
+	if :MULTI_POLYGON <> '' and :MULTI_SELECT_INPUT <> '' then
+	
+	table_multi_polygon = 
+select T1.VIEW_URL, T2.NUMBER_OF_VIEWS, T2.LATITUDE, T2.LONGITUDE
+from (
+	SELECT TOP 10  VIEW_URL,  COUNT(*) AS NUMBER_OF_VIEWS 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1 
+	GROUP BY VIEW_URL 
+	ORDER BY NUMBER_OF_VIEWS DESC
+	) as T1 
+	INNER JOIN 
+	(
+	SELECT  VIEW_URL, COUNT(*) AS NUMBER_OF_VIEWS, MAX(LATITUDE) AS LATITUDE, MAX(LONGITUDE) AS LONGITUDE 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT"
+	WHERE  
+		  DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1  
+		  AND (NEW ST_MultiPolygon(:MULTI_POLYGON).ST_Contains(NEW ST_POINT(LATITUDE,LONGITUDE)) = 1)
+	GROUP BY  VIEW_URL, CITY, COUNTRY,LATITUDE,LONGITUDE
+	) as T2 
+	on T1.VIEW_URL = T2.VIEW_URL;
+		
+					  
+
+	table_multi_entity = 
+	
+select T1.VIEW_URL, T2.LATITUDE, T2.LONGITUDE, T2.NUMBER_OF_VIEWS
+from (
+	SELECT TOP 10  VIEW_URL,  COUNT(*) AS SORT_NUMBER_OF_VIEWS 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1 
+	GROUP BY VIEW_URL 
+	ORDER BY SORT_NUMBER_OF_VIEWS DESC
+	) as T1 
+	INNER JOIN 
+	(
+	SELECT  VIEW_URL, MAX(LATITUDE) AS LATITUDE, MAX(LONGITUDE) AS LONGITUDE, COUNT(*) AS NUMBER_OF_VIEWS
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1
+		  AND locate( :MULTI_SELECT_INPUT, concat(round(LATITUDE,6),concat(',',round(LONGITUDE,6))))>0
+	GROUP BY  VIEW_URL, CITY, COUNTRY,LATITUDE,LONGITUDE
+	) as T2 
+	on T1.VIEW_URL = T2.VIEW_URL;	
+	
+	
+	/* Use UNION to eliminate the overlap between MULTI_SELECT_INPUT and MULTI_POLYGON*/
+	VAR_OUT =     
+	SELECT sum(NUMBER_OF_VIEWS) as KPI_COUNT from (
+			         select   VIEW_URL, 
+					  	      LATITUDE, 
+					  	      LONGITUDE, 
+					  	      sum (NUMBER_OF_VIEWS) as NUMBER_OF_VIEWS from
+					  	      (
+							    (select * from :table_multi_polygon) 
+							    UNION 
+							    (select * from :table_multi_entity)
+							  )
+							  GROUP BY VIEW_URL, LATITUDE, LONGITUDE
+					  )
+				 ;
+	 
+	 
+	 elseif :MULTI_POLYGON <> '' and :MULTI_SELECT_INPUT = '' then
+	 
+	table_multi_polygon = 
+select T1.VIEW_URL, T2.NUMBER_OF_VIEWS, T2.LATITUDE, T2.LONGITUDE
+from (
+	SELECT TOP 10  VIEW_URL,  COUNT(*) AS NUMBER_OF_VIEWS 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT"
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1 
+	GROUP BY VIEW_URL 
+	ORDER BY NUMBER_OF_VIEWS DESC
+	) as T1 
+	INNER JOIN 
+	(
+	SELECT  VIEW_URL, COUNT(*) AS NUMBER_OF_VIEWS, MAX(LATITUDE) AS LATITUDE, MAX(LONGITUDE) AS LONGITUDE 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	WHERE  
+		  DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1  
+		  AND (NEW ST_MultiPolygon(:MULTI_POLYGON).ST_Contains(NEW ST_POINT(LATITUDE,LONGITUDE)) = 1)
+	GROUP BY  VIEW_URL, CITY, COUNTRY,LATITUDE,LONGITUDE
+	) as T2 
+	on T1.VIEW_URL = T2.VIEW_URL;
+	
+	
+    VAR_OUT =     
+    select sum(NUMBER_OF_VIEWS) as KPI_COUNT  
+    from :table_multi_polygon;
+     
+     
+     elseif :MULTI_POLYGON = '' and :MULTI_SELECT_INPUT <> '' then
+     
+	table_multi_entity = 
+	
+select T1.VIEW_URL, T2.LATITUDE, T2.LONGITUDE, T2.NUMBER_OF_VIEWS
+from (
+	SELECT TOP 10  VIEW_URL,  COUNT(*) AS SORT_NUMBER_OF_VIEWS 
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1 
+	GROUP BY VIEW_URL 
+	ORDER BY SORT_NUMBER_OF_VIEWS DESC
+	) as T1 
+	INNER JOIN 
+	(
+	SELECT  VIEW_URL, MAX(LATITUDE) AS LATITUDE, MAX(LONGITUDE) AS LONGITUDE, COUNT(*) AS NUMBER_OF_VIEWS
+	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT"
+	WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 		  AND   DATE_SQL <=  :DATE_TO_IN 
+ 		  AND SERVER_IP =  :SERVER_IP_IN   
+		  AND HIT_1Y_0N=1
+		  AND locate( :MULTI_SELECT_INPUT, concat(round(LATITUDE,6),concat(',',round(LONGITUDE,6))))>0  
+	GROUP BY  VIEW_URL, CITY, COUNTRY,LATITUDE,LONGITUDE
+	) as T2 
+	on T1.VIEW_URL = T2.VIEW_URL;	
+	               
+	 	
+VAR_OUT =     
+	 	select sum(NUMBER_OF_VIEWS) as KPI_COUNT 
+	 	 from :table_multi_entity;
+	 	
+	 	
+	 elseif  :MULTI_POLYGON = '' and :MULTI_SELECT_INPUT = '' then
+	 	
+	VAR_OUT = 
+	select SUM(NUMBER_OF_VIEWS) as KPI_COUNT
+	from (
+			SELECT TOP 10  VIEW_URL,  
+							COUNT(*) AS NUMBER_OF_VIEWS 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT"
+			WHERE DATE_SQL >=  :DATE_FROM_IN  AND
+ 			    	DATE_SQL <=  :DATE_TO_IN AND
+ 					SERVER_IP =  :SERVER_IP_IN AND 
+					HIT_1Y_0N=1 
+			GROUP BY VIEW_URL 
+			ORDER BY NUMBER_OF_VIEWS DESC
+		);	 	
+	 	
+	 	
+	 end if;
+ 
+ 
+ 
+END;

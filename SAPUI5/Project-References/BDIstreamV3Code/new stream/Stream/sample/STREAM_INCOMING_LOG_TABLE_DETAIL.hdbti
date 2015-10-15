@@ -1,0 +1,11 @@
+import = 
+      [
+ 
+          {
+               table = "sap.rds-bdi.stream.model.rep::tables.ICM_LOG_TAB_DTL";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_INCOMING_LOG_TABLE_DETAIL.csv";     
+               header = false;                    
+               delimField = ",";                     
+            }
+       ];

@@ -1,0 +1,61 @@
+#header.sapSuiteHdrCntr {
+	box-shadow: 0 0 10px #666;
+}
+
+#vbox {
+	margin: 20px 10px;
+}
+
+#__button0.legendIcon {
+	display: none;
+}
+
+.sapMAppBG.sapMGlobalBackgroundImage,.sapUiBody {
+	background-image: url(../resources/bg-new.png);
+	background-size: 100% 100%;
+}
+
+.sapUshellDashboardGroupsContainer .sapUshellTileContainer h2.sapUshellContainerTitle
+	{
+	color: #fff;
+}
+
+.sapUshellCatalog .sapUshellTileContainer h6.sapUshellHeaderTile.sapUshellTileContainerHdr
+	{
+	color: #fff;
+}
+
+.toolbar.label {
+	margin-right: 1rem;
+}
+
+.eLabel {
+	margin-right: 15px;
+}
+
+.entityDesc {
+	text-align: center;
+}
+
+.sapMBar.sapMPageHeader:before {
+	border-top: none;
+}
+
+#sf, #configBtn
+{
+	display: none;
+}
+
+/* Log Configuration */
+#oUploadButton, #formatSelectBox {
+	margin-top: 2px;
+	margin-left: 5px;
+}
+.chartToolBarButton {
+	margin-top: 13px !important;
+	line-height: 0rem !important;
+}
+#logFileFormatDesc {
+	margin-top: 4px;
+	margin-left: 4px;
+}

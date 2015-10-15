@@ -1,0 +1,68 @@
+sap.ui.jsview("root.view.InvoiceList", {
+
+	/** Specifies the Controller belonging to this View. 
+	* In the case that it is not implemented, or that "null" is returned, this View does not have a Controller.
+	* @memberOf view.InvoiceList
+	*/ 
+	getControllerName : function() {
+		return "root.view.InvoiceList";
+	},
+
+	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed. 
+	* Since the Controller is given to this method, its event handlers can be attached right away. 
+	* @memberOf view.InvoiceList
+	*/ 
+	createContent : function(oController) {
+
+        
+        var that = this;
+ 		var oList = new sap.m.List("invoiceList",{
+ 		    visibleRowCount: 10,
+			width: "auto",
+            noDataText: "loading...",
+			headerToolbar: new sap.m.Toolbar({
+			    content:[
+                         new sap.m.Text({
+                             text: "{i18n>invoiceListTitle}"
+                         }),
+                         new sap.m.ToolbarSpacer({
+                             
+                         }),
+			             new sap.m.SearchField({
+			                 width: "50%",
+			                 search: function(oEvent){
+			                     oController.onFilterInvoices(oEvent)
+			                 }
+			             })
+			    ]
+			})
+			
+		});
+ 		
+ 		oList.bindItems({
+            path: "invoice>/Invoices",
+            template: new sap.m.ObjectListItem({
+                title: "{invoice>Quantity} x {invoice>ProductName}",
+                number: "{invoice>ExtendedPrice}",
+                numberUnit: "{view>/currency}",
+                numberState: "{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }",
+                attributes: [
+                             sap.m.ObjectAttribute({
+                                 text: "{invoice>Status}",
+                             //    formatter: root.model.formatter.statusText("{invoice>Status}", that)
+                                 
+                                 
+                             })
+                ],
+                
+                    
+            }),
+            sorter: new sap.ui.model.Sorter({
+                path : "invoice>ShipperName",
+                group: true
+            })
+        });
+ 		return oList;
+	}
+
+});

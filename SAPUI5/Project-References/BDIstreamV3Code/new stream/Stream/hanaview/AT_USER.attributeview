@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_USER" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_USER"/>
+  <metadata changedAt="2015-04-14 16:53:30.104" createdAt="2015-04-14 16:53:30.104"/>
+  <attributes>
+    <attribute id="USER_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="User ID"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="USER_ID"/>
+    </attribute>
+    <attribute id="USER_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="User Name"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="USER_NAME"/>
+    </attribute>
+    <attribute id="AGE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="User Age"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="AGE"/>
+    </attribute>
+    <attribute id="TENURE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Tenure"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="TENURE"/>
+    </attribute>
+    <attribute id="INCOME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Income"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="INCOME"/>
+    </attribute>
+    <attribute id="WEALTH" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="User Wealth"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="WEALTH"/>
+    </attribute>
+    <attribute id="NO_CHILDREN" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Number of Children"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="NO_CHILDREN"/>
+    </attribute>
+    <attribute id="POSTAL_CODE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Postal Code"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="POSTAL_CODE"/>
+    </attribute>
+    <attribute id="CREDIT_SCORE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Credit Score"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="CREDIT_SCORE"/>
+    </attribute>
+    <attribute id="CHECKING_AMT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Checking Amount"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="CHECKING_AMT"/>
+    </attribute>
+    <attribute id="CHECKING_M" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Checking M"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="CHECKING_M"/>
+    </attribute>
+    <attribute id="SAVINGS_AMT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Saving Amount"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="SAVINGS_AMT"/>
+    </attribute>
+    <attribute id="INVEST_AMT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Invest Amount"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="INVEST_AMT"/>
+    </attribute>
+    <attribute id="SUM_LENDING" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Summary of Lending"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="SUM_LENDING"/>
+    </attribute>
+    <attribute id="ATTRITION" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Attrition"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="ATTRITION"/>
+    </attribute>
+    <attribute id="GENDER" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Gender"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="GENDER"/>
+    </attribute>
+    <attribute id="AGE_RANGE" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="AGE_RANGE"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" columnName="AGE_RANGE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_USER" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="108" y="21"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

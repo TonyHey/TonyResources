@@ -1,0 +1,11 @@
+import = 
+        [
+
+           {
+               table = "sap.rds-bdi.stream.model.rep::tables.LKUP_FILE_TYPE";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_LKUP_FILE_TYPE.csv";     
+               header = false;                       
+               delimField = ",";                    
+           }
+         ];

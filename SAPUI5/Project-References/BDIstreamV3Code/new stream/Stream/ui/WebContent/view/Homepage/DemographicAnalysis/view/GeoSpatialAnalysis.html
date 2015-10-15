@@ -1,0 +1,466 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<link rel="stylesheet" type="text/css" href="../../../css/tilestylesheet.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/polygonsheet.css" />
+<script src="/sap/ui5/1/resources/sap-ui-core-dbg.js"
+	id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m, sap.ui.commons, sap.viz, sap.suite.ui.commons, sap.ui.unified, sap.ca.ui"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-resourceroots='{
+				"sap.ui.demo.myFiori.view": "./"
+			}'>	
+</script>
+
+<!-- Nokia map -->
+<script type="text/javascript"
+	src="http://js.api.here.com/se/2.5.4/jsl.js?with=maps"></script>
+
+<script>
+	jQuery.sap.require("jquery.sap.storage");
+	var oBundle = jQuery.sap.resources({
+		url : "../../../../WebContent/i18n/i18n.properties",
+		locale : sap.ui.getCore().getConfiguration().getLanguage() 
+	});
+	var settingsDemog = jQuery.sap.storage.get("iddemog");
+
+	var flsc = null;
+
+	this.selectOpt = settingsDemog.kpi;
+	options: {
+		filters: [ {
+			key : 'AgeRange',
+			text : oBundle.getText('Age')
+		}, {
+			key : 'Gender',
+			text : oBundle.getText('Gender')
+		} ]
+	};
+
+	var mapController = sap.ui.controller("sap.ui.demo.myFiori.view.map");
+
+	var map = sap.ui.view({
+		type : sap.ui.core.mvc.ViewType.HTML,
+		viewName : "sap.ui.demo.myFiori.view.map",
+		controller : mapController
+	});
+
+	var kpiHeader = sap.ui.core.mvc.JSView({
+		viewName : "sap.ui.demo.myFiori.view.kpiheader"
+	});
+
+	var toolBar = new sap.ca.ui.charts.ChartToolBar();
+
+	toolBar.addChart(map);
+
+	// Set the Model
+	this.oService = "../../../../services/intelligence.xsjs?cmd=getAllServerIP";
+
+	//retrieves data for Server IP Dropdown box
+
+	jQuery.proxy(this.getData(this.oService, this), this);
+
+	//Model for Server IP
+	var oModel = new sap.ui.model.json.JSONModel();
+	oModel.setData(this.oData3);
+
+	//Insert Server IP Dropbown box
+	var oServerIP = new sap.m.Select("ServerIPMap", {
+		items : {
+			path : '/businessData',
+			template : new sap.ui.core.Item({
+				key : "{ServerIP}",
+				text : "{ServerName}"
+			})
+		}
+	});
+
+	oServerIP
+			.attachChange(jQuery
+					.proxy(
+							function(oEvent) {
+								this.ip = oEvent.getParameters().selectedItem.mProperties.key;
+
+								mapController.refresh(this.afterDate,
+										this.beforeDate, this.ip);
+								saveSettings(this.ip, this.selectOpt,
+										this.afterDate, this.beforeDate);
+								settingsDemog = jQuery.sap.storage.get("iddemog");
+								if (this.selectOpt = "AgeRange") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiAgeAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								} else if (this.selectOpt = "Gender") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiGenderAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								}
+
+								jQuery.ajax({
+									url : this.url,
+									dataType : "json",
+									success : function(data) {
+										kpiHeader.getModel().setData(data[0]);
+									}
+								});
+							}, this));
+
+	oServerIP.setModel(oModel);
+	this.ip = settingsDemog.server;
+	this.afterDate = settingsDemog.afterDate;
+	this.beforeDate = settingsDemog.beforeDate;
+	oServerIP.setSelectedKey(settingsDemog.server);
+
+	//Insert KPI Dropdown
+	var oKpi = new sap.m.Select("KPI");
+
+	oItemAge = new sap.ui.core.Item({
+		key : "AgeRange",
+		text : oBundle.getText("Age")
+	});
+
+	oItemGender = new sap.ui.core.Item({
+		key : "Gender",
+		text : oBundle.getText("Gender")
+	});
+
+	oKpi.addItem(oItemAge);
+	oKpi.addItem(oItemGender);
+	oKpi.setSelectedKey(settingsDemog.kpi);
+	oKpi
+			.attachChange(jQuery
+					.proxy(
+							function(oEvent) {
+								var getEvent = oEvent.getSource()._oController;
+								var oItem = oEvent.getParameters().selectedItem;
+								var key = oItem.getKey();
+								if (typeof aMarkers !== 'undefined') {
+									if (aMarkers.length > 0) {
+										myContainer.objects.removeAll(aMarkers);
+										polyVerticesDoubleList = [];
+									}
+								}
+								if (typeof polygon !== 'undefined') {
+									map.objects.remove(polygon);
+								}
+								if (key == "AgeRange") {
+									this.selectOpt = "AgeRange";
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiAgeAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								} else if (key == "Gender") {
+									this.selectOpt = "Gender";
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiGenderAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								}
+
+								mapController.refresh(this.afterDate,
+										this.beforeDate, this.ip);
+								saveSettings(this.ip, key, this.afterDate,
+										this.beforeDate);
+								settingsDemog = jQuery.sap.storage.get("iddemog");
+								jQuery.ajax({
+									url : this.url,
+									dataType : "json",
+									timeout : 59000,
+									success : function(data) {
+										kpiHeader.getModel().setData(data[0]);
+									}
+								});
+
+							}, this));
+
+	this.ip = settingsDemog.server;
+	this.afterDate = settingsDemog.afterDate;
+	this.beforeDate = settingsDemog.beforeDate;
+
+	var oAfterDateButton = new sap.ui.commons.DatePicker("date1")
+			.addStyleClass("toolbar datepicker");
+	oAfterDateButton.setYyyymmdd(this.afterDate);
+	oAfterDateButton.setLocale("en-US"); // Try with "de" or "fr" instead!
+	oAfterDateButton
+			.attachChange(jQuery
+					.proxy(
+							function(oEvent) {
+								if (oEvent.getParameter("invalidValue")) {
+									oEvent.oSource
+											.setValueState(sap.ui.core.ValueState.Error);
+								} else {
+									this.afterDate = oEvent
+											.getParameter("newYyyymmdd");
+									this.beforeDate = sap.ui.getCore().byId(
+											"date2").getYyyymmdd();
+									oEvent.oSource
+											.setValueState(sap.ui.core.ValueState.None);
+								}
+								mapController.refresh(this.afterDate,
+										this.beforeDate, this.ip);
+								saveSettings(this.ip, this.selectOpt,
+										this.afterDate, this.beforeDate);
+								settingsDemog = jQuery.sap.storage.get("iddemog");
+								if (this.selectOpt = "AgeRange") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiAgeAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								} else if (this.selectOpt = "Gender") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiGenderAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								}
+
+								jQuery.ajax({
+									url : this.url,
+									dataType : "json",
+									timeout : 59000,
+									success : function(data) {
+										kpiHeader.getModel().setData(data[0]);
+									}
+								});
+							}, this));
+
+	var oBeforeDateButton = new sap.ui.commons.DatePicker("date2")
+			.addStyleClass("toolbar datepicker");
+	oBeforeDateButton.setYyyymmdd(this.beforeDate);
+	oBeforeDateButton.setLocale("en-US"); // Try with "de" or "fr" instead!
+	oBeforeDateButton
+			.attachChange(jQuery
+					.proxy(
+							function(oEvent) {
+								if (oEvent.getParameter("invalidValue")) {
+									oEvent.oSource
+											.setValueState(sap.ui.core.ValueState.Error);
+								} else {
+									this.beforeDate = oEvent
+											.getParameter("newYyyymmdd");
+									this.afterDate = sap.ui.getCore().byId(
+											"date1").getYyyymmdd();
+									oEvent.oSource
+											.setValueState(sap.ui.core.ValueState.None);
+								}
+								mapController.refresh(this.afterDate,
+										this.beforeDate, this.ip);
+								saveSettings(this.ip, this.selectOpt,
+										this.afterDate, this.beforeDate);
+								settingsDemog = jQuery.sap.storage.get("iddemog");
+								if (this.selectOpt = "AgeRange") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiAgeAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								} else if (this.selectOpt = "Gender") {
+									this.url = "../../../../services/intelligence.xsjs?cmd=getKpiGenderAnalysis&after="
+											+ this.afterDate
+											+ "&before="
+											+ this.beforeDate
+											+ "&serverIP="
+											+ this.ip;
+								}
+
+								jQuery.ajax({
+									url : this.url,
+									dataType : "json",
+									timeout : 59000,
+									success : function(data) {
+										kpiHeader.getModel().setData(data[0]);
+									}
+								});
+							}, this));
+
+	toolBar.getToolBar().insertContentMiddle(new sap.m.Label({
+		text : oBundle.getText("From")
+	}).addStyleClass("toolbar label"), 0);
+	toolBar.getToolBar().insertContentMiddle(oAfterDateButton, 1);
+	toolBar.getToolBar().insertContentMiddle(new sap.m.Label({
+		text : oBundle.getText("To")
+	}).addStyleClass("toolbar label"), 2);
+	toolBar.getToolBar().insertContentMiddle(oBeforeDateButton, 3);
+
+	toolBar.getToolBar().insertContentLeft(oServerIP);
+	toolBar.getToolBar().insertContentLeft(new sap.m.Label({
+		text : oBundle.getText("Server"),
+		design : "Bold"
+	}));
+	toolBar.getToolBar().insertContentLeft(oKpi);
+	toolBar.getToolBar().insertContentLeft(new sap.m.Label({
+		text : oBundle.getText("KPI"),
+		design : "Bold"
+	}));
+
+	var oFullScreen = new sap.m.Button({
+		press : onFullScreen
+	});
+
+	oFullScreen.setIcon("sap-icon://full-screen");
+	oFullScreen.setTooltip(oBundle.getText("ExpandView"));
+
+	toolBar.getToolBar().insertContentRight(oFullScreen);
+
+	flsc = 'on';
+
+	function onFullScreen(oEvent) {
+		if (flsc == 'on') {
+			oFullScreen.setTooltip(oBundle.getText("NormalView"));
+			toolBar.setFullScreen(true);
+			flsc = 'off';
+			map.getDisplay;
+			mapController.toolKit.isExpand = true;
+		} else if (flsc == 'off') {
+			oFullScreen.setTooltip(oBundle.getText("ExpandView"));
+			toolBar.setFullScreen(false);
+			flsc = 'on';
+			map.getDisplay;
+			mapController.toolKit.isExpand = false;
+		}
+	};
+
+	var oButton1 = new sap.m.Button("b11", {
+		tooltip : oBundle.getText("PieChartTooltip"),
+		press : onPress
+	});
+
+	oButton1.setIcon("sap-icon://pie-chart");
+	toolBar.getToolBar().insertContentRight(oButton1);
+
+	function onPress(oEvent) {
+		sap.m.URLHelper
+				.redirect("/sap/rds-bdi/stream/ui/WebContent/view/DemographicAnalysis/index.html");
+	};
+
+	var oBarChart = new sap.m.Button();
+
+	oBarChart.setIcon("sap-icon://choropleth-chart");
+	oBarChart.setTooltip(oBundle.getText("MapChartTooltip"));
+	toolBar.getToolBar().insertContentRight(oBarChart);
+
+	var initialPage = new sap.m.Page({
+		title : oBundle.getText("Demographic.Analysis"),
+		showNavButton : true,
+		navButtonTap : function() {
+			window.history.back();
+		},
+		content : [ kpiHeader, toolBar ]
+	});
+
+	var app = new sap.m.App({
+		pages : [ initialPage ]
+	});
+	var shell = new sap.m.Shell({
+		app : app
+	});
+
+	shell.placeAt("content");
+
+	/**
+	 * Calls the generic function that retrieves the data from the server with the parameters for query
+	 *
+	 */
+	function getData(sServiceUrl, oController) {
+		jQuery
+				.ajax({
+					url : sServiceUrl,
+					dataType : 'json',
+					async : false,
+					timeout : 59000,
+					type : "GET",
+					success : function(oResponse, textStatus, jqXHR) {
+						oController.oData3 = oResponse;
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						if (textStatus === "timeout") {
+							sap.ui.commons.MessageBox
+									.alert(
+											oBundle.getText("RequireShorterTimeMsg"),
+											null, "Error");
+						} else {
+							jQuery.sap.log.fatal(
+									"The following problem occurred: "
+											+ textStatus, jqXHR.responseText
+											+ "," + jqXHR.status + ","
+											+ jqXHR.statusText);
+							sap.ui.commons.MessageBox.alert(
+									oBundle.getText("DataErrorMsg"), null,
+									"Error");
+						}
+						;
+					},
+					complete : function() {
+
+					}
+				});
+	};
+
+	function saveSettings(ip, kpi, afterDate, beforeDate) {
+		var obj = {};
+
+		obj["server"] = ip;
+		obj["kpi"] = kpi;
+		obj["afterDate"] = afterDate;
+		obj["beforeDate"] = beforeDate;
+
+		jQuery.sap.storage.put("iddemog", obj);
+	};
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+	<script type="text/javascript">
+	$(function(){
+
+		if($("#date1 input").css("left")!=0){
+
+		  var dateist = setInterval(function(){
+
+		    $("#date1 input").css("left","0px");
+		    $("#date2 input").css("left","0px");
+
+		  },1);
+		}
+
+		if($(window).width()<1265){
+
+			var setitv = setInterval(function(){
+
+				if($(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH").css("left")!=0){
+					$(".sapCaUiChartToolBarWrapper .sapMBar").css("height","100px");
+					$(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH").css({"overflow":"visible","left":"0px"});
+					$(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH").css({"top":"46px"});
+					$(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH .sapMLabel").css({"marginRight":"0px"});
+				}else{
+					clearInterval(setitv);
+				}
+
+			},1);
+
+			//$(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH").css({"top":"46px"});
+			//$(".sapCaUiChartToolBarWrapper .sapMBarMiddle .sapMBarPH .sapMLabel").css({"marginRight":"0px"});
+
+		}
+		
+	});
+	</script>
+</body>
+</html>

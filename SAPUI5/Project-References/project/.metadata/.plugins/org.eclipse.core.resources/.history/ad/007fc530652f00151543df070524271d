@@ -1,0 +1,207 @@
+sap.ui.controller("sap.rds.bdi.stream.Homepage.view.shell", {
+    onInit : function() {
+        var homeView = new sap.ui.core.mvc.HTMLView({
+            viewName : "sap.rds.bdi.stream.Homepage.view.homepage"
+        });
+
+        this.oShell.addContent(homeView);
+        this.userInfo = this.getUserInfo();
+    },
+
+    onBeforeRendering: function() {
+    	
+    },
+
+    onAfterRendering: function() {
+        this.setUserItem();
+//        this.addShellTitle();
+    },
+
+//    addShellTitle: function() {
+//        var oShellTitle = "STREAM INTELLIGENCE";
+//        $("#oShell-header-icon").append("<label class='shellTitle'>" + oShellTitle + "<label>");
+//    },
+
+    handleUserItemPress: function(oEvent) {
+        var that = this;
+        
+        this.aboutBtn = new sap.m.Button({
+            icon: "sap-icon://hint",
+            text: "About",
+            press: function() {
+                jQuery.proxy(that.handleAboutPress(), that);
+            }
+        });
+        this.loginDetailBtn = new sap.m.Button({
+            icon: "sap-icon://person-placeholder",
+            text: "Login Details",
+            press: function() {
+                jQuery.proxy(that.handleLoginDetailPress(), that);
+            }
+        });
+        this.configurationBtn = new sap.m.Button({
+            icon: "sap-icon://action-settings",
+            text: "Configuration",
+            press: function() {
+                jQuery.proxy(that.handleConfigurationPress(), that);
+            }
+        });
+        this.logoutBtn = new sap.m.Button({
+            icon: "sap-icon://log",
+            text: "Log Out",
+            press: function() {
+                jQuery.proxy(that.handleLogoutPress(), that);
+            }
+        });
+
+        if (!this._actionSheet) {
+          this._actionSheet = sap.m.ActionSheet({
+              buttons: [this.aboutBtn, this.loginDetailBtn, this.configurationBtn, this.logoutBtn]
+          });
+          this.getView().addDependent(this._actionSheet);
+        }
+
+        this._actionSheet.openBy(oEvent.getSource());
+    },
+
+    handleLoginDetailPress: function() {
+        var user = this.userInfo || {};
+        var oSimpleForm = new sap.ui.layout.form.SimpleForm({
+            editable : false,
+            content : [
+                new sap.m.Label({text: "User Name"}),
+                new sap.m.Text({text: user.fullName || ''}),
+                new sap.m.Label({text: "Host"}),
+                new sap.m.Text({text: window.location.host }),
+                new sap.m.Label({text: "Language"}),
+                new sap.m.Text({text: user.language || ''})
+            ]
+        });
+        var okButton = new sap.m.Button({
+                text : "OK",
+                press : function () {
+                    oDialog.close();
+                }
+        });
+
+        var oDialog = new sap.m.Dialog({
+            title: "login Detail",
+            contentWidth : "300px",
+            leftButton: okButton,
+            afterClose : function () {
+                oDialog.destroy();
+            }
+        });
+
+        oDialog.addContent(oSimpleForm);
+        oDialog.open();
+    },
+
+    handleAboutPress: function () {
+        var oSimpleForm = new sap.ui.layout.form.SimpleForm({
+            editable: false,
+            content: [
+                      new sap.m.Label({text : "Technical Name"}),
+                      new sap.m.Text({text : "sap.rds.bdi.stream.apps.source"}),
+                      new sap.m.Label({text : "fiori Version"}),
+                      new sap.m.Text({text : "2.0.0"}),
+                      new sap.m.Label({text : "sapui5"}),
+                      new sap.m.Text({text : (sap.ui.version || "") + (' (' + (sap.ui.buildinfo.buildtime || "") + ')') || ''}),
+                      new sap.m.Label({text : "user Agent"}),
+                      new sap.m.Text({text : navigator.userAgent || ''}),
+                      new sap.m.Label({text : ''}),
+                      new sap.m.Label({text : "Support"}),
+                      new sap.m.Text({text: "SAP HANA Big Data Intelligence rapid-deployment solution \u2013 Stream Solution Version 3.0.0\n\nYou can create IT messages to SAP Component SV-RDS-HDB if there are problems need SAP support"})
+            ]
+        });
+
+        var okButton = new sap.m.Button({
+            text: "OK",
+            press: function () {
+                oDialog.close();
+            }
+        });
+
+        var oDialog = new sap.m.Dialog({
+            title: "About",
+            contentWidth : "250px",
+            horizontalScrolling: false,
+            leftButton: okButton,
+            afterClose : function () {
+                oDialog.destroy();
+            }
+        });
+
+        oDialog.addContent(oSimpleForm);
+        oDialog.open();
+    },
+    
+    handleConfigurationPress: function () {
+        window.open('http://' + window.location.host + '/sap/rds-bdi/stream/config.html');
+    },
+
+    handleLogoutPress: function() {
+        jQuery.sap.require("sap.m.MessageBox");
+        sap.m.MessageBox.show(
+                "Do you really would like to log off?",
+                sap.m.MessageBox.Icon.QUESTION,
+                "Log Out",
+                [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+                function (oAction) {
+                    if (oAction === sap.m.MessageBox.Action.OK) {
+                        $.ajax({
+                            url : "/sap/hana/xs/formLogin/token.xsjs",
+                            type : "GET",
+                            beforeSend : function(request) {
+                                request.setRequestHeader("X-CSRF-Token", "Fetch");
+                            },
+                            success : function(data, textStatus, XMLHttpRequest) {
+                                var token = XMLHttpRequest.getResponseHeader("X-CSRF-Token");
+                                $.ajax({
+                                    url : "/sap/hana/xs/formLogin/logout.xscfunc",
+                                    type : "POST",
+                                    beforeSend : function(request) {
+                                        request.setRequestHeader("X-CSRF-Token", token);
+                                    },
+                                    success : function(data, textStatus, XMLHttpRequest) {
+                                        // location.reload(true);
+
+                                        // Workaround to fix the logout issue
+                                        window.location = "/sap/hana/xs/formLogin/login.html?x-sap-origin-location=" + encodeURIComponent(window.location.pathname);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }, sap.ui.core.ElementMetadata.uid("confirm"));
+    },
+    /**
+     * Get the logged-in user Info.
+     */
+    getUserInfo: function() {
+        var oUserInfo;
+        
+        $.ajax({
+            url : "ui/services/intelligence.xsjs?cmd=getInfoFromSession",
+            dataType : 'json',
+            type : 'GET',
+            async : false,
+            success : function (data) {
+              oUserInfo = {
+                  fullName: data.user.name,
+                  language: sap.ui.getCore().getConfiguration().getLanguage()
+              };
+            },
+            fail : function () {
+                console.log("-------getInfoFromSession fail");
+            }
+        });
+        
+        return oUserInfo;
+    },
+
+    setUserItem: function() {
+        this.userItem.setUsername(this.userInfo.fullName);
+        //icon
+    }
+});

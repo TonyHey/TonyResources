@@ -1,0 +1,6 @@
+import=[{table = "sap.rds-bdi.config::tables.BDI_CONFIG_PARAMETERS";
+ schema = "SAP_RDS_BDI_CONFIG";
+ file = "sap.rds-bdi.stream.config:config.csv";
+ header = false;
+ delimField = ",";
+ keys=["BUSINESS_AREA":"STREAM"]; delimEnclosing = "@"; } ];

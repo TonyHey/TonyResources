@@ -1,0 +1,11 @@
+import = 
+        [
+ 
+           {
+               table = "sap.rds-bdi.stream.model.rep::tables.LKUP_GEO";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_LKUP_GEO.csv";     
+               header = false;                       
+               delimField = ",";                    
+           }
+         ];

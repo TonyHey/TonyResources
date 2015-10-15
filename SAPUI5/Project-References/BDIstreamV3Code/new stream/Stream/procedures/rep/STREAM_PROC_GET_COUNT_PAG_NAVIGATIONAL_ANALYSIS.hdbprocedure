@@ -1,0 +1,42 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_COUNT_PAG_NAVIGATIONAL_ANALYSIS" (   
+	IN FROM_DATE_IN NVARCHAR(14),
+	IN TO_DATE_IN NVARCHAR(14),
+	IN SERVERIP_IN NVARCHAR(16),
+	IN SOURCE_IN NVARCHAR(20),
+	OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_count_pag_navigational_analysis_output"
+ 	) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ if :SOURCE_IN = 'HADOOP' then
+ 
+ VAR_OUT = 	
+		SELECT TOP 10  VIEW_URL,  COUNT(*) AS NUMBER_OF_VIEWS 
+FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_USER_NAVIGATIONAL" 
+				WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+						DATE_SQL <= :TO_DATE_IN AND 
+						SERVER_IP = :SERVERIP_IN AND
+						HIT_1Y_0N=1 
+GROUP BY VIEW_URL ORDER BY NUMBER_OF_VIEWS DESC;
+
+
+else
+ VAR_OUT = 	
+		SELECT TOP 10  VIEW_URL,  COUNT(*) AS NUMBER_OF_VIEWS 
+FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_USER_NAVIGATIONAL" 
+				WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+						DATE_SQL <= :TO_DATE_IN AND 
+						SERVER_IP = :SERVERIP_IN AND
+						HIT_1Y_0N=1 
+GROUP BY VIEW_URL ORDER BY NUMBER_OF_VIEWS DESC;
+
+
+
+end if;
+ 
+END;

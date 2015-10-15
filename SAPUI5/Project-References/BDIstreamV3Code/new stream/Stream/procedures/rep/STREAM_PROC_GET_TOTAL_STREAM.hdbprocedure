@@ -1,0 +1,35 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_TOTAL_STREAM" ( 
+	IN FROM_DATE_IN NVARCHAR(14),
+	IN TO_DATE_IN NVARCHAR(14),
+	IN SOURCE_IN NVARCHAR(20),
+	OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_total_stream_output"
+ 	) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ if :SOURCE_IN = 'HADOOP' then
+ VAR_OUT = 		
+		select 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS 
+		from "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE" 
+		WHERE DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN;
+		
+else
+
+ VAR_OUT = 		
+		select 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS 
+		from "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+		WHERE DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN;
+		
+
+
+end if;		
+END;

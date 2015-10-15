@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_ALERT_DETAIL" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_ALERT_DETAIL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="STREAM_LOG_ID" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_IP" length="100"/>
+        <viewAttribute datatype="TIMESTAMP" id="ATTACK_TIME"/>
+        <viewAttribute datatype="DATE" id="DATE_SQL"/>
+        <viewAttribute datatype="NVARCHAR" id="ATTACK_DATE_VARCHAR" length="20"/>
+        <viewAttribute datatype="NVARCHAR" id="ALERT_TYPE_KEY" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="VIEW_URL" length="5000"/>
+        <viewAttribute datatype="NVARCHAR" id="HTTP_STATUS_CODE" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="INTEGER" id="BYTES_SENT"/>
+        <viewAttribute datatype="INTEGER" id="NUMBER_OF_INCIDENTS"/>
+        <viewAttribute datatype="NVARCHAR" id="ALERT_TYPE_NAME" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="FUNCTION_AREA" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_NAME" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="COUNTRY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="REGION" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="CITY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="ZIP_CODE" length="20"/>
+        <viewAttribute datatype="DECIMAL" id="LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_ATTR_1" length="50"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_ATTR_2" length="50"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DATE" id="DATE_SAP"/>
+        <viewAttribute datatype="VARCHAR" id="YEAR" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="QUARTER" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="MONTH" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="WEEK" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="WEEK_YEAR" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="DAY_OF_WEEK" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="DAY" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="CALWEEK" length="6"/>
+        <viewAttribute datatype="VARCHAR" id="CALQUARTER" length="5"/>
+        <viewAttribute datatype="VARCHAR" id="CALMONTH" length="6"/>
+        <viewAttribute datatype="TINYINT" id="DAY_OF_WEEK_INT"/>
+        <viewAttribute datatype="NVARCHAR" id="CODE_DESCRIPTON" length="100"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+
+ -- Initial table
+	VAR_ALERT_TABLE= select 
+  	GUID,
+  	STREAM_LOG_ID,
+  	HOST_IP,
+  	ATTACK_TIME, 
+  	TO_CHAR(ATTACK_TIME, 'YYYYMMDD') as ATTACK_DATE, 
+  	TO_CHAR(ATTACK_TIME, 'YYYYMMDD') as ATTACK_DATE_VARCHAR, 
+  	ifnull(ALERT_TYPE_KEY,'Unknown') as ALERT_TYPE_KEY, 
+  	VIEW_URL, 
+  	ifnull(HTTP_STATUS_CODE,'Unknown') as HTTP_STATUS_CODE, 
+  	BYTES_SENT, 
+  	ifNULL(SERVER_IP,'Unknown') as SERVER_IP, 
+  	NUMBER_OF_INCIDENTS,
+  	LAST_MODIFIED
+ 	from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.ALERT_TAB&quot;;
+ 	
+ 	VAR_ALERT_AGGR = select 
+  	STREAM_LOG_ID,
+	HOST_IP,
+  	ATTACK_TIME, 
+  	ATTACK_DATE AS DATE_SQL, 
+  	ATTACK_DATE_VARCHAR, 
+	ALERT_TYPE_KEY, 
+  	VIEW_URL, 
+  	HTTP_STATUS_CODE, 
+  	SERVER_IP, 
+	SUM(BYTES_SENT) AS BYTES_SENT, 
+  	SUM(NUMBER_OF_INCIDENTS) AS NUMBER_OF_INCIDENTS
+ 	from :VAR_ALERT_TABLE
+ 	GROUP BY
+ 	STREAM_LOG_ID,
+	HOST_IP,
+  	ATTACK_TIME, 
+	ATTACK_DATE, 
+	ATTACK_DATE_VARCHAR, 
+	ALERT_TYPE_KEY, 
+  	VIEW_URL, 
+	HTTP_STATUS_CODE, 
+	SERVER_IP;
+ 
+ -- Join Attribute views	
+	VAR_AT_ALERT_TYPE = SELECT 
+		ALERT_TYPE_KEY,
+		ALERT_TYPE_NAME,
+		FUNCTION_AREA
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_ALERT_TYPE&quot;;
+	
+	VAR_AT_HOST_CLIENT = SELECT 
+		HOST_IP,
+		HOST_NAME,
+		COUNTRY,
+		REGION,
+		CITY,
+		ZIP_CODE,
+		LATITUDE,
+		LONGITUDE
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_HOST_CLIENT&quot;;		
+		
+	VAR_AT_SERVER = SELECT 
+		SERVER_IP,
+		SERVER_NAME,
+		SERVER_ATTR_1,
+		SERVER_ATTR_2,
+		SERVER_LATITUDE,
+		SERVER_LONGITUDE
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot;;	
+		
+	VAR_AT_DATE = SELECT 
+		TO_CHAR(&quot;DATE_SQL&quot;, 'YYYYMMDD') AS &quot;DATE_SQL&quot;,
+		DATE_SAP,
+		YEAR,
+		QUARTER,
+		MONTH,
+		WEEK,
+		WEEK_YEAR,
+		DAY_OF_WEEK,
+		DAY,
+		CALWEEK,
+		CALQUARTER,
+		CALMONTH,
+		DAY_OF_WEEK_INT
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_DATE&quot;;	
+		
+	VAR_AT_FILE_TYPE = SELECT 
+		FILE_TYPE_CODE,
+		FILE_TYPE_DESCRIPTION
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_FILE_TYPE&quot;;	
+		
+	VAR_AT_STATUS_CODE = SELECT 
+		HTTP_STATUS_CODE,
+		CODE_DESCRIPTON
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_STATUS_CODE&quot;;
+ 
+ 	VAR_ATTR_JOIN_1 = CE_JOIN (:VAR_ALERT_AGGR, :VAR_AT_ALERT_TYPE, [&quot;ALERT_TYPE_KEY&quot;]);
+	
+	VAR_ATTR_JOIN_2 = CE_JOIN (:VAR_ATTR_JOIN_1, :VAR_AT_HOST_CLIENT,[&quot;HOST_IP&quot;]);
+	
+	VAR_ATTR_JOIN_3 = CE_JOIN (:VAR_ATTR_JOIN_2, :VAR_AT_SERVER,[&quot;SERVER_IP&quot;]);
+	
+	VAR_ATTR_JOIN_4 = CE_JOIN (:VAR_ATTR_JOIN_3, :VAR_AT_DATE, [&quot;DATE_SQL&quot;]);
+	
+	VAR_OUT = CE_JOIN (:VAR_ATTR_JOIN_4, :VAR_AT_STATUS_CODE,[&quot;HTTP_STATUS_CODE&quot;]);
+	
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="STREAM_LOG_ID" order="1">
+        <descriptions defaultDescription="STREAM_LOG_ID"/>
+        <keyMapping columnObjectName="Script_View" columnName="STREAM_LOG_ID"/>
+      </attribute>
+      <attribute id="HOST_IP" order="2">
+        <descriptions defaultDescription="HOST_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_IP"/>
+      </attribute>
+      <attribute id="ATTACK_TIME" order="3">
+        <descriptions defaultDescription="ATTACK_TIME"/>
+        <keyMapping columnObjectName="Script_View" columnName="ATTACK_TIME"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="4">
+        <descriptions defaultDescription="ATTACK_DATE"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="ATTACK_DATE_VARCHAR" order="5">
+        <descriptions defaultDescription="ATTACK_DATE_VARCHAR"/>
+        <keyMapping columnObjectName="Script_View" columnName="ATTACK_DATE_VARCHAR"/>
+      </attribute>
+      <attribute id="ALERT_TYPE_KEY" order="6">
+        <descriptions defaultDescription="ALERT_TYPE_KEY"/>
+        <keyMapping columnObjectName="Script_View" columnName="ALERT_TYPE_KEY"/>
+      </attribute>
+      <attribute id="VIEW_URL" order="7">
+        <descriptions defaultDescription="VIEW_URL"/>
+        <keyMapping columnObjectName="Script_View" columnName="VIEW_URL"/>
+      </attribute>
+      <attribute id="HTTP_STATUS_CODE" order="8">
+        <descriptions defaultDescription="HTTP_STATUS_CODE"/>
+        <keyMapping columnObjectName="Script_View" columnName="HTTP_STATUS_CODE"/>
+      </attribute>
+      <attribute id="SERVER_IP" order="9">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="ALERT_TYPE_NAME" order="12">
+        <descriptions defaultDescription="ALERT_TYPE_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="ALERT_TYPE_NAME"/>
+      </attribute>
+      <attribute id="FUNCTION_AREA" order="13">
+        <descriptions defaultDescription="FUNCTION_AREA"/>
+        <keyMapping columnObjectName="Script_View" columnName="FUNCTION_AREA"/>
+      </attribute>
+      <attribute id="HOST_NAME" order="14">
+        <descriptions defaultDescription="HOST_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_NAME"/>
+      </attribute>
+      <attribute id="COUNTRY" order="15">
+        <descriptions defaultDescription="COUNTRY"/>
+        <keyMapping columnObjectName="Script_View" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="REGION" order="16">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Script_View" columnName="REGION"/>
+      </attribute>
+      <attribute id="CITY" order="17">
+        <descriptions defaultDescription="CITY"/>
+        <keyMapping columnObjectName="Script_View" columnName="CITY"/>
+      </attribute>
+      <attribute id="ZIP_CODE" order="18">
+        <descriptions defaultDescription="ZIP_CODE"/>
+        <keyMapping columnObjectName="Script_View" columnName="ZIP_CODE"/>
+      </attribute>
+      <attribute id="LATITUDE" order="19">
+        <descriptions defaultDescription="LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LATITUDE"/>
+      </attribute>
+      <attribute id="LONGITUDE" order="20">
+        <descriptions defaultDescription="LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LONGITUDE"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="21">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+      <attribute id="SERVER_ATTR_1" order="22">
+        <descriptions defaultDescription="SERVER_ATTR_1"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_ATTR_1"/>
+      </attribute>
+      <attribute id="SERVER_ATTR_2" order="23">
+        <descriptions defaultDescription="SERVER_ATTR_2"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_ATTR_2"/>
+      </attribute>
+      <attribute id="SERVER_LATITUDE" order="24">
+        <descriptions defaultDescription="SERVER_LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LATITUDE"/>
+      </attribute>
+      <attribute id="SERVER_LONGITUDE" order="25">
+        <descriptions defaultDescription="SERVER_LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LONGITUDE"/>
+      </attribute>
+      <attribute id="DATE_SAP" order="26">
+        <descriptions defaultDescription="DATE_SAP"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SAP"/>
+      </attribute>
+      <attribute id="YEAR" order="27">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Script_View" columnName="YEAR"/>
+      </attribute>
+      <attribute id="QUARTER" order="28">
+        <descriptions defaultDescription="QUARTER"/>
+        <keyMapping columnObjectName="Script_View" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="MONTH" order="29">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="MONTH"/>
+      </attribute>
+      <attribute id="WEEK" order="30">
+        <descriptions defaultDescription="WEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEEK"/>
+      </attribute>
+      <attribute id="WEEK_YEAR" order="31">
+        <descriptions defaultDescription="WEEK_YEAR"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEEK_YEAR"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK" order="32">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY_OF_WEEK"/>
+      </attribute>
+      <attribute id="DAY" order="33">
+        <descriptions defaultDescription="DAY"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY"/>
+      </attribute>
+      <attribute id="CALWEEK" order="34">
+        <descriptions defaultDescription="CALWEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="CALQUARTER" order="35">
+        <descriptions defaultDescription="CALQUARTER"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALQUARTER"/>
+      </attribute>
+      <attribute id="CALMONTH" order="36">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK_INT" order="37">
+        <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY_OF_WEEK_INT"/>
+      </attribute>
+      <attribute id="CODE_DESCRIPTON" order="38">
+        <descriptions defaultDescription="CODE_DESCRIPTION"/>
+        <keyMapping columnObjectName="Script_View" columnName="CODE_DESCRIPTON"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="BYTES_SENT" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BYTES_SENT"/>
+        <measureMapping columnObjectName="Script_View" columnName="BYTES_SENT"/>
+      </measure>
+      <measure id="NUMBER_OF_INCIDENTS" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_OF_INCIDENTS"/>
+        <measureMapping columnObjectName="Script_View" columnName="NUMBER_OF_INCIDENTS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

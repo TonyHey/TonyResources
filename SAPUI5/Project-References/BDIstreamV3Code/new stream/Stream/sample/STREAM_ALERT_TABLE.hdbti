@@ -1,0 +1,11 @@
+import = 
+        [
+  
+           {
+               table = "sap.rds-bdi.stream.model.rep::tables.ALERT_TAB";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_ALERT_TABLE.csv";     
+               header = false;                   
+               delimField = ",";                     
+           }
+         ];

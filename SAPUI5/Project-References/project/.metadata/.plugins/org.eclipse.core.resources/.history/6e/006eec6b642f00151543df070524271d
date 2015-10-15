@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2013 SAP AG, All Rights Reserved -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>STREAM INTELLIGENCE</title>
+
+        <!-- CSS for homepage -->
+        <link href="WebContent/css/homepage.css" rel="stylesheet" type="text/css" />
+        
+        <!-- Nokia map -->
+        <script type="text/javascript" src="http://js.api.here.com/se/2.5.4/jsl.js?with=maps"></script>
+        <!-- SAPUI5 -->
+        <script src="resources/sap-ui-core.js"
+                id="sap-ui-bootstrap"
+                data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.commons,sap.suite.ui.commons, sap.ui.table,sap.viz"
+                data-sap-ui-theme="sap_bluecrystal"
+                data-sap-ui-resourceroots='{"sap.rds.bdi.stream.Homepage.view": "ui/WebContent/view/Homepage/view"}'>
+        </script>
+        <!-- jQuery UI(Drag & Drop) -->
+        <script type="text/javascript">
+            $.sap.require('sap.ui.thirdparty.jqueryui.jquery-ui-core');  
+            $.sap.require('sap.ui.thirdparty.jqueryui.jquery-ui-widget');  
+            $.sap.require('sap.ui.thirdparty.jqueryui.jquery-ui-mouse');  
+            $.sap.require('sap.ui.thirdparty.jqueryui.jquery-ui-draggable');  
+            $.sap.require('sap.ui.thirdparty.jqueryui.jquery-ui-sortable');
+        </script>
+        <!-- jQuery UI touch punch -->
+        <script type="text/javascript" src="js/jquery-ui-touch-punch.js"></script>
+        <script>
+            var page = new sap.ui.core.mvc.JSView("",{
+                viewName : "sap.rds.bdi.stream.Homepage.view.shell"
+            });
+            page.placeAt("content");
+        </script>
+
+    </head>
+
+    <body>
+        <div id="content"></div>
+    </body>
+</html> 

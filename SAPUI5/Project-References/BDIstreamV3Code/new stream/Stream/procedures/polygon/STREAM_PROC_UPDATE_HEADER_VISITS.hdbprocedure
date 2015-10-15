@@ -1,0 +1,119 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.polygon::STREAM_PROC_UPDATE_HEADER_VISITS" (
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SERVER_IP_IN NVARCHAR(100),
+IN MULTI_POLYGON NVARCHAR(5000),
+IN MULTI_SELECT_INPUT NVARCHAR(5000),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_update_header_kpi_output"
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	AS
+	
+
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+
+	if :MULTI_POLYGON <> '' and :MULTI_SELECT_INPUT <> '' then
+	srch_eng_count_multi_polygon = 
+					  SELECT SERVER_IP,
+					  	      CITY, 
+					  	      ZIP_CODE, 
+					  	      LATITUDE,
+					  	      LONGITUDE,
+					  	      SUM(NEW_VISIT_1Y_0N) as CT 
+					  	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+					    WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					          AND   DATE_SQL <=  :DATE_TO_IN 
+ 					          AND SERVER_IP =  :SERVER_IP_IN  
+                              AND  (NEW ST_MultiPolygon(:MULTI_POLYGON).ST_Contains(NEW ST_POINT(LATITUDE,LONGITUDE)) = 1)
+                        GROUP BY SERVER_IP, CITY, ZIP_CODE, LATITUDE,LONGITUDE 
+                        ORDER BY LATITUDE, LONGITUDE, CITY;
+
+	srch_eng_count_multi_entity = 
+					   SELECT SERVER_IP, 
+					  	      CITY, 
+					  	      ZIP_CODE, 
+					  	      LATITUDE,
+					  	      LONGITUDE, 
+					  	      SUM(NEW_VISIT_1Y_0N) as CT  
+					  	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+					    WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					          AND   DATE_SQL <=  :DATE_TO_IN 
+ 					          AND SERVER_IP =  :SERVER_IP_IN  
+                              AND locate( :MULTI_SELECT_INPUT, concat(round(LATITUDE,6),concat(',',round(LONGITUDE,6))))>0
+                        GROUP BY SERVER_IP, CITY, ZIP_CODE, LATITUDE,LONGITUDE
+                        ORDER BY LATITUDE, LONGITUDE, CITY;       
+	
+	/* Use UNION to eliminate the overlap between MULTI_SELECT_INPUT and MULTI_POLYGON*/
+	VAR_OUT =     select sum (SRCH_ENG_COUNT) as KPI_COUNT from (
+			         select   SERVER_IP,  
+					  	      CITY, 
+					  	      ZIP_CODE, 
+					  	      LATITUDE,
+					  	      LONGITUDE, 
+					  	      sum (CT) as SRCH_ENG_COUNT from
+					  	      (
+							    (select * from :srch_eng_count_multi_polygon) UNION (select * from :srch_eng_count_multi_entity)
+							  )
+							  GROUP BY SERVER_IP, CITY, ZIP_CODE, LATITUDE,LONGITUDE
+					  )
+				 ;
+	 
+	 
+	 elseif :MULTI_POLYGON <> '' and :MULTI_SELECT_INPUT = '' then
+	 	srch_eng_count_multi_polygon1 = 
+					  SELECT SERVER_IP, 
+					  	      CITY, 
+					  	      ZIP_CODE, 
+					  	      LATITUDE,
+					  	      LONGITUDE, 
+					  	      SUM(NEW_VISIT_1Y_0N) as CT 
+					  	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+					    WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					          AND   DATE_SQL <=  :DATE_TO_IN 
+ 					          AND SERVER_IP =  :SERVER_IP_IN  
+                              AND  (NEW ST_MultiPolygon(:MULTI_POLYGON).ST_Contains(NEW ST_POINT(LATITUDE,LONGITUDE)) = 1)
+                        GROUP BY SERVER_IP, CITY, ZIP_CODE, LATITUDE,LONGITUDE 
+                        ORDER BY LATITUDE, LONGITUDE, CITY;
+          VAR_OUT =     select sum (CT) as KPI_COUNT from :srch_eng_count_multi_polygon1;
+     
+     
+     elseif :MULTI_POLYGON = '' and :MULTI_SELECT_INPUT <> '' then
+	 	srch_eng_count_multi_entity2 = 
+					   SELECT SERVER_IP,  
+					  	      CITY, 
+					  	      ZIP_CODE, 
+					  	      LATITUDE,
+					  	      LONGITUDE,
+					  	      SUM(NEW_VISIT_1Y_0N) as CT  
+					  	FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+					    WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					          AND   DATE_SQL <=  :DATE_TO_IN 
+ 					          AND SERVER_IP =  :SERVER_IP_IN  
+                              AND locate( :MULTI_SELECT_INPUT, concat(round(LATITUDE,6),concat(',',round(LONGITUDE,6))))>0
+                        GROUP BY SERVER_IP, CITY, ZIP_CODE, LATITUDE,LONGITUDE 
+                        ORDER BY LATITUDE, LONGITUDE, CITY;                  
+	 	VAR_OUT =     select sum (CT) as KPI_COUNT from :srch_eng_count_multi_entity2;
+	 	
+	 	
+	 elseif  :MULTI_POLYGON = '' and :MULTI_SELECT_INPUT = '' then
+	 	VAR_OUT = Select sum (a) as KPI_COUNT from(
+	 			                        SELECT SERVER_IP, 
+	 			                               count(*) AS a 
+	 			                        FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+	 			                        WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					                           AND   DATE_SQL <=  :DATE_TO_IN 
+ 					                           AND SERVER_IP =  :SERVER_IP_IN   
+	 			                        GROUP BY SERVER_IP
+	 			                      );
+
+	 end if;
+
+END;
+

@@ -1,0 +1,83 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_SOURCE_ANALYSIS" ( 
+	IN FROM_DATE_IN NVARCHAR(14),
+	IN TO_DATE_IN NVARCHAR(14),
+	IN SERVERIP_IN NVARCHAR(16),
+	IN SOURCE_IN NVARCHAR(20),
+	OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_source_analysis_output"
+ 	) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+
+ if :SOURCE_IN = 'HADOOP' then
+
+T1 =	
+	SELECT  
+			SERVER_IP, 
+			BROWSER, 
+			COUNT (*) as BROWSER_COUNT 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_SOURCE"   
+			WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN   
+			GROUP BY  SERVER_IP, BROWSER;
+T2 = 
+		SELECT 
+			COUNT (*) as BROWSER_COUNT_TOTAL 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_SOURCE"   
+			WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN ;  
+
+
+
+ VAR_OUT = 		
+		SELECT 	
+			:T1.SERVER_IP, 
+			:T1.BROWSER,
+			:T1.BROWSER_COUNT,
+			ROUND(:T1.BROWSER_COUNT/:T2.BROWSER_COUNT_TOTAL,4) as BROWSER_PERCENTAGE 
+	FROM
+	(	:T1	INNER JOIN :T2	on 1 = 1 );
+		
+else
+
+T1 =	
+	SELECT  
+			SERVER_IP, 
+			BROWSER, 
+			COUNT (*) as BROWSER_COUNT 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_SOURCE"   
+			WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN   
+			GROUP BY  SERVER_IP, BROWSER;
+T2 = 
+		SELECT 
+			COUNT (*) as BROWSER_COUNT_TOTAL 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_SOURCE"   
+			WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN ;  
+
+
+
+ VAR_OUT = 		
+		SELECT 	
+			:T1.SERVER_IP, 
+			:T1.BROWSER,
+			:T1.BROWSER_COUNT,
+			ROUND(:T1.BROWSER_COUNT/:T2.BROWSER_COUNT_TOTAL,4) as BROWSER_PERCENTAGE 
+	FROM
+	(	:T1	INNER JOIN :T2	on 1 = 1 );
+
+
+
+end if;
+ 
+END;

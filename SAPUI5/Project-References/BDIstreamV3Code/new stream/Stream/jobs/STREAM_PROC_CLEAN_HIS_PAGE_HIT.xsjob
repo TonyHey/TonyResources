@@ -1,0 +1,13 @@
+{
+    "description": "Stream - Clean History incoming log Data",
+    "action": "sap.rds-bdi.stream.procedures::STREAM_PROC_CLEAN_HIS_PAGE_HIT",
+    "schedules": [
+       {
+          "description": "Stream - Clean History incoming log Data",
+          "xscron": "* * * -1.sun 9 0 0",
+          "parameter": {
+             
+             }
+       }
+    ]
+}

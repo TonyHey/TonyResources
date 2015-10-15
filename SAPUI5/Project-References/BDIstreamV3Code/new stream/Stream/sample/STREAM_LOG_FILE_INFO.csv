@@ -1,0 +1,10 @@
+STREAM_STREAM_ID_1,STREAM_LOG_FILE_TYPE_1,STREAM_LOG_FILE_NAME_1,STREAM_LOG_FILE_DESC_1,Apache_Combined
+STREAM_STREAM_ID_2,STREAM_LOG_FILE_TYPE_2,STREAM_LOG_FILE_NAME_2,STREAM_LOG_FILE_DESC_2,Apache_Common
+STREAM_STREAM_ID_3,STREAM_LOG_FILE_TYPE_3,STREAM_LOG_FILE_NAME_3,STREAM_LOG_FILE_DESC_3,IIS_Fixed
+STREAM_STREAM_ID_4,STREAM_LOG_FILE_TYPE_4,STREAM_LOG_FILE_NAME_4,STREAM_LOG_FILE_DESC_4,W3C_Extended
+STREAM_STREAM_ID_5,STREAM_LOG_FILE_TYPE_5,STREAM_LOG_FILE_NAME_5,STREAM_LOG_FILE_DESC_5,IIS_Extended
+Stream_1-Apache_Combined,Web - Access Log,/var/log/rds_bdi_stream/Apache_Combined.log,Stream 1 Description,Apache_Combined
+Stream_2-Apache_Common,Web - Access Log,/var/log/rds_bdi_stream/Apache_Common.log,Stream 2 Description,Apache_Common
+Stream_3-IIS_Fixed,Web - Access Log,/var/log/rds_bdi_stream/IIS_Fixed.log,Stream 3 Description,IIS_Fixed
+Stream_4-W3C_Extended,Web - Access Log,/var/log/rds_bdi_stream/W3C_Extended.log,Stream 4 Description,W3C_Extended
+Stream_5-IIS_Extended,Web - Access Log,/var/log/rds_bdi_stream/u_ex.*\.log,Stream 5 Description,IIS_Extended

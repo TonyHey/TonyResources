@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_FILE_TYPE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_FILE_TYPE"/>
+  <metadata changedAt="2015-04-14 16:51:31.731" createdAt="2015-04-14 16:51:31.731"/>
+  <attributes>
+    <attribute id="FILE_TYPE_CODE" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="File Type Code"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_FILE_TYPE" columnName="FILE_TYPE_CODE"/>
+    </attribute>
+    <attribute id="FILE_TYPE_DESCRIPTION" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="File Type Description"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_FILE_TYPE" columnName="FILE_TYPE_DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_FILE_TYPE"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_FILE_TYPE" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="62" y="175"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

@@ -1,0 +1,271 @@
+namespace "sap"."rds-bdi"."stream"."model"."rep";
+
+@Schema: 'SAP_RDS_BDI_STREAM'
+context tables {
+
+
+	@Catalog.tableType : #COLUMN
+     entity ALERT_TAB {
+			STREAM_LOG_ID		:String(100);
+			HOST_IP				:String(100);
+			HOST_NAME			:String(100);
+			ATTACK_TIME			:UTCTimestamp;
+			ALERT_TYPE_KEY		:String(100);
+			VIEW_URL			:String(5000);
+			HTTP_STATUS_CODE	:String(100);
+			BYTES_SENT			:Integer;
+			SERVER_IP			:String(100);
+			NUMBER_OF_INCIDENTS :Integer;
+			key GUID			:String(40);
+			LAST_MODIFIED		:UTCTimestamp;
+	};
+	
+	@Catalog.tableType : #COLUMN
+     entity alert_log_hive_dummy_table {
+			stream_log_id		:String(100);
+			host_ip				:String(100);
+			host_name			:String(100);
+			attack_time			:UTCTimestamp;
+			alert_type_key		:String(100);
+			view_url			:String(5000);
+			http_status_code	:String(100);
+			bytes_sent			:Integer;
+			server_ip			:String(100);
+			number_of_incidents :Integer;
+			key guid			:String(40);
+			last_modified		:UTCTimestamp;
+	};
+
+	@Catalog.tableType : #COLUMN
+	entity DIM_HOST_CLIENT {
+		key	HOST_IP				:String(100)  not null default '000.000.000.000';
+			HOST_NAME			:String(100);
+			COUNTRY				:String(30);
+			REGION				:String(30);
+			CITY				:String(30);
+			ZIP_CODE			:String(20);
+	};
+
+	@Catalog.tableType : #COLUMN
+	entity DIM_SERVER {
+		key	SERVER_IP			:String(100)  not null default '000.000.000.000';
+			SERVER_NAME			:String(100)  default 'Unknown Server Name';
+			SERVER_ATTR_1		:String(50);
+			SERVER_ATTR_2		:String(50);
+			COUNTRY				:String(30);
+			REGION				:String(30);
+			CITY				:String(30);
+			ZIP_CODE			:String(20);
+			LATITUDE			:Decimal(10,6);
+			LONGITUDE			:Decimal(10,6);
+	};
+
+	@Catalog.tableType : #COLUMN
+	entity DIM_USER {
+		key	USER_ID				:String(100)  default 'Unknown';
+			USER_NAME			:String(100)  default 'Unknown';
+			AGE					:Integer;
+			TENURE				:Integer;
+			INCOME				:Integer;
+			WEALTH				:BinaryFloat;
+			NO_CHILDREN			:Integer;
+			POSTAL_CODE			:Integer;			
+			CREDIT_SCORE		:Integer;	
+			CHECKING_AMT		:Integer;	
+			CHECKING_M			:Integer;	
+			SAVINGS_AMT			:Integer;	
+			INVEST_AMT			:Integer;	
+			SUM_LENDING			:Integer;	
+			ATTRITION			:String(3);
+			GENDER				:String(10)  default 'U';
+			AGE_RANGE			:String(10)  default 'Unknown';
+	};
+	
+	
+	
+	@Catalog.tableType : #COLUMN
+	entity HIS_DATA_MGMT_CF {
+		key	TABLE_NAME			:String(50);
+			TIME_DIM			:String(10);
+			KEEP_PERIOD			:Integer;
+	};
+	
+	@Catalog.tableType : #COLUMN
+	entity LKUP_DURA_BANDING {
+		key	DURATION_BANDING	:Integer;
+			BANDING_LOW_LIMIT	:Decimal(22,3);
+			BANDING_HIGH_LIMIT	:Decimal(22,3);
+	};
+
+	@Catalog.tableType : #COLUMN	
+	entity LKUP_FILE_TYPE {
+		key	FILE_TYPE_CODE	:String(100);
+			FILE_TYPE_DESCRIPTION	:String(100);
+	};
+
+	@Catalog.tableType : #COLUMN	
+	entity LKUP_GEO {
+		key ZIP_CODE			:String(20);
+			LATITUDE 			:Decimal(10,6);
+			LONGITUDE 			:Decimal(10,6);
+			CITY				:String(50);
+			STATE				:String(30);
+			COUNTY				:String(50);
+			COUNTRY				:String(30);
+	};
+
+	@Catalog.tableType : #COLUMN	
+	entity LKUP_STATUS_CODE {
+		key HTTP_STATUS_CODE	:String(100);
+			CODE_DESCRIPTON		:String(100);
+	};
+	
+	@nokey	
+	@Catalog.tableType : #COLUMN
+	entity PRED_CONTROL_TAB {
+			NAME				:String(100);
+			INTARGS				:Integer;
+			DOUBLEARGS			:BinaryFloat;
+			STRINGARGS			:String(100);
+	};
+
+	@nokey
+	@Catalog.tableType : #COLUMN	
+	entity PRED_FCSM_R_TAB {
+			ID				:Integer;
+			RAWDATA			:BinaryFloat;
+			DIFFERENCE		:BinaryFloat;
+	};
+
+	@nokey
+	@Catalog.tableType : #COLUMN
+	entity PRED_OUTPARAM_TAB {
+			NAME			:String(100);
+			RAWDATA			:BinaryFloat;
+	};
+	
+	
+	
+
+	@Catalog.tableType : #COLUMN
+	entity ICM_LOG_TAB_DTL {
+			STREAM_ID 				:String(100)  default 'Unknown';
+			LOGGED_TIME				:UTCTimestamp default timestamp'2000-01-01 23:59:59.0';
+			HOST_IP					:String(100)  default '000.000.000.000';
+			HOST_NAME				:String(100);
+			USER_ID					:String(100)  default 'Unknown';
+			SERVER_IP				:String(100)  not null default '000.000.000.000';
+			SERVER_NAME				:String(100)  default 'Unknown';
+			SERVER_PORT				:String(100)  default 'Unknown';
+			VIEW_URL				:String(5000)  default 'Unknown';
+			HTTP_METHOD				:String(100)  default 'Unknown';
+			HTTP_PROTOCOL			:String(100)  default 'Unknown';
+			HTTP_STATUS_CODE		:String(100)  default 'Unknown';
+			HTTP_SUBSTATUS			:String(100)  default 'Unknown';
+			ORIGINATING_SITE		:String(500)  default 'Unknown';
+			USER_AGENT				:String(500)  default 'Unknown';
+			BROWSER					:String(100)  default 'Unknown';
+			OPERATING_SYSTEM		:String(100)  default 'Unknown';
+			DEVICE					:String(100)  default 'Unknown';
+			BYTES_SENT				:Integer default  0;	
+			BYTES_RECD				:Integer default  0;		
+			DURATION				:Decimal(22,3);
+			WEB_ENGINE_STATUS		:String(100)  default 'Unknown';
+			PRODUCT					:String(100)  default 'Unknown';
+			COOKIES					:String(5000)  default 'Unknown';
+			SEARCH_WORD_PHASE		:String(100)  default 'Unknown';
+		key	GUID					:String(40)  default 'Unknown';
+			LAST_MODIFIED			:UTCTimestamp;
+
+	};
+	
+	@Catalog.tableType : #COLUMN
+	entity icm_log_hive_dummy_table {
+			stream_id 				:String(100)  default 'Unknown';
+			logged_time				:UTCTimestamp default timestamp'2000-01-01 23:59:59.0';
+			host_ip					:String(100)  default '000.000.000.000';
+			host_name				:String(100);
+			user_id					:String(100)  default 'Unknown';
+			server_ip				:String(100)  not null default '000.000.000.000';
+			server_name				:String(100)  default 'Unknown';
+			server_port				:String(100)  default 'Unknown';
+			view_url				:String(5000)  default 'Unknown';
+			http_method				:String(100)  default 'Unknown';
+			http_protocol			:String(100)  default 'Unknown';
+			http_status_code		:String(100)  default 'Unknown';
+			http_substatus			:String(100)  default 'Unknown';
+			originating_site		:String(500)  default 'Unknown';
+			user_agent				:String(500)  default 'Unknown';
+			browser					:String(100)  default 'Unknown';
+			operating_system		:String(100)  default 'Unknown';
+			device					:String(100)  default 'Unknown';
+			bytes_sent				:Integer default  0;	
+			bytes_recd				:Integer default  0;		
+			duration				:Decimal(22,3);
+			web_engine_status		:String(100)  default 'Unknown';
+			product					:String(100)  default 'Unknown';
+			cookies					:String(5000)  default 'Unknown';
+			search_word_phase		:String(100)  default 'Unknown';
+		key	guid					:String(40)  ;
+			last_modified			:UTCTimestamp;
+
+	};
+
+	@Catalog.tableType : #COLUMN
+	entity ALERT_TYPE {
+		key ALERT_TYPE_KEY		:String(100) not null default 'Unknown';
+			ALERT_TYPE_NAME		:String(100);
+			FUNCTION_AREA		:String(100);
+	};
+	
+
+	@nokey
+	@Catalog.tableType : #COLUMN	
+	entity LKUP_M_DATA_CF {
+			FUNCTION_AREA		:String(100);
+			COUNTER				:Integer;
+			NAME				:String(100);
+			VALUE				:String(100);
+			DESCRIPTION			:String(100);
+	};
+	
+
+	
+	@Catalog.tableType : #COLUMN	
+	entity LKUP_UPLOAD_LOG_TAB {
+			USER_NAME				 :String(50);
+			ORIGINAL_FILE_NAME		 :String(100);
+			key FILE_NAME			 :String(100);
+			LOG_FILE_FORMAT_ID		 :String(50) ; //:Association[1] to LOG_FILE_FORMAT_TAB{LOG_FILE_FORMAT_ID};
+			UPLOAD_TIME				 :UTCTimestamp;
+			UPLOAD_STATUS			 :String(50);
+			ESP_DEAMON_INIT_TIME	 :UTCTimestamp;
+			ESP_COMPLETE_TIME		 :UTCTimestamp;
+			ESP_PROCESSING_TAKEN_TIME :Integer;
+			ESP_PROCESSING_MSG 		 :String(100) default '';
+			LOG_FILE_SELECTED		 :String(10) default 'Y';
+	};
+	
+
+	@Catalog.tableType : #COLUMN	
+	entity UPLOAD_LOG_TAB {
+			key FILE_NAME			 :String(100); 
+			LOG_FILE				 :LargeBinary;
+	};
+
+	@Catalog.tableType : #COLUMN
+	entity LOG_FILE_INFO {
+		key STREAM_ID				:String(100) not null default 'Unknown';
+			LOG_FILE_TYPE			:String(50) ;
+			LOG_FILE_NAME			:String(1000) ;
+			LOG_FILE_DESCRIPTION	:String(100);
+			LOG_FILE_FORMAT_ID 		:String(50) ;
+	};
+	
+	
+	@Catalog.tableType : #COLUMN
+	entity LOG_FILE_FORMAT_TAB {
+		key LOG_FILE_FORMAT_ID			:String(50);
+			LOG_FILE_FORMAT_DESCRIPTION	:String(100);
+	};
+};

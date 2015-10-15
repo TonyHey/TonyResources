@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8">
+        
+        <title>Configuration</title>
+        
+        <script id="sap-ui-bootstrap"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-xx-bindingSyntax="complex"
+        data-sap-ui-resourceroots='{
+            "sap.rds.bdi.stream.config": "ui/WebContent/apps/Config"
+        }'>
+        </script>
+		<script type="text/javascript" src="ui/WebContent/apps/Config/util/utils.js"></script>
+		<script src="config/config.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            sap.ui.getCore().attachInit(function() {
+                new sap.m.Shell({
+                    app: new sap.ui.core.ComponentContainer("oComponentContainer", {
+                        height : "100%",
+                        name : "sap.rds.bdi.stream.config"
+                    })
+                }).placeAt("content");
+            });
+        </script>
+        
+    </head>
+    
+    <body class="sapUiBody" id="content" />
+    
+</html>

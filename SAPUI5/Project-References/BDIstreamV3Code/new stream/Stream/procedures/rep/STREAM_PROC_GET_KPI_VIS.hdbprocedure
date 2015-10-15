@@ -1,0 +1,40 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_KPI_VIS" ( 
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SERVER_IP_IN NVARCHAR(100),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_kpi_vis_output"
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ if :SOURCE_IN = 'HADOOP' then
+  
+  VAR_OUT = SELECT 	SERVER_IP, 
+  					SUM(NEW_VISIT_1Y_0N) AS VISITS
+ 					FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+ 					 WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 							AND DATE_SQL <=  :DATE_TO_IN 
+ 							AND SERVER_IP =  :SERVER_IP_IN  
+ 					GROUP BY SERVER_IP;
+ 					
+ else
+ 
+   VAR_OUT = SELECT 	SERVER_IP, 
+  					SUM(NEW_VISIT_1Y_0N) AS VISITS
+ 					FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+ 					 WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 							AND DATE_SQL <=  :DATE_TO_IN 
+ 							AND SERVER_IP =  :SERVER_IP_IN  
+ 					GROUP BY SERVER_IP;
+ 					
+ 
+ end if; 
+  					
+END;

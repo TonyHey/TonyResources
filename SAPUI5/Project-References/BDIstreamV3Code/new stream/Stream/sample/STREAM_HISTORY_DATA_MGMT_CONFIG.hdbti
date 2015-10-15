@@ -1,0 +1,11 @@
+import = 
+        [
+
+           {
+               table = "sap.rds-bdi.stream.model.rep::tables.HIS_DATA_MGMT_CF";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_HISTORY_DATA_MGMT_CONFIG.csv";     
+               header = false;                     
+               delimField = ",";                     
+           }
+         ];

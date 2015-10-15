@@ -1,0 +1,11 @@
+import = 
+        [
+
+           {
+               table = "sap.rds-bdi.stream.model.rep::tables.DIM_USER";                    
+               schema = "SAP_RDS_BDI_STREAM";
+               file = "sap.rds-bdi.stream.sample:STREAM_DIM_USER.csv";     
+               header = false;                      
+               delimField = ",";                     
+           }
+         ];

@@ -1,0 +1,50 @@
+#configureTimePeriodText{
+	font-size: 1rem;
+	margin-top: 1rem;
+}
+#timePeriodConfig .item{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+#timePeriodConfig .item .text{
+	margin-right: 1rem;
+}
+#timePeriodConfig .saveButton{
+	width: 5rem;
+}
+/*
+ * Configuration Page Style
+ */
+.settingTitle {
+	font-size: 1rem;
+	line-height: 40px;
+	margin-top: 4px;
+	margin-bottom: 5px;
+	margin-left: 16px;
+}
+.tableTitle {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 3px;
+	margin-right: 20px;
+}
+.generalIcon {
+	margin-top: 15px;
+}
+.settingTitle2 {
+	font-size: 1rem;
+	line-height: 40px;
+	margin-top: 4px;
+	margin-left: 16px;
+}
+
+/*
+3rd tabStrip 消除边框线
+*/
+.sapUiTabPanel {
+	border: 0px solid #bfbfbf;
+}
+/* ObjectHeader NumberUnit STYLE*/
+.configHeader .sapMOHNumberUnit {
+	margin-top: 15px;	
+}

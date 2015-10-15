@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+
+<title>BDIPad</title>
+
+<style>
+.sapSuiteInfoTile {
+	margin: 0.5rem;
+	vertical-align: top;
+}
+</style>
+
+<script id="sap-ui-bootstrap"
+	src="/sap/ui5/1/resources/sap-ui-core-dbg.js"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-libs="sap.m, sap.ui.layout, sap.viz"
+	data-sap-ui-xx-bindingSyntax="complex"
+	data-sap-ui-resourceroots='{
+				"sap.ui.demo.myFiori": "./"
+			}'>
+		</script>
+
+<script>
+			new sap.ui.core.ComponentContainer({
+				name : "sap.ui.demo.myFiori"
+			}).placeAt("content");
+		</script>
+
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

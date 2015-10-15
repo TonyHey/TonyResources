@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_PAGE_HIT_ALL" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_PAGE_HIT_ALL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="VARCHAR" id="GUID" length="40"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="INTEGER" id="DUMMY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+  	
+ -- Initial Table
+	VAR_INCOMINGLOG_INITIAL = SELECT DISTINCT
+	 	IFNULL(SERVER_IP,'Unknown') as SERVER_IP,
+	 	GUID,
+	 	T2.USER_NAME AS USER_NAME,
+	 	T2.FILE_NAME AS FILE_NAME,
+	 	T2.ESP_PROCESSING_MSG AS ESP_PROCESSING_MSG,
+	 	T2.LOG_FILE_SELECTED AS LOG_FILE_SELECTED
+	FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.ICM_LOG_TAB_DTL&quot; AS T1
+	left outer join &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LKUP_UPLOAD_LOG_TAB&quot; AS T2
+	ON T1.STREAM_ID = T2.FILE_NAME;
+
+-- Only select standalone log file data which have been successfully uploaded, or streaming log data.
+	VAR_INCOMINGLOG = SELECT
+	 	SERVER_IP,
+	 	GUID
+	FROM :VAR_INCOMINGLOG_INITIAL
+	-- standalone log file	
+	WHERE ( ESP_PROCESSING_MSG = 'Success' and LOG_FILE_SELECTED = 'Y' ) 
+	-- stream log file
+	OR FILE_NAME IS NULL;
+	 	
+	VAR_OUT = SELECT 
+	 	T3.SERVER_IP AS SERVER_IP,
+	 	GUID,
+		SERVER_NAME,
+		1 AS DUMMY
+	FROM :VAR_INCOMINGLOG AS T3
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot; AS T4
+	ON T3.SERVER_IP = T4.SERVER_IP;
+	
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="SERVER_IP" order="1">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="GUID" order="2">
+        <descriptions defaultDescription="GUID"/>
+        <keyMapping columnObjectName="Script_View" columnName="GUID"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="3">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="DUMMY" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DUMMY"/>
+        <measureMapping columnObjectName="Script_View" columnName="DUMMY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

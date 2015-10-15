@@ -1,0 +1,588 @@
+namespace "sap"."rds-bdi"."stream"."model";
+
+@Schema: 'SAP_RDS_BDI_STREAM'
+context tables {
+
+ 	type tt_pal_forecast_smooting_data_t {
+	"ID": Integer;
+	"RAWDATA": Double;
+	};
+	
+	type tt_pal_control_t {
+	 "NAME": String(100);
+	 "INTARGS": Integer;
+	 "DOUBLEARGS": Double;
+	 "STRINGARGS":String(100);
+	};
+	
+	type tt_pal_out_parameter_t{
+	"NAME": String(100);
+	"RAWDATA": Double;
+	};
+	
+	type tt_pal_forecast_smoothing_forecast_t {
+	"ID": Integer;
+	"RAWDATA": Integer;
+	"DIFFERENCE": Double;
+	};
+
+	type tt_get_stream_output {
+	"DATE_GRANULARITY": String(100);
+	"VISITS": Integer;
+	"UNIQUE_VISITORS": Integer;
+	"PAGES": Integer;
+	"HITS": Integer;
+	"BANDING_SUM": Integer;
+	"BANDING_AVG": Integer;
+	};
+	
+	type tt_get_count_stream_w_output {
+	"SERVER": String(100);
+	"VISITS": Integer;
+	"UNIQUE_VISITORS": Integer;
+	"PAGES": Integer;
+	"HITS": Integer;
+	"BANDING_SUM": Integer;
+	"BANDING_AVG": Integer;
+	};
+	
+	type tt_get_count_stream_w2_output {
+	"CALWEEK": String(100);
+	"VISITS": Integer;
+	"UNIQUE_VISITORS": Integer;
+	"PAGES": Integer;
+	"HITS": Integer;
+	"BANDING_SUM": Integer;
+	"BANDING_AVG": Integer;
+	};
+	
+	type tt_get_total_stream_output {
+	"VISITS": Integer;
+	};	
+	
+	
+	type tt_get_source_analysis_output {
+	"SERVER_IP": String(100);
+	"BROWSER": String(100);
+	"BROWSER_COUNT": Integer;
+	"BROWSER_PERCENTAGE": Decimal(10,6);
+	};	
+		
+	type tt_get_tile_source_analysis_output {
+	"BROWSER": String(100);
+	"BROWSER_CT": Integer;
+	};		
+	
+	type tt_get_total_tile_source_analysis_output {
+	"SUM_BROWSER": Integer;
+	};	
+	
+	type tt_get_total_source_analysis_output {
+	"SUM_BROWSER_CT": Integer;
+	};			
+		
+
+	type tt_get_count_source_analysis_output {
+	"SERVER_IP": String(100);
+	"BROWSER": String(100);
+	"BROWSER_COUNT": Integer;
+	};	
+		
+		
+	type tt_get_count_alert_report_output {
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_ATTACK": Integer;
+	};			
+		
+		
+	type tt_get_search_engine_analysis_output {
+	"SERVER_IP": String(100);
+	"ORIGINATING_SITE": String(100);
+	"REFERRALS": Integer;
+	"REFERRALS_CT_TOTAL": Integer;
+	"REFERRALS_CT_PERCENTAGE": Decimal(10,6);
+	};			
+		
+		
+	type tt_get_total_search_engine_analysis_output {
+	"SUM_REFERRALS": Integer;
+	};			
+		
+
+	type tt_get_count_search_engine_analysis_output {
+	"SERVER_IP": String(100);
+	"ORIGINATING_SITE": String(100);
+	"COUNT_SE": Integer;
+	};			
+		
+	type tt_get_user_demo_graphic_analysis_output {
+	"SERVER_IP": String(100);
+	"AGE_RANGE": String(100);
+	"AGE_RANGE_COUNT": Integer;
+	"BROWSER_PERCENTAGE": Decimal(10,6);
+	};			
+		
+	type tt_get_user_count_demo_graphic_analysis_output {
+	"SERVER_IP": String(100);
+	"AGE_RANGE": String(100);
+	"AGE_RANGE_COUNT": Integer;
+	};				
+		
+	type tt_get_total_user_demo_graphic_analysis_output {
+	"COUNT_USERS": Integer;
+	};			
+		
+		
+	type tt_get_user_gender_analysis_output {
+	"SERVER_IP": String(100);
+	"GENDER": String(100);
+	"GENDER_COUNT": Integer;
+	"BROWSER_PERCENTAGE": Decimal(10,6);
+	
+	};
+	
+	type tt_get_user_navigational_analysis_output {
+	"SERVER_IP": String(100);
+	"USER_ID": String(100);
+	"USER_NAME": String(100);
+	"USER_VISIT_CT": Integer;
+	
+	};	
+	
+			
+	type tt_get_page_navigational_analysis_output {
+	"SERVER_IP": String(100);
+	"VIEW_URL": String(100);
+	"NUMBER_OF_VIEWS": Integer;
+	
+	};			
+		
+	
+	type tt_get_count_user_navigational_analysis_output {
+	"USER_ID": String(100);
+	"USER_NAME": String(100);
+	"USER_VISIT_CT": Integer;
+	
+	};			
+			
+	type tt_get_count_pag_navigational_analysis_output {
+	"VIEW_URL": String(100);
+	"NUMBER_OF_VIEWS": Integer;
+	};		
+	
+	
+	type tt_get_total_user_navigational_analysis_output {
+	"NUMBER_OF_USER_VISIT": Integer;
+	};	
+	
+	type tt_get_geo_spatial_analysis_output {
+	"DATE_GRANULARITY": String(100);
+	"COUNTRY": String(100);
+	"REGION": String(100);
+	"CITY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);	
+	"SPATIAL_COUNT": Integer;
+	
+	};	
+	
+
+	type tt_get_user_demog_map_analysis_output {
+
+	"COUNTRY": String(100);
+	"REGION": String(100);
+	"CITY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"AGE_RANGE": String(100);	
+	"SPATIAL_COUNT": Integer;
+	
+	};	
+		
+	type tt_get_user_demog_server_analysis_output {
+
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"AGE_RANGE": String(100);	
+	"SPATIAL_COUNT": Integer;
+	
+	};		
+	
+	type tt_get_user_gender_map_analysis_output {
+
+	"GENDER": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};		
+	
+	
+	type tt_get_user_gender_server_analysis_output {
+
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"GENDER": String(100);
+	"SPATIAL_COUNT": Integer;
+	};		
+		
+	type tt_get_source_server_analysis_output {
+
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"BROWSER": String(100);
+	"SPATIAL_COUNT": Integer;
+	};		
+	
+	
+	type tt_get_alert_server_analysis_output {
+
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_ATTACK": Integer;
+	};		
+		
+	
+	type tt_get_stream_uvmap_analysis_output{
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"UNIQUE_VISITORS": Integer;
+	};			
+	
+	type tt_get_stream_uvserver_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"UNIQUE_VISITORS": Integer;
+	};			
+	
+	type tt_get_stream_vis_map_analysis_output{
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"VISITS": Integer;
+	};			
+	
+	type tt_get_stream_vis_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"VISITS": Integer;
+	};			
+	
+	
+	type tt_get_stream_pag_map_analysis_output{
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"PAGES": Integer;
+	};			
+	
+	type tt_get_stream_pag_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"PAGES": Integer;
+	};			
+	
+	type tt_get_stream_hits_map_analysis_output{
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"HITS": Integer;
+	};			
+	
+	type tt_get_stream_hits_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"HITS": Integer;
+	};
+	
+	type tt_get_stream_band_map_analysis_output{
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"BANDING_SUM": Integer;
+	};			
+	
+	type tt_get_stream_band_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"BANDING_SUM": Integer;
+	};		
+	
+	type tt_get_user_nav_usr_map_analysis_output{
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"USER_NAME": String(100);
+	"USER_VISIT_CT": Integer;
+
+	};	
+	
+	
+	
+	type tt_get_user_nav_usr_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};			
+	
+	type tt_get_user_nav_pag_map_analysis_output{
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"VIEW_URL": String(100);
+	"NUMBER_OF_VIEWS": Integer;
+	};			
+	
+	type tt_get_user_nav_pag_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};			
+	
+	type tt_get_srch_eng_map_analysis_output{
+	"ORIGINATING_SITE": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};			
+	
+	type tt_get_srch_eng_server_analysis_output{
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"ORIGINATING_SITE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};			
+	
+	type tt_get_source_map_analysis_output{
+	"BROWSER": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"SPATIAL_COUNT": Integer;
+	};	
+	
+	
+	type tt_get_alert_map_analysis_output{
+	"HOST_NAME": String(100);
+	"CITY": String(100);
+	"REGION": String(100);
+	"COUNTRY": String(100);
+	"SERVER_IP": String(100);
+	"SERVER_NAME": String(100);
+	"LATITUDE": String(100);
+	"LONGITUDE": String(100);
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_ATTACK": Integer;
+	};			
+	
+	type tt_get_count_geo_spatial_analysis_output{
+	"SPATIAL_COUNT": Integer;
+	};			
+	
+	type tt_get_kpi_engine_analysis_output{
+	"SERVER_IP": String(100);
+	"ORIGINATING_SITE": String(100);
+	"COUNT_KPI": Integer;
+	};			
+	
+	type tt_get_tile_originating_site_output{
+	"NUMBER_SITES": Integer;
+	};			
+	
+	type tt_get_kpi_source_analysis_output{
+	"SERVER_IP": String(100);
+	"BROWSER": String(100);
+	"COUNT_KPI": Integer;
+	};			
+	
+	type tt_get_kpi_age_analysis_output{
+	"SERVER_IP": String(100);
+	"AGE_RANGE": String(100);
+	"COUNT_KPI": Integer;
+	};			
+	
+	
+	
+	type tt_get_tile_age_analysis_output{
+	"AGE_RANGE": String(100);
+	"COUNT_KPI": Integer;
+	};			
+	
+
+	
+	
+	
+	
+	type tt_get_kpi_gender_analysis_output {
+	"SERVER_IP": String(100);
+	"GENDER": String (10);
+	"GENDER_CT": Integer;
+	};	
+	
+	type tt_get_tile_gender_analysis_output {
+	"GENDER": String (10);
+	"GENDER_CT": Integer;
+	};	
+		
+	type tt_get_kpi_nav_usr_analysis_output {
+	"USER_ID": String (100);
+	"USER_NAME": String(100);
+	"USER_VISIT_CT": Integer;
+	};	
+	
+	type tt_get_tile_nav_usr_analysis_output {
+	"USER_ID": String (100);
+	"USER_NAME": String(100);
+	"USER_VISIT_CT": Integer;
+	};	
+	
+	type tt_get_kpi_nav_pag_analysis_output {
+	"VIEW_URL": String(5000);
+	"NUMBER_OF_VIEWS": Integer;
+	};	
+	
+	type tt_get_tile_nav_pag_analysis_output {
+	"VIEW_URL": String(5000);
+	"NUMBER_OF_VIEWS": Integer;
+	};
+	
+	type tt_get_kpi_uv_output {
+	"SERVER_IP": String(100);
+	"UNIQUE_VISITORS": Integer;
+	};
+	
+	
+	type tt_get_kpi_vis_output {
+	"SERVER_IP": String(100);
+	"VISITS": Integer;
+	};
+	
+	
+	type tt_get_kpi_pages_output {
+	"SERVER_IP": String(100);
+	"PAGE_VIEWED": Integer;
+	};
+	
+	
+	type tt_get_kpi_hits_output {
+	"SERVER_IP": String(100);
+	"HITS": Integer;
+	};
+	
+	type tt_get_kpi_band_output {
+	"SERVER_IP": String(100);
+	"BANDWIDTH": Integer;
+	};
+	
+	
+	type tt_get_tile_time_series_output {
+	"UNIQUE_VISITORS": Integer;
+	"VISITS": Integer;
+	"PAGE_VIEWED": Integer;
+	"HITS": Integer;
+	"BANDWIDTH": Integer;
+	};
+	
+	type tt_get_kpi_alert_report_output {
+	"SERVER_IP": String(100);
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_INCIDENTS": Integer;
+	};
+	
+	type tt_get_tile_alert_report_output {
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_INCIDENTS": Integer;
+	};
+	
+	type tt_get_all_server_ip_output{
+	"SERVER_NAME": String(100);
+ 	"SERVER_IP": String(100);
+	};	
+	
+		
+	type tt_get_alert_server_ip_output{
+	"SERVER_NAME": String(100);
+ 	"SERVER_IP": String(100);
+	};		
+		
+	type tt_get_single_alert_ip_output{
+	"SERVER_NAME": String(100);
+ 	"SERVER_IP": String(100);
+	};	
+		
+	type tt_get_total_actual_predictive_analysis_output{
+	"SERVER_IP": String(100);
+ 	"REFERRALS": Integer; 
+	};
+	
+	/*
+	type tt_get_actual_and_predictive_output{
+	"DATE_STR": String(10);
+ 	"ACTUAL_DATA": Integer; 
+ 	"PROJECTED_DATA": Integer;  
+	};
+	*/	
+		
+	type tt_get_total_alert_report_output {
+	"NUMBER_OF_ATTACK": Integer;
+	};	
+		
+	type tt_get_alert_report_output {
+	"ALERT_TYPE_NAME": String(100);
+	"NUMBER_OF_ATTACK": Integer;
+	"NUMBER_OF_ATTACK_TOTAL": Integer;
+	"ALERT_TYPE_PERCENTAGE": Decimal(10,6);
+	};
+
+	
+	type tt_update_header_kpi_output{
+	"KPI_COUNT": Integer;
+	};
+};

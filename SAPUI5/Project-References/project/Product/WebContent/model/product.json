@@ -1,0 +1,103 @@
+{
+
+	"product":[
+		{
+			"id":1,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater SAPUI5 gives you the option of adding spacing in between controls by adding a margin. A margin clears an area around its respective control, outside of its border.Unlike paddings, margins are transparent, are not part of the control's click able area, and they collapse with adjacent margins, meaning that they do not add to each other. For instance, if you have two 32px margins next to each other, the result is that only one 32px margin is displayed, not 64px of space.All margins predefined in SAPUI5 support right-to-left (RTL) languages: when you add a margin to the left, we make sure that it is displayed on the right if your user has chosen an RTL language such as Hebrew or Arabic. For our CSS classes, we offer four standard sizes, namely tiny (0.5rem or 8px), small (1rem or 16px), "
+		},
+		{
+			"id":2,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":3,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":4,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":5,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":6,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/psb.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":7,
+			"name":"White sweater",
+			"price":"1600",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":8,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":9,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":10,
+			"name":"White sweater",
+			"price":"1600",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":11,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		},
+		{
+			"id":12,
+			"name":"White sweater",
+			"price":"1400",
+			"image":"resources/pbs.jpg",
+			"title":"sweater",
+			"description":"White sweater"
+		}
+		
+	]
+
+}

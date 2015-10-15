@@ -1,0 +1,126 @@
+#header.sapSuiteHdrCntr {
+	box-shadow: 0 0 10px #666
+}
+
+#vbox {
+	margin: 20px 10px
+}
+
+#__button0.legendIcon {
+	display: none;
+}
+
+.sapUshellDashboardGroupsContainer .sapUshellTileContainer h2.sapUshellContainerTitle
+	{
+	color: #fff
+}
+
+.sapUshellCatalog .sapUshellTileContainer h6.sapUshellHeaderTile.sapUshellTileContainerHdr
+	{
+	color: #fff
+}
+
+.eLabel {
+	margin-right: 15px;
+}
+
+.entityDesc {
+	text-align: center
+}
+
+.sapMBar.sapMPageHeader:before {
+	border-top: none;
+}
+
+.toolbar.label {
+	margin-right: 1rem;
+}
+
+.toolbar.datepicker {
+	vertical-align: middle;
+}
+
+.toolkit {
+	width: 10rem;
+	z-index: 9;
+	position: absolute;
+	left: 15px;
+	top: 200px;
+	background-color: #fff;
+	opacity: 0.9;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	box-shadow: 2px 2px 8px #666;
+	
+}
+
+.toolkit .optionsBox{
+	margin-bottom: 7px;
+}
+.toolkit .sapMBtn{
+	width: 8rem;
+}
+
+.toolkit .sapMBtn.selected{
+	border: 1px solid #666; 
+}
+
+#ITSourceAnalysis--itSourceAnalysisToolbar
+{
+	margin: 20px 10px 20px 10px
+}
+
+.sapCaUiChartToolBar
+{
+	margin: 20px 10px 20px 10px
+}
+
+.toolkit .sapMBtn:focus>.sapMBtnInner.sapMFocusable{
+	outline: none;
+}
+
+#mapContainer
+{
+	margin: 0px 10px 1px 0px
+}
+
+.nm_infoBubble{
+	background-color: #fff;
+	color: #666;
+}
+
+
+#popupContainer.popupContainer .sapMScrollCont.sapMScrollContV{
+	max-height: 200px;
+}
+#mapPopupContainer .sapMScrollCont.sapMScrollContV {
+	max-height: 20px;
+}
+
+#content{
+	position: relative;
+}
+
+#content .overlay{
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	opacity: 0.8;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+}
+
+#content #busyIndicatorOverlay{
+	position: relative;
+	left: 50%;
+	top: 15rem;
+}
+
+#content .overlay.hide{
+	display: none;
+}
+
+#content .overlay.show{
+	display: block;
+}

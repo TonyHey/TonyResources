@@ -1,0 +1,31 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_TILE_GENDER_ANALYSIS" (
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_tile_gender_analysis_output"
+ ) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+if :SOURCE_IN = 'HADOOP' then
+VAR_OUT = SELECT GENDER, 
+		         count (*)  as GENDER_CT
+		         FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_DEMOGRAPHIC" 
+		         WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN   
+		         GROUP BY GENDER;
+ else
+ VAR_OUT = SELECT GENDER, 
+		         count (*)  as GENDER_CT
+		         FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_DEMOGRAPHIC" 
+		         WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN   
+		         GROUP BY GENDER;
+ end if;
+ 
+END;

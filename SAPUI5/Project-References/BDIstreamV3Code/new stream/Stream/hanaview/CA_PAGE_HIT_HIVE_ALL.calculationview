@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_PAGE_HIT_HIVE_ALL" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_PAGE_HIT_HIVE_ALL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="VARCHAR" id="GUID" length="40"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="INTEGER" id="DUMMY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+   
+ -- Initial Table
+	VAR_INCOMINGLOG = SELECT DISTINCT
+	 	IFNULL(&quot;server_ip&quot;,'Unknown') as SERVER_IP,
+	 	&quot;guid&quot; AS GUID
+	-- FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;HIVE_BDI_incominglog&quot;;
+	FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.icm_log_hive_dummy_table&quot;;
+	 	
+	VAR_OUT = SELECT 
+	 	T3.SERVER_IP AS SERVER_IP,
+	 	GUID,
+		SERVER_NAME,
+		1 AS DUMMY
+	FROM :VAR_INCOMINGLOG AS T3
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot; AS T4
+	ON T3.SERVER_IP = T4.SERVER_IP;
+	
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="SERVER_IP" order="1">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="GUID" order="2">
+        <descriptions defaultDescription="GUID"/>
+        <keyMapping columnObjectName="Script_View" columnName="GUID"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="3">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="DUMMY" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DUMMY"/>
+        <measureMapping columnObjectName="Script_View" columnName="DUMMY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

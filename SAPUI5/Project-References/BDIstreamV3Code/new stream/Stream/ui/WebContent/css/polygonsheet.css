@@ -1,0 +1,102 @@
+/*      PolygonTool STYLE       
+ * Add Time: Mar. 11st, 2015
+ * By: Xia, Yang
+ */
+#polygonToolList {
+	padding: 10px;
+	width: 185px;
+	height: 80px;
+	background-color: black; /*#99CCFF;*/
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+.polygonTool .sapMBtnContent, .polygonTool .sapMBtnInner {
+	height: 20px !important;
+	line-height: 20px !important;
+}
+.polygonImage {
+	width: 30px;
+	height: 30px;
+}
+.polygonTool .sapMBtn {
+	height: 25px;
+	padding: 0;
+}
+.polygonTool span {
+	color: white;
+	padding-left: 25px;
+}
+.polygonTool button .sapMBtnIcon {
+	heigth: 20px !important;
+	width: 20px !important;
+}
+}
+.nm_infoBubble table tr td,.nm_infoBubble table tr th {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.75rem;
+}
+.nm_infoBubble .sapMListTbl .sapMText,.nm_infoBubble .sapMListTbl .sapMLabel{
+    font-size: 0.75rem;
+}
+
+#eId_popBubble .sapMScrollCont.sapMScrollContV {
+    max-height:200px;
+}
+#eId_popBubble .legendIcon.sapMBarChild.sapMBtn {
+    display : none;
+}
+
+#charToolTip {
+     border: 1px solid rgb(204, 204, 204); border-radius: 3px; box-shadow: rgb(175, 175, 175) 1px 1px; overflow-x: hidden; overflow-y: auto; padding: 10px; background: rgb(255, 255, 255);
+}
+
+#charToolTip .v-tooltip-mainDiv{
+     position: relative; direction: ltr;
+}
+
+#charToolTip .v-tooltip-dimension-measure{
+     border-collapse: collapse;
+}
+#charToolTip .v-tooltip-dimension-measure .v-body-dimension-label{
+     font-family: Arial; font-size: 12px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-bottom: 8px; color: #666666
+}
+#charToolTip .v-tooltip-dimension-measure .v-body-dimension-value{
+     font-family: Arial; font-size: 13px; font-weight: bold; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-left: 7px; padding-bottom: 8px; color: #666666
+}
+#charToolTip .v-tooltip-dimension-measure .v-body-measure-label{
+     font-family:Arial;font-size:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-bottom:0px;color:#666666
+}
+#charToolTip .v-tooltip-dimension-measure .v-body-measure-value{
+     font-family:Arial;font-size:13px;font-weight:bold;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-left:7px;padding-bottom:0px;color:#000000
+}
+#charToolTip .v-separationline{
+    margin-top: 10px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(167, 169, 172);
+}
+#charToolTip .v-footer-label{
+    font-family: Arial; font-size: 12px; font-weight: bold; margin-top: 8px; color: #000000
+}
+.normalPolygonToolCss {
+	position: absolute; 
+	right: 12px; 
+	top: 225px; 
+	z-index: 1;
+}
+.normalPolygonToolListCss {
+	position: absolute; 
+	right: 12px; 
+	top: 255px; 
+	z-index: 1;
+}
+.expandPolygonToolCss {
+	position: absolute; 
+	right: 30px; 
+	top: 100px; 
+	z-index: 1;
+}
+.expandPolygonToolListCss {
+	position: absolute; 
+	right: 30px; 
+	top: 125px; 
+	z-index: 1;
+}

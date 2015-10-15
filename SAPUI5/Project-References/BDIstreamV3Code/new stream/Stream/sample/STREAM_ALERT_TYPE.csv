@@ -1,0 +1,5 @@
+IDS_404,Intrusion Detection - 404 Attempts,IDS_404
+IDS_404_LOGIN,Intrusion Detection - Login Page,IDS_404_LOGIN
+SQL_INJECTION,SQL Injection,SQL_INJECTION
+DSA,Denial of Service Attack,DSA
+CSRF,Cross-Site Request Forgery,CSRF

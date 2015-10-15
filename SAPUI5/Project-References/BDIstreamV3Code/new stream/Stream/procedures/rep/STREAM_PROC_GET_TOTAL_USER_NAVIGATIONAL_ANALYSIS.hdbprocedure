@@ -1,0 +1,41 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_TOTAL_USER_NAVIGATIONAL_ANALYSIS" (  
+	IN FROM_DATE_IN NVARCHAR(14),
+	IN TO_DATE_IN NVARCHAR(14),
+	IN SOURCE_IN NVARCHAR(20),
+	OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_total_user_navigational_analysis_output"
+ 	) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ if :SOURCE_IN = 'HADOOP' then
+ 
+ VAR_OUT = 	
+		
+SELECT Sum(USER_VISIT_CT) as NUMBER_OF_USER_VISIT
+	from (
+			select USER_ID, COUNT(*) AS USER_VISIT_CT 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE" 
+			WHERE DATE_SQL >= :FROM_DATE_IN AND   
+					DATE_SQL <= :TO_DATE_IN 
+			GROUP BY USER_ID
+		);
+else
+
+ VAR_OUT = 	
+		
+SELECT Sum(USER_VISIT_CT) as NUMBER_OF_USER_VISIT
+	from (
+			select USER_ID, COUNT(*) AS USER_VISIT_CT 
+			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT" 
+			WHERE DATE_SQL >= :FROM_DATE_IN AND   
+					DATE_SQL <= :TO_DATE_IN 
+			GROUP BY USER_ID
+		);
+
+end if;
+END;

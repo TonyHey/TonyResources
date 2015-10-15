@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_PAGE_HIT_SOURCE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_PAGE_HIT_ORIGINATING_SITE"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="DATE" id="DATE_SQL"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="BROWSER" length="100"/>
+        <viewAttribute datatype="VARCHAR" id="GUID" length="40"/>
+        <viewAttribute datatype="NVARCHAR" id="CITY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="REGION" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="COUNTRY" length="30"/>
+        <viewAttribute datatype="DECIMAL" id="LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="INTEGER" id="DUMMY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+  	
+ -- Initial Table
+	VAR_INCOMINGLOG_INITIAL = SELECT DISTINCT
+	 	TO_CHAR(LOGGED_TIME, 'YYYYMMDD') as DATE_SQL,
+	 	HOST_IP ,
+	 	IFNULL(SERVER_IP,'Unknown') as SERVER_IP,
+	 	CASE 
+	 		WHEN  BROWSER IS NULL THEN 'Unknown'
+	 		WHEN  LOCATE(UPPER(BROWSER),'MSIE')>0 then 'IE'  
+	 		WHEN  LOCATE(UPPER(BROWSER),'INTERNET EXPLORER')>0 then 'IE'
+	 		WHEN  LOCATE(UPPER(BROWSER),'CHROME')>0 then 'CHROME'
+			WHEN  LOCATE(UPPER(BROWSER),'FIREFOX')>0 then 'FIREFOX'
+			WHEN  LOCATE(UPPER(BROWSER),'SAFARI')>0 then 'SAFARI'
+			WHEN  LOCATE(UPPER(BROWSER),'OPERA')>0 then 'OPERA'
+			ELSE 'OTHER'
+		END AS BROWSER,
+	 	GUID,
+	 	T2.USER_NAME AS USER_NAME,
+	 	T2.FILE_NAME AS FILE_NAME,
+	 	T2.ESP_PROCESSING_MSG AS ESP_PROCESSING_MSG,
+	 	T2.LOG_FILE_SELECTED AS LOG_FILE_SELECTED
+	FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.ICM_LOG_TAB_DTL&quot; AS T1
+	left outer join &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LKUP_UPLOAD_LOG_TAB&quot; AS T2
+	ON T1.STREAM_ID = T2.FILE_NAME;
+
+-- Only select standalone log file data which have been successfully uploaded, or streaming log data.
+	VAR_INCOMINGLOG = SELECT
+	 	DATE_SQL,
+	 	HOST_IP,
+	 	SERVER_IP,
+	 	BROWSER,
+	 	GUID
+	FROM :VAR_INCOMINGLOG_INITIAL
+	-- standalone log file	
+	WHERE ( ESP_PROCESSING_MSG = 'Success' and LOG_FILE_SELECTED = 'Y' ) 
+	-- stream log file
+	OR FILE_NAME IS NULL;
+
+
+	VAR_INCOMINGLOG_ATTR_1 = SELECT 
+	 	DATE_SQL,
+	 	T3.HOST_IP AS HOST_IP,
+	 	SERVER_IP,
+	 	BROWSER,
+	 	GUID,
+	 	CITY AS CITY,
+		REGION AS REGION,
+		COUNTRY AS COUNTRY,
+		LATITUDE AS LATITUDE,
+		LONGITUDE AS LONGITUDE
+	FROM :VAR_INCOMINGLOG AS T3
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_HOST_CLIENT&quot; AS T4
+	ON T3.HOST_IP = T4.HOST_IP;
+	 	
+	VAR_OUT = SELECT 
+	 	DATE_SQL,
+	 	HOST_IP,
+	 	T5.SERVER_IP AS SERVER_IP,
+	 	BROWSER,
+	 	GUID,
+	 	CITY,
+		REGION,
+		COUNTRY,
+		LATITUDE,
+		LONGITUDE,
+		SERVER_NAME,
+		SERVER_LATITUDE,
+		SERVER_LONGITUDE,
+		1 AS DUMMY
+	FROM :VAR_INCOMINGLOG_ATTR_1 AS T5
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot; AS T6
+	ON T5.SERVER_IP = T6.SERVER_IP;
+	
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="DATE_SQL" order="1">
+        <descriptions defaultDescription="SQL_DATE"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="HOST_IP" order="2">
+        <descriptions defaultDescription="HOST_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_IP"/>
+      </attribute>
+      <attribute id="SERVER_IP" order="3">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="BROWSER" order="4">
+        <descriptions defaultDescription="ORIGINATING_SITE"/>
+        <keyMapping columnObjectName="Script_View" columnName="BROWSER"/>
+      </attribute>
+      <attribute id="GUID" order="5">
+        <descriptions defaultDescription="GUID"/>
+        <keyMapping columnObjectName="Script_View" columnName="GUID"/>
+      </attribute>
+      <attribute id="CITY" order="6">
+        <descriptions defaultDescription="CITY"/>
+        <keyMapping columnObjectName="Script_View" columnName="CITY"/>
+      </attribute>
+      <attribute id="REGION" order="7">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Script_View" columnName="REGION"/>
+      </attribute>
+      <attribute id="COUNTRY" order="8">
+        <descriptions defaultDescription="COUNTRY"/>
+        <keyMapping columnObjectName="Script_View" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="LATITUDE" order="9">
+        <descriptions defaultDescription="LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LATITUDE"/>
+      </attribute>
+      <attribute id="LONGITUDE" order="10">
+        <descriptions defaultDescription="LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LONGITUDE"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="11">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+      <attribute id="SERVER_LATITUDE" order="12">
+        <descriptions defaultDescription="SERVER_LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LATITUDE"/>
+      </attribute>
+      <attribute id="SERVER_LONGITUDE" order="13">
+        <descriptions defaultDescription="SERVER_LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LONGITUDE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="DUMMY" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DUMMY"/>
+        <measureMapping columnObjectName="Script_View" columnName="DUMMY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

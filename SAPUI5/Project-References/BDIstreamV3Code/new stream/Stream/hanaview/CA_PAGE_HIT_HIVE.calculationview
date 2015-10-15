@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.2" id="CA_PAGE_HIT_HIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_PAGE_HIT_HIVE"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="STREAM_ID" length="100"/>
+        <viewAttribute datatype="SECONDDATE" id="LOGGED_TIME"/>
+        <viewAttribute datatype="DATE" id="DATE_SQL"/>
+        <viewAttribute datatype="NVARCHAR" id="DATE_GRANULARITY_MONTH" length="8"/>
+        <viewAttribute datatype="NVARCHAR" id="DATE_GRANULARITY_DAY" length="8"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="USER_ID" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_PORT" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="VIEW_URL" length="5000"/>
+        <viewAttribute datatype="NVARCHAR" id="HTTP_METHOD" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HTTP_PROTOCOL" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HTTP_STATUS_CODE" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HTTP_SUBSTATUS" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="ORIGINATING_SITE" length="500"/>
+        <viewAttribute datatype="NVARCHAR" id="USER_AGENT" length="500"/>
+        <viewAttribute datatype="NVARCHAR" id="BROWSER" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="OPERATING_SYSTEM" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="DEVICE" length="100"/>
+        <viewAttribute datatype="INTEGER" id="BYTES_SENT"/>
+        <viewAttribute datatype="INTEGER" id="BYTES_RECD"/>
+        <viewAttribute datatype="DECIMAL" id="DURATION" length="22" scale="3"/>
+        <viewAttribute datatype="NVARCHAR" id="WEB_ENGINE_STATUS" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="PRODUCT" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="COOKIES" length="5000"/>
+        <viewAttribute datatype="NVARCHAR" id="SEARCH_WORD_PHASE" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="LOG_FILE_TYPE" length="50"/>
+        <viewAttribute datatype="NVARCHAR" id="FILE_TYPE_CODE" length="50"/>
+        <viewAttribute datatype="INTEGER" id="NEW_VISIT_1Y_0N"/>
+        <viewAttribute datatype="INTEGER" id="DURATION_BANDING"/>
+        <viewAttribute datatype="INTEGER" id="HIT_1Y_0N"/>
+        <viewAttribute datatype="INTEGER" id="HOUR_OF_DAY_INT"/>
+        <viewAttribute datatype="VARCHAR" id="DATE_SAP" length="8"/>
+        <viewAttribute datatype="VARCHAR" id="YEAR" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="QUARTER" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="MONTH" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="WEEK" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="WEEK_YEAR" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="DAY_OF_WEEK" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="DAY" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="CALWEEK" length="6"/>
+        <viewAttribute datatype="VARCHAR" id="CALQUARTER" length="5"/>
+        <viewAttribute datatype="VARCHAR" id="CALMONTH" length="6"/>
+        <viewAttribute datatype="TINYINT" id="DAY_OF_WEEK_INT"/>
+        <viewAttribute datatype="NVARCHAR" id="FILE_TYPE_DESCRIPTION" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_NAME" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="COUNTRY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="REGION" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="CITY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="ZIP_CODE" length="20"/>
+        <viewAttribute datatype="DECIMAL" id="LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_ATTR_1" length="50"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_ATTR_2" length="50"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="USER_NAME" length="100"/>
+        <viewAttribute datatype="INTEGER" id="AGE"/>
+        <viewAttribute datatype="INTEGER" id="TENURE"/>
+        <viewAttribute datatype="INTEGER" id="INCOME"/>
+        <viewAttribute datatype="DOUBLE" id="WEALTH"/>
+        <viewAttribute datatype="INTEGER" id="NO_CHILDREN"/>
+        <viewAttribute datatype="INTEGER" id="POSTAL_CODE"/>
+        <viewAttribute datatype="INTEGER" id="CREDIT_SCORE"/>
+        <viewAttribute datatype="INTEGER" id="CHECKING_AMT"/>
+        <viewAttribute datatype="INTEGER" id="CHECKING_M"/>
+        <viewAttribute datatype="INTEGER" id="SAVINGS_AMT"/>
+        <viewAttribute datatype="INTEGER" id="INVEST_AMT"/>
+        <viewAttribute datatype="INTEGER" id="SUM_LENDING"/>
+        <viewAttribute datatype="NVARCHAR" id="ATTRITION" length="3"/>
+        <viewAttribute datatype="NVARCHAR" id="GENDER" length="10"/>
+        <viewAttribute datatype="NVARCHAR" id="AGE_RANGE" length="10"/>
+        <viewAttribute datatype="NVARCHAR" id="CODE_DESCRIPTON" length="100"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+ 	 
+ -- Initial Table
+	VAR_INCOMINGLOG = SELECT
+		&quot;stream_id&quot; as STREAM_ID,
+	 	&quot;logged_time&quot; as LOGGED_TIME,
+	 	TO_CHAR(&quot;logged_time&quot;, 'YYYYMMDD') as DATE_SQL,
+	 	TO_CHAR(&quot;logged_time&quot;, 'YYYYMM') as DATE_GRANULARITY_MONTH,
+		TO_CHAR(&quot;logged_time&quot;, 'YYYYMMDD') as DATE_GRANULARITY_DAY,
+	 	&quot;host_ip&quot; as HOST_IP,
+	 	IFNULL(&quot;user_id&quot;, 'Unknown') as USER_ID,
+	 	IFNULL(&quot;server_ip&quot;,'Unknown') as SERVER_IP,
+	 	&quot;server_port&quot; as SERVER_PORT,
+	 	&quot;view_url&quot; as VIEW_URL,
+	 	&quot;http_method&quot; as HTTP_METHOD ,
+	 	&quot;http_protocol&quot; as HTTP_PROTOCOL ,
+	 	&quot;http_status_code&quot; as HTTP_STATUS_CODE ,
+		&quot;http_substatus&quot; as HTTP_SUBSTATUS,
+	 	CASE
+			WHEN length(&quot;originating_site&quot;)=0 then 'Unknown'
+			WHEN locate(&quot;originating_site&quot;, '/')=0 then &quot;originating_site&quot;
+			WHEN locate(&quot;originating_site&quot;,'://')=0 AND locate(&quot;originating_site&quot;,'/')>0 then SUBSTR_BEFORE(&quot;originating_site&quot;, '/')
+			WHEN locate(&quot;originating_site&quot;,'://')>0 AND locate(SUBSTR_AFTER(&quot;originating_site&quot;,'://'),'/')>0 then concat(SUBSTR(&quot;originating_site&quot;, 0,locate (&quot;originating_site&quot;,'://')+2),SUBSTR_BEFORE(SUBSTR_AFTER(&quot;originating_site&quot;,'://'), '/'))
+			ELSE &quot;originating_site&quot; 
+		END as ORIGINATING_SITE,
+	 	&quot;user_agent&quot; as USER_AGENT,
+	 	CASE 
+	 		WHEN  &quot;browser&quot; IS NULL THEN 'Unknown'
+	 		WHEN  LOCATE(UPPER(&quot;browser&quot;),'MSIE')>0 then 'IE'  
+	 		WHEN  LOCATE(UPPER(&quot;browser&quot;),'INTERNET EXPLORER')>0 then 'IE'
+	 		WHEN  LOCATE(UPPER(&quot;browser&quot;),'CHROME')>0 then 'CHROME'
+			WHEN  LOCATE(UPPER(&quot;browser&quot;),'FIREFOX')>0 then 'FIREFOX'
+			WHEN  LOCATE(UPPER(&quot;browser&quot;),'SAFARI')>0 then 'SAFARI'
+			WHEN  LOCATE(UPPER(&quot;browser&quot;),'OPERA')>0 then 'OPERA'
+			ELSE 'OTHER'
+		END AS BROWSER,
+	 	&quot;operating_system&quot; as OPERATING_SYSTEM,
+	 	&quot;device&quot; as DEVICE,
+	 	&quot;bytes_sent&quot; as BYTES_SENT,
+	 	&quot;bytes_recd&quot; as BYTES_RECD,
+	 	&quot;duration&quot; as DURATION,
+	 	&quot;web_engine_status&quot; as WEB_ENGINE_STATUS,
+	 	&quot;product&quot; as PRODUCT,
+	 	&quot;cookies&quot; as COOKIES,
+	 	&quot;search_word_phase&quot; as SEARCH_WORD_PHASE,
+		CASE 
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,3),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,2))
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,4),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,3))
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,5),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,4))
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,6),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,5))
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,7),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,6))
+			WHEN  LOCATE(RIGHT(&quot;view_url&quot;,8),'.')=1 then UPPER(RIGHT(&quot;view_url&quot;,7))
+		 	ELSE 'Unknown'
+		END AS FILE_TYPE_CODE,
+	--- It is not page viewed  in case the resource is in the format of jpeg;ico;png;gif;css;js;jpg
+		CASE 
+			WHEN  LENGTH(&quot;view_url&quot;)>=4 AND (RIGHT(&quot;view_url&quot;,4) = '.ico' OR RIGHT(&quot;view_url&quot;,4) = '.png' OR RIGHT(&quot;view_url&quot;,4) = '.gif' OR RIGHT(&quot;view_url&quot;,4) = '.css' OR RIGHT(&quot;view_url&quot;,4) = '.jpg') then 0
+		 	WHEN  LENGTH(&quot;view_url&quot;)>=5 AND RIGHT(&quot;view_url&quot;,5) = '.jpeg' then 0
+		 	WHEN  LENGTH(&quot;view_url&quot;)>=3 AND RIGHT(&quot;view_url&quot;,3) = '.js' then 0
+		 	ELSE 1
+		END AS HIT_1Y_0N,
+		EXTRACT( HOUR FROM &quot;logged_time&quot;) AS HOUR_OF_DAY_INT,
+	 	&quot;guid&quot; as GUID,
+	 	&quot;last_modified&quot; as LAST_MODIFIED
+	-- FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;HIVE_BDI_incominglog&quot;;
+	   FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.icm_log_hive_dummy_table&quot;;
+
+
+-- Calculation for additional KPI's 
+
+	VAR_FCT_FAGE_PREVIOUS_HIT = select DISTINCT 
+		LOGGED_TIME, 
+		HOST_IP, 
+		SERVER_IP, 
+		GUID 
+		from 
+		:VAR_INCOMINGLOG T2 
+		where T2.LOGGED_TIME> ADD_SECONDS (CURRENT_TIMESTAMP, -3601);
+
+	VAR_FCT_PAGE_HIT_PART2= SELECT 
+		LOGGED_TIME, 
+		HOST_IP,
+		SERVER_IP,
+		CASE
+			-- if there is no visit access in the past (from same host to the same server)
+		 	WHEN (select COUNT (*)  from :VAR_FCT_FAGE_PREVIOUS_HIT T1 where LOGGED_TIME>T1.LOGGED_TIME AND HOST_IP=T1.HOST_IP AND ((SERVER_IP is NULL and T1.SERVER_IP is null) OR SERVER_IP=T1.SERVER_IP)) = 0
+		 	THEN 1
+		 	-- if there is any previous visit access existing within the past 1 hour (from same host to the same server)
+			WHEN ADD_SECONDS (LOGGED_TIME, -3601) &lt; (select max(T1.LOGGED_TIME) from :VAR_FCT_FAGE_PREVIOUS_HIT T1 where LOGGED_TIME>T1.LOGGED_TIME AND HOST_IP=T1.HOST_IP AND ((SERVER_IP is NULL and T1.SERVER_IP is null) OR SERVER_IP=T1.SERVER_IP))
+			THEN 0
+			-- else: there is any new visit access from  host to  server and the last access happened before  1 hours in the past
+			ELSE 1
+		END as NEW_VISIT_1Y_0N,
+		GUID
+ 		FROM 
+ 			:VAR_INCOMINGLOG;
+
+	VAR_DURATION_BANDING = SELECT 
+		DURATION,
+		CASE WHEN DURATION>= (select MAX(T5.BANDING_HIGH_LIMIT) from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING&quot; T5)
+			THEN (select MAX(T5.BANDING_HIGH_LIMIT) from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING&quot; T5)+1
+			ELSE (select DURATION_BANDING  from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING&quot; T5
+		 	where DURATION >= T5.BANDING_LOW_LIMIT AND DURATION &lt; T5.BANDING_HIGH_LIMIT) 
+		 END as DURATION_BANDING,
+		GUID
+ 		FROM 
+ 		:VAR_INCOMINGLOG;
+		
+	VAR_LOG_FILE_TYPE = SELECT 
+		DISTINCT STREAM_ID,
+		CASE WHEN STREAM_ID NOT IN (Select DISTINCT STREAM_ID from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LOG_FILE_INFO&quot; ) THEN 'Unknown'
+			Else (Select MAX(T8.LOG_FILE_TYPE) from &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.LOG_FILE_INFO&quot; T8 where STREAM_ID=T8.STREAM_ID)
+		End as LOG_FILE_TYPE
+ 		FROM 
+ 		:VAR_INCOMINGLOG;
+
+ 	VAR_JOIN_KPI_1 = select 
+		STREAM_ID,
+		T3.LOGGED_TIME as LOGGED_TIME,
+		DATE_SQL,
+		DATE_GRANULARITY_MONTH,
+		DATE_GRANULARITY_DAY,
+		T3.HOST_IP as HOST_IP,
+		USER_ID,
+		T3.SERVER_IP as SERVER_IP,
+		SERVER_PORT,
+		VIEW_URL,
+		HTTP_METHOD,
+		HTTP_PROTOCOL,
+		HTTP_STATUS_CODE,
+		HTTP_SUBSTATUS,
+		ORIGINATING_SITE,
+		USER_AGENT,
+		BROWSER,
+		OPERATING_SYSTEM,
+		DEVICE,
+		BYTES_SENT,
+		BYTES_RECD,
+		DURATION,
+		WEB_ENGINE_STATUS,
+		PRODUCT,
+		COOKIES,
+		SEARCH_WORD_PHASE,
+		FILE_TYPE_CODE,
+		NEW_VISIT_1Y_0N,
+		HIT_1Y_0N,
+		HOUR_OF_DAY_INT,
+		T3.GUID as GUID,
+		LAST_MODIFIED
+ 		from :VAR_INCOMINGLOG as T3 
+ 		left outer join :VAR_FCT_PAGE_HIT_PART2 as T4
+ 		on T3.GUID=T4.GUID;
+
+	VAR_JOIN_KPI_2 = SELECT 
+		STREAM_ID,
+		LOGGED_TIME,
+		DATE_SQL,
+		DATE_GRANULARITY_MONTH,
+		DATE_GRANULARITY_DAY,
+		HOST_IP,
+		USER_ID,
+		SERVER_IP,
+		SERVER_PORT,
+		VIEW_URL,
+		HTTP_METHOD,
+		HTTP_PROTOCOL,
+		HTTP_STATUS_CODE,
+		HTTP_SUBSTATUS,
+		ORIGINATING_SITE,
+		USER_AGENT,
+		BROWSER,
+		OPERATING_SYSTEM,
+		DEVICE,
+		BYTES_SENT,
+		BYTES_RECD,
+		T6.DURATION as DURATION,
+		WEB_ENGINE_STATUS,
+		PRODUCT,
+		COOKIES,
+		SEARCH_WORD_PHASE,
+		FILE_TYPE_CODE,
+		NEW_VISIT_1Y_0N,
+		T7.DURATION_BANDING as DURATION_BANDING,
+		HIT_1Y_0N,
+		HOUR_OF_DAY_INT,
+		T6.GUID as GUID,
+		LAST_MODIFIED
+ 		FROM :VAR_JOIN_KPI_1 as T6
+		left outer join :VAR_DURATION_BANDING as T7
+ 		on T6.GUID=T7.GUID;
+
+	VAR_JOIN_KPI_3 = SELECT 
+		T9.STREAM_ID,
+		LOGGED_TIME,
+		DATE_SQL,
+		DATE_GRANULARITY_MONTH,
+		DATE_GRANULARITY_DAY,
+		HOST_IP,
+		USER_ID,
+		SERVER_IP,
+		SERVER_PORT,
+		VIEW_URL,
+		HTTP_METHOD,
+		HTTP_PROTOCOL,
+		HTTP_STATUS_CODE,
+		HTTP_SUBSTATUS,
+		ORIGINATING_SITE,
+		USER_AGENT,
+		BROWSER,
+		OPERATING_SYSTEM,
+		DEVICE,
+		BYTES_SENT,
+		BYTES_RECD,
+		DURATION,
+		WEB_ENGINE_STATUS,
+		PRODUCT,
+		COOKIES,
+		SEARCH_WORD_PHASE,
+		T10.LOG_FILE_TYPE AS LOG_FILE_TYPE,
+		FILE_TYPE_CODE,
+		NEW_VISIT_1Y_0N,
+		DURATION_BANDING,
+		HIT_1Y_0N,
+		HOUR_OF_DAY_INT,
+		GUID,
+		LAST_MODIFIED
+		FROM :VAR_JOIN_KPI_2 as T9
+		left outer join :VAR_LOG_FILE_TYPE as T10
+		on T9.STREAM_ID=T10.STREAM_ID;
+
+	VAR_AGGR_KPI = SELECT 
+		STREAM_ID,
+		LOGGED_TIME,
+		DATE_SQL,
+		DATE_GRANULARITY_MONTH,
+		DATE_GRANULARITY_DAY,
+		HOST_IP,
+		USER_ID,
+		SERVER_IP,
+		SERVER_PORT,
+		VIEW_URL,
+		HTTP_METHOD,
+		HTTP_PROTOCOL,
+		HTTP_STATUS_CODE,
+		HTTP_SUBSTATUS,
+		ORIGINATING_SITE,
+		USER_AGENT,
+		BROWSER,
+		OPERATING_SYSTEM,
+		DEVICE,
+		SUM(BYTES_SENT) AS BYTES_SENT,
+		SUM(BYTES_RECD) AS BYTES_RECD,
+		SUM(DURATION) AS DURATION,
+		WEB_ENGINE_STATUS,
+		PRODUCT,
+		COOKIES,
+		SEARCH_WORD_PHASE,
+		LOG_FILE_TYPE,
+		FILE_TYPE_CODE,
+		SUM(NEW_VISIT_1Y_0N) AS NEW_VISIT_1Y_0N,
+		SUM(DURATION_BANDING) AS DURATION_BANDING,
+		SUM(HIT_1Y_0N) AS HIT_1Y_0N,
+		SUM(HOUR_OF_DAY_INT) AS HOUR_OF_DAY_INT
+		FROM :VAR_JOIN_KPI_3
+		GROUP BY 
+		STREAM_ID,
+		LOGGED_TIME,
+		DATE_SQL,
+		DATE_GRANULARITY_MONTH,
+		DATE_GRANULARITY_DAY,
+		HOST_IP,
+		USER_ID,
+		SERVER_IP,
+		SERVER_PORT,
+		VIEW_URL,
+		HTTP_METHOD,
+		HTTP_PROTOCOL,
+		HTTP_STATUS_CODE,
+		HTTP_SUBSTATUS,
+		ORIGINATING_SITE,
+		USER_AGENT,
+		BROWSER,
+		OPERATING_SYSTEM,
+		DEVICE,
+		WEB_ENGINE_STATUS,
+		PRODUCT,
+		COOKIES,
+		SEARCH_WORD_PHASE,
+		LOG_FILE_TYPE,
+		FILE_TYPE_CODE;
+
+-- Join Attribute views		
+	VAR_AT_DATE = SELECT 
+		TO_CHAR(&quot;DATE_SQL&quot;, 'YYYYMMDD') AS &quot;DATE_SQL&quot;,
+		DATE_SAP,
+		YEAR,
+		QUARTER,
+		MONTH,
+		WEEK,
+		WEEK_YEAR,
+		DAY_OF_WEEK,
+		DAY,
+		CALWEEK,
+		CALQUARTER,
+		CALMONTH,
+		DAY_OF_WEEK_INT
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_DATE&quot;;	
+		
+	VAR_AT_FILE_TYPE = SELECT 
+		FILE_TYPE_CODE,
+		FILE_TYPE_DESCRIPTION
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_FILE_TYPE&quot;;	
+		
+	VAR_AT_HOST_CLIENT = SELECT 
+		HOST_IP,
+		HOST_NAME,
+		COUNTRY,
+		REGION,
+		CITY,
+		ZIP_CODE,
+		LATITUDE,
+		LONGITUDE
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_HOST_CLIENT&quot;;		
+		
+	VAR_AT_SERVER = SELECT 
+		SERVER_IP,
+		SERVER_NAME,
+		SERVER_ATTR_1,
+		SERVER_ATTR_2,
+		SERVER_LATITUDE,
+		SERVER_LONGITUDE
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot;;	
+		
+	VAR_AT_USER = SELECT 
+		USER_ID,
+		USER_NAME,
+		AGE,
+		TENURE,
+		INCOME,
+		WEALTH,
+		NO_CHILDREN,
+		POSTAL_CODE,
+		CREDIT_SCORE,
+		CHECKING_AMT,
+		CHECKING_M,
+		SAVINGS_AMT,
+		INVEST_AMT,
+		SUM_LENDING,
+		ATTRITION,
+		GENDER,
+		AGE_RANGE
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_USER&quot;;		
+	
+	VAR_AT_STATUS_CODE = SELECT 
+		HTTP_STATUS_CODE,
+		CODE_DESCRIPTON
+		FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_STATUS_CODE&quot;;
+	
+	VAR_ATTR_JOIN_1 = CE_LEFT_OUTER_JOIN (:VAR_AGGR_KPI, :VAR_AT_DATE, [&quot;DATE_SQL&quot;]);
+	
+	VAR_ATTR_JOIN_2 = CE_LEFT_OUTER_JOIN (:VAR_ATTR_JOIN_1, :VAR_AT_FILE_TYPE,[&quot;FILE_TYPE_CODE&quot;]);
+
+	VAR_ATTR_JOIN_3 = CE_LEFT_OUTER_JOIN (:VAR_ATTR_JOIN_2, :VAR_AT_HOST_CLIENT,[&quot;HOST_IP&quot;]);
+	
+	VAR_ATTR_JOIN_4 = CE_LEFT_OUTER_JOIN (:VAR_ATTR_JOIN_3, :VAR_AT_SERVER,[&quot;SERVER_IP&quot;]);
+	
+	VAR_ATTR_JOIN_5 = CE_LEFT_OUTER_JOIN (:VAR_ATTR_JOIN_4, :VAR_AT_USER,[&quot;USER_ID&quot;]);
+	
+	VAR_OUT = CE_LEFT_OUTER_JOIN (:VAR_ATTR_JOIN_5, :VAR_AT_STATUS_CODE,[&quot;HTTP_STATUS_CODE&quot;]);
+	
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="STREAM_ID" order="1">
+        <descriptions defaultDescription="STREAM_ID"/>
+        <keyMapping columnObjectName="Script_View" columnName="STREAM_ID"/>
+      </attribute>
+      <attribute id="LOGGED_TIME" order="2">
+        <descriptions defaultDescription="LOGGED_TIME"/>
+        <keyMapping columnObjectName="Script_View" columnName="LOGGED_TIME"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="3">
+        <descriptions defaultDescription="SQL_DATE"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="DATE_GRANULARITY_MONTH" order="4">
+        <descriptions defaultDescription="DATE_GRANULARITY_MONTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_GRANULARITY_MONTH"/>
+      </attribute>
+      <attribute id="DATE_GRANULARITY_DAY" order="5">
+        <descriptions defaultDescription="DATE_GRANULARITY_DAY"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_GRANULARITY_DAY"/>
+      </attribute>
+      <attribute id="HOST_IP" order="6">
+        <descriptions defaultDescription="HOST_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_IP"/>
+      </attribute>
+      <attribute id="USER_ID" order="7">
+        <descriptions defaultDescription="USER_ID"/>
+        <keyMapping columnObjectName="Script_View" columnName="USER_ID"/>
+      </attribute>
+      <attribute id="SERVER_IP" order="8">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="SERVER_PORT" order="9">
+        <descriptions defaultDescription="SERVER_PORT"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_PORT"/>
+      </attribute>
+      <attribute id="VIEW_URL" order="10">
+        <descriptions defaultDescription="VIEW_URL"/>
+        <keyMapping columnObjectName="Script_View" columnName="VIEW_URL"/>
+      </attribute>
+      <attribute id="HTTP_METHOD" order="11">
+        <descriptions defaultDescription="HTTP_METHOD"/>
+        <keyMapping columnObjectName="Script_View" columnName="HTTP_METHOD"/>
+      </attribute>
+      <attribute id="HTTP_PROTOCOL" order="12">
+        <descriptions defaultDescription="HTTP_PROTOCOL"/>
+        <keyMapping columnObjectName="Script_View" columnName="HTTP_PROTOCOL"/>
+      </attribute>
+      <attribute id="HTTP_STATUS_CODE" order="13">
+        <descriptions defaultDescription="HTTP_STATUS_CODE"/>
+        <keyMapping columnObjectName="Script_View" columnName="HTTP_STATUS_CODE"/>
+      </attribute>
+      <attribute id="HTTP_SUBSTATUS" order="14">
+        <descriptions defaultDescription="HTTP_SUBSTATUS"/>
+        <keyMapping columnObjectName="Script_View" columnName="HTTP_SUBSTATUS"/>
+      </attribute>
+      <attribute id="ORIGINATING_SITE" order="15">
+        <descriptions defaultDescription="ORIGINATING_SITE"/>
+        <keyMapping columnObjectName="Script_View" columnName="ORIGINATING_SITE"/>
+      </attribute>
+      <attribute id="USER_AGENT" order="16">
+        <descriptions defaultDescription="USER_AGENT"/>
+        <keyMapping columnObjectName="Script_View" columnName="USER_AGENT"/>
+      </attribute>
+      <attribute id="BROWSER" order="17">
+        <descriptions defaultDescription="BROWSER"/>
+        <keyMapping columnObjectName="Script_View" columnName="BROWSER"/>
+      </attribute>
+      <attribute id="OPERATING_SYSTEM" order="18">
+        <descriptions defaultDescription="OPERATING_SYSTEM"/>
+        <keyMapping columnObjectName="Script_View" columnName="OPERATING_SYSTEM"/>
+      </attribute>
+      <attribute id="DEVICE" order="19">
+        <descriptions defaultDescription="DEVICE"/>
+        <keyMapping columnObjectName="Script_View" columnName="DEVICE"/>
+      </attribute>
+      <attribute id="WEB_ENGINE_STATUS" order="23">
+        <descriptions defaultDescription="WEB_ENGINE_STATUS"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEB_ENGINE_STATUS"/>
+      </attribute>
+      <attribute id="PRODUCT" order="24">
+        <descriptions defaultDescription="PRODUCT"/>
+        <keyMapping columnObjectName="Script_View" columnName="PRODUCT"/>
+      </attribute>
+      <attribute id="COOKIES" order="25">
+        <descriptions defaultDescription="COOKIES"/>
+        <keyMapping columnObjectName="Script_View" columnName="COOKIES"/>
+      </attribute>
+      <attribute id="SEARCH_WORD_PHASE" order="26">
+        <descriptions defaultDescription="SEARCH_WORD_PHAS"/>
+        <keyMapping columnObjectName="Script_View" columnName="SEARCH_WORD_PHASE"/>
+      </attribute>
+      <attribute id="LOG_FILE_TYPE" order="27">
+        <descriptions defaultDescription="LOG_FILE_TYPE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LOG_FILE_TYPE"/>
+      </attribute>
+      <attribute id="FILE_TYPE_CODE" order="28">
+        <descriptions defaultDescription="FILE_TYPE"/>
+        <keyMapping columnObjectName="Script_View" columnName="FILE_TYPE_CODE"/>
+      </attribute>
+      <attribute id="DATE_SAP" order="33">
+        <descriptions defaultDescription="DATE_SAP"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SAP"/>
+      </attribute>
+      <attribute id="YEAR" order="34">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Script_View" columnName="YEAR"/>
+      </attribute>
+      <attribute id="QUARTER" order="35">
+        <descriptions defaultDescription="QUARTER"/>
+        <keyMapping columnObjectName="Script_View" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="MONTH" order="36">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="MONTH"/>
+      </attribute>
+      <attribute id="WEEK" order="37">
+        <descriptions defaultDescription="WEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEEK"/>
+      </attribute>
+      <attribute id="WEEK_YEAR" order="38">
+        <descriptions defaultDescription="WEEK_YEAR"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEEK_YEAR"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK" order="39">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY_OF_WEEK"/>
+      </attribute>
+      <attribute id="DAY" order="40">
+        <descriptions defaultDescription="DAY"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY"/>
+      </attribute>
+      <attribute id="CALWEEK" order="41">
+        <descriptions defaultDescription="CALWEEK"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="CALQUARTER" order="42">
+        <descriptions defaultDescription="CALQUARTER"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALQUARTER"/>
+      </attribute>
+      <attribute id="CALMONTH" order="43">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK_INT" order="44">
+        <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+        <keyMapping columnObjectName="Script_View" columnName="DAY_OF_WEEK_INT"/>
+      </attribute>
+      <attribute id="FILE_TYPE_DESCRIPTION" order="45">
+        <descriptions defaultDescription="FILE_TYPE_DESCRIPTION"/>
+        <keyMapping columnObjectName="Script_View" columnName="FILE_TYPE_DESCRIPTION"/>
+      </attribute>
+      <attribute id="HOST_NAME" order="46">
+        <descriptions defaultDescription="HOST_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_NAME"/>
+      </attribute>
+      <attribute id="COUNTRY" order="47">
+        <descriptions defaultDescription="COUNTRY"/>
+        <keyMapping columnObjectName="Script_View" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="REGION" order="48">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Script_View" columnName="REGION"/>
+      </attribute>
+      <attribute id="CITY" order="49">
+        <descriptions defaultDescription="CITY"/>
+        <keyMapping columnObjectName="Script_View" columnName="CITY"/>
+      </attribute>
+      <attribute id="ZIP_CODE" order="50">
+        <descriptions defaultDescription="ZIP_CODE"/>
+        <keyMapping columnObjectName="Script_View" columnName="ZIP_CODE"/>
+      </attribute>
+      <attribute id="LATITUDE" order="51">
+        <descriptions defaultDescription="LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LATITUDE"/>
+      </attribute>
+      <attribute id="LONGITUDE" order="52">
+        <descriptions defaultDescription="LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LONGITUDE"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="53">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+      <attribute id="SERVER_ATTR_1" order="54">
+        <descriptions defaultDescription="SERVER_ATTR_1"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_ATTR_1"/>
+      </attribute>
+      <attribute id="SERVER_ATTR_2" order="55">
+        <descriptions defaultDescription="SERVER_ATTR_2"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_ATTR_2"/>
+      </attribute>
+      <attribute id="SERVER_LATITUDE" order="56">
+        <descriptions defaultDescription="SERVER_LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LATITUDE"/>
+      </attribute>
+      <attribute id="SERVER_LONGITUDE" order="57">
+        <descriptions defaultDescription="SERVER_LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LONGITUDE"/>
+      </attribute>
+      <attribute id="USER_NAME" order="58">
+        <descriptions defaultDescription="USER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="USER_NAME"/>
+      </attribute>
+      <attribute id="AGE" order="59">
+        <descriptions defaultDescription="AGE"/>
+        <keyMapping columnObjectName="Script_View" columnName="AGE"/>
+      </attribute>
+      <attribute id="TENURE" order="60">
+        <descriptions defaultDescription="TENURE"/>
+        <keyMapping columnObjectName="Script_View" columnName="TENURE"/>
+      </attribute>
+      <attribute id="INCOME" order="61">
+        <descriptions defaultDescription="INCOME"/>
+        <keyMapping columnObjectName="Script_View" columnName="INCOME"/>
+      </attribute>
+      <attribute id="WEALTH" order="62">
+        <descriptions defaultDescription="WEALTH"/>
+        <keyMapping columnObjectName="Script_View" columnName="WEALTH"/>
+      </attribute>
+      <attribute id="NO_CHILDREN" order="63">
+        <descriptions defaultDescription="NO_CHILDREN"/>
+        <keyMapping columnObjectName="Script_View" columnName="NO_CHILDREN"/>
+      </attribute>
+      <attribute id="POSTAL_CODE" order="64">
+        <descriptions defaultDescription="POSTAL_CODE"/>
+        <keyMapping columnObjectName="Script_View" columnName="POSTAL_CODE"/>
+      </attribute>
+      <attribute id="CREDIT_SCORE" order="65">
+        <descriptions defaultDescription="CREDIT_SCORE"/>
+        <keyMapping columnObjectName="Script_View" columnName="CREDIT_SCORE"/>
+      </attribute>
+      <attribute id="CHECKING_AMT" order="66">
+        <descriptions defaultDescription="CHECKING_AMT"/>
+        <keyMapping columnObjectName="Script_View" columnName="CHECKING_AMT"/>
+      </attribute>
+      <attribute id="CHECKING_M" order="67">
+        <descriptions defaultDescription="CHECKING_M"/>
+        <keyMapping columnObjectName="Script_View" columnName="CHECKING_M"/>
+      </attribute>
+      <attribute id="SAVINGS_AMT" order="68">
+        <descriptions defaultDescription="SAVINGS_AMT"/>
+        <keyMapping columnObjectName="Script_View" columnName="SAVINGS_AMT"/>
+      </attribute>
+      <attribute id="INVEST_AMT" order="69">
+        <descriptions defaultDescription="INVEST_AMT"/>
+        <keyMapping columnObjectName="Script_View" columnName="INVEST_AMT"/>
+      </attribute>
+      <attribute id="SUM_LENDING" order="70">
+        <descriptions defaultDescription="SUM_LENDING"/>
+        <keyMapping columnObjectName="Script_View" columnName="SUM_LENDING"/>
+      </attribute>
+      <attribute id="ATTRITION" order="71">
+        <descriptions defaultDescription="ATTRITION"/>
+        <keyMapping columnObjectName="Script_View" columnName="ATTRITION"/>
+      </attribute>
+      <attribute id="GENDER" order="72">
+        <descriptions defaultDescription="GENDER"/>
+        <keyMapping columnObjectName="Script_View" columnName="GENDER"/>
+      </attribute>
+      <attribute id="AGE_RANGE" order="73">
+        <descriptions defaultDescription="AGE_RANGE"/>
+        <keyMapping columnObjectName="Script_View" columnName="AGE_RANGE"/>
+      </attribute>
+      <attribute id="CODE_DESCRIPTON" order="74">
+        <descriptions defaultDescription="CODE_DESCRIPTION"/>
+        <keyMapping columnObjectName="Script_View" columnName="CODE_DESCRIPTON"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="BYTES_SENT" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BYTES_SENT"/>
+        <measureMapping columnObjectName="Script_View" columnName="BYTES_SENT"/>
+      </measure>
+      <measure id="BYTES_RECD" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BYTES_RECD"/>
+        <measureMapping columnObjectName="Script_View" columnName="BYTES_RECD"/>
+      </measure>
+      <measure id="DURATION" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DURATION"/>
+        <measureMapping columnObjectName="Script_View" columnName="DURATION"/>
+      </measure>
+      <measure id="NEW_VISIT_1Y_0N" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NEW_VISIT_1Y_0N"/>
+        <measureMapping columnObjectName="Script_View" columnName="NEW_VISIT_1Y_0N"/>
+      </measure>
+      <measure id="DURATION_BANDING" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DURATION_BANDING"/>
+        <measureMapping columnObjectName="Script_View" columnName="DURATION_BANDING"/>
+      </measure>
+      <measure id="HIT_1Y_0N" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HIT_1Y_0N"/>
+        <measureMapping columnObjectName="Script_View" columnName="HIT_1Y_0N"/>
+      </measure>
+      <measure id="HOUR_OF_DAY_INT" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HOUR_OF_DAY_INT"/>
+        <measureMapping columnObjectName="Script_View" columnName="HOUR_OF_DAY_INT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

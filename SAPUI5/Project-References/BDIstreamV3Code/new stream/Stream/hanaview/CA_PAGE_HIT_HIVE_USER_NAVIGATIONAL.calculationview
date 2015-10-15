@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_PAGE_HIT_HIVE_USER_NAVIGATIONAL" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_PAGE_HIT_DEMOGRAPHIC"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="DATE" id="DATE_SQL"/>
+        <viewAttribute datatype="NVARCHAR" id="HOST_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="USER_ID" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_IP" length="100"/>
+        <viewAttribute datatype="NVARCHAR" id="VIEW_URL" length="5000"/>
+        <viewAttribute datatype="INTEGER" id="HIT_1Y_0N"/>
+        <viewAttribute datatype="VARCHAR" id="GUID" length="40"/>
+        <viewAttribute datatype="NVARCHAR" id="CITY" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="REGION" length="30"/>
+        <viewAttribute datatype="NVARCHAR" id="COUNTRY" length="30"/>
+        <viewAttribute datatype="DECIMAL" id="LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="SERVER_NAME" length="100"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LATITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="DECIMAL" id="SERVER_LONGITUDE" length="10" scale="6"/>
+        <viewAttribute datatype="NVARCHAR" id="USER_NAME" length="100"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN 
+ 	 
+ -- Initial Table
+	VAR_INCOMINGLOG = SELECT DISTINCT
+	 	TO_CHAR(&quot;logged_time&quot;, 'YYYYMMDD') as DATE_SQL,
+	 	&quot;host_ip&quot; as HOST_IP,
+	 	IFNULL(&quot;user_id&quot;, 'Unknown') as USER_ID,
+	 	IFNULL(&quot;server_ip&quot;,'Unknown') as SERVER_IP,
+	 	&quot;view_url&quot; as VIEW_URL,
+	--- It is not page viewed  in case the resource is in the format of jpeg;ico;png;gif;css;js;jpg
+		CASE 
+			WHEN  LENGTH(&quot;view_url&quot;)>=4 AND (RIGHT(&quot;view_url&quot;,4) = '.ico' OR RIGHT(&quot;view_url&quot;,4) = '.png' OR RIGHT(&quot;view_url&quot;,4) = '.gif' OR RIGHT(&quot;view_url&quot;,4) = '.css' OR RIGHT(&quot;view_url&quot;,4) = '.jpg') then 0
+		 	WHEN  LENGTH(&quot;view_url&quot;)>=5 AND RIGHT(&quot;view_url&quot;,5) = '.jpeg' then 0
+		 	WHEN  LENGTH(&quot;view_url&quot;)>=3 AND RIGHT(&quot;view_url&quot;,3) = '.js' then 0
+		 	ELSE 1
+		END AS HIT_1Y_0N,
+	 	&quot;guid&quot; as GUID	
+	-- FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;HIVE_BDI_incominglog&quot;;
+	   FROM &quot;SAP_RDS_BDI_STREAM&quot;.&quot;sap.rds-bdi.stream.model.rep::tables.icm_log_hive_dummy_table&quot;;
+
+	VAR_INCOMINGLOG_ATTR_1 = SELECT 
+	 	DATE_SQL,
+	 	T3.HOST_IP AS HOST_IP,
+	 	USER_ID,
+	 	SERVER_IP,
+	 	VIEW_URL,
+	 	HIT_1Y_0N,
+	 	GUID,
+	 	CITY AS CITY,
+		REGION AS REGION,
+		COUNTRY AS COUNTRY,
+		LATITUDE AS LATITUDE,
+		LONGITUDE AS LONGITUDE
+	FROM :VAR_INCOMINGLOG AS T3
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_HOST_CLIENT&quot; AS T4
+	ON T3.HOST_IP = T4.HOST_IP;
+	 	
+	VAR_INCOMINGLOG_ATTR_2 = SELECT 
+	 	DATE_SQL,
+	 	HOST_IP,
+	 	USER_ID,
+	 	T5.SERVER_IP AS SERVER_IP,
+	 	VIEW_URL,
+	 	HIT_1Y_0N,
+	 	GUID,
+	 	CITY,
+		REGION,
+		COUNTRY,
+		LATITUDE,
+		LONGITUDE,
+		SERVER_NAME,
+		SERVER_LATITUDE,
+		SERVER_LONGITUDE
+	FROM :VAR_INCOMINGLOG_ATTR_1 AS T5
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_SERVER&quot; AS T6
+	ON T5.SERVER_IP = T6.SERVER_IP;
+	
+	VAR_OUT = SELECT 
+	 	DATE_SQL,
+	 	HOST_IP,
+	 	T7.USER_ID AS USER_ID,
+	 	SERVER_IP,
+	 	VIEW_URL,
+	 	HIT_1Y_0N,
+	 	GUID,
+	 	CITY,
+		REGION,
+		COUNTRY,
+		LATITUDE,
+		LONGITUDE,
+		SERVER_NAME,
+		SERVER_LATITUDE,
+		SERVER_LONGITUDE,
+		USER_NAME
+	FROM :VAR_INCOMINGLOG_ATTR_2 AS T7
+	left outer join &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_USER&quot; AS T8
+	ON T7.USER_ID = T8.USER_ID;
+	
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="DATE_SQL" order="1">
+        <descriptions defaultDescription="SQL_DATE"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="HOST_IP" order="2">
+        <descriptions defaultDescription="HOST_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="HOST_IP"/>
+      </attribute>
+      <attribute id="USER_ID" order="3">
+        <descriptions defaultDescription="USER_ID"/>
+        <keyMapping columnObjectName="Script_View" columnName="USER_ID"/>
+      </attribute>
+      <attribute id="SERVER_IP" order="4">
+        <descriptions defaultDescription="SERVER_IP"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_IP"/>
+      </attribute>
+      <attribute id="VIEW_URL" order="5">
+        <descriptions defaultDescription="VIEW_URL"/>
+        <keyMapping columnObjectName="Script_View" columnName="VIEW_URL"/>
+      </attribute>
+      <attribute id="GUID" order="7">
+        <descriptions defaultDescription="GUID"/>
+        <keyMapping columnObjectName="Script_View" columnName="GUID"/>
+      </attribute>
+      <attribute id="CITY" order="8">
+        <descriptions defaultDescription="CITY"/>
+        <keyMapping columnObjectName="Script_View" columnName="CITY"/>
+      </attribute>
+      <attribute id="REGION" order="9">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Script_View" columnName="REGION"/>
+      </attribute>
+      <attribute id="COUNTRY" order="10">
+        <descriptions defaultDescription="COUNTRY"/>
+        <keyMapping columnObjectName="Script_View" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="LATITUDE" order="11">
+        <descriptions defaultDescription="LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LATITUDE"/>
+      </attribute>
+      <attribute id="LONGITUDE" order="12">
+        <descriptions defaultDescription="LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="LONGITUDE"/>
+      </attribute>
+      <attribute id="SERVER_NAME" order="13">
+        <descriptions defaultDescription="SERVER_NAME"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_NAME"/>
+      </attribute>
+      <attribute id="SERVER_LATITUDE" order="14">
+        <descriptions defaultDescription="SERVER_LATITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LATITUDE"/>
+      </attribute>
+      <attribute id="SERVER_LONGITUDE" order="15">
+        <descriptions defaultDescription="SERVER_LONGITUDE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SERVER_LONGITUDE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="HIT_1Y_0N" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HIT_1Y_0N"/>
+        <measureMapping columnObjectName="Script_View" columnName="HIT_1Y_0N"/>
+      </measure>
+      <measure id="USER_NAME" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DUMMY"/>
+        <measureMapping columnObjectName="Script_View" columnName="USER_NAME"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

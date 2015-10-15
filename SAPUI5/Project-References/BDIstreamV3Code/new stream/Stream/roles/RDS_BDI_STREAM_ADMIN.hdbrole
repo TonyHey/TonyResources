@@ -1,0 +1,29 @@
+role sap.rds-bdi.stream.roles::RDS_BDI_STREAM_ADMIN {
+// schema privileges
+	catalog schema "_SYS_BI","_SYS_BIC": SELECT, EXECUTE;
+	catalog schema "SAP_RDS_BDI_STREAM": DROP, EXECUTE, SELECT, INSERT, UPDATE, DELETE, ALTER, CREATE ANY;
+	//catalog schema "SAP_RDS_BDI_STREAM_SOURCE": SELECT,EXECUTE,DROP,  INSERT, UPDATE, DELETE, ALTER, CREATE ANY;
+	catalog schema "SAP_RDS_BDI_CONFIG": SELECT,EXECUTE;
+
+	//catalog sql object 	"SYSTEM"."AFL_WRAPPER_GENERATOR", 
+		//				"SYSTEM"."AFL_WRAPPER_ERASER" : EXECUTE;	
+						
+	catalog sql object 	"SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures::STREAM_PROC_CLEAN_HIS_ALERT": 
+						DROP, EXECUTE, DEBUG, ALTER;
+	catalog sql object 	"SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures::STREAM_PROC_CLEAN_HIS_PAGE_HIT": 
+						DROP, EXECUTE, DEBUG, ALTER;
+	catalog sql object 	"SYS"."REPOSITORY_REST": 
+						 EXECUTE;
+											
+	// package privileges
+	package sap.rds-bdi.stream: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	package sap.rds-bdi.stream.jobs: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	package sap.rds-bdi.stream.model: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	package sap.rds-bdi.stream.procedures: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	package sap.rds-bdi.stream.roles: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	package sap.rds-bdi.stream.ui: REPO.READ, REPO.ACTIVATE_IMPORTED_OBJECTS,REPO.EDIT_IMPORTED_OBJECTS;
+	
+	// analytic privileges
+	analytic privilege: sap.rds-bdi.stream.roles:ADMIN_VIEWER_MODEL_ACCESS.analyticprivilege;	
+	
+}

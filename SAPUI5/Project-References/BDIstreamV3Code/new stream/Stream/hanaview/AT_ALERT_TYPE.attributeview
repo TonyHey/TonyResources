@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_ALERT_TYPE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_ALERT_TYPE"/>
+  <metadata changedAt="2015-04-14 16:50:10.581" createdAt="2015-04-14 16:50:10.581"/>
+  <attributes>
+    <attribute id="ALERT_TYPE_KEY" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Alert Type Key"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.ALERT_TYPE" columnName="ALERT_TYPE_KEY"/>
+    </attribute>
+    <attribute id="ALERT_TYPE_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Alert Type Name"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.ALERT_TYPE" columnName="ALERT_TYPE_NAME"/>
+    </attribute>
+    <attribute id="FUNCTION_AREA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Function Area"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.ALERT_TYPE" columnName="FUNCTION_AREA"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.ALERT_TYPE"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.ALERT_TYPE" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

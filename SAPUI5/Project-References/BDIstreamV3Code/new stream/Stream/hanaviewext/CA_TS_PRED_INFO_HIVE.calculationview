@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CA_TS_PRED_INFO_HIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CA_TS_PRED_INFO_HIVE"/>
+  <localVariables>
+    <variable id="P_SERVER_IP" parameter="true">
+      <descriptions defaultDescription="P_SERVER_IP"/>
+      <variableProperties datatype="VARCHAR" length="100" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="P_MEASURE" parameter="true">
+      <descriptions defaultDescription="P_MEASURE"/>
+      <variableProperties datatype="VARCHAR" length="50" mandatory="true">
+        <valueDomain type="StaticList">
+          <listEntry id="DURATION">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+          <listEntry id="UNIQUE_VISITORS">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+          <listEntry id="VISITS">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="P_GRANULARITY" parameter="true">
+      <descriptions defaultDescription="P_GRANULARITY"/>
+      <variableProperties datatype="VARCHAR" length="20" mandatory="true">
+        <valueDomain type="StaticList">
+          <listEntry id="DAY">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+          <listEntry id="WEEK">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+          <listEntry id="MONTH">
+            <descriptions defaultDescription=""/>
+          </listEntry>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="P_DATE_START" parameter="true">
+      <descriptions defaultDescription="P_DATE_START"/>
+      <variableProperties datatype="VARCHAR" length="10" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="P_DATE_END" parameter="true">
+      <descriptions defaultDescription="P_DATE_END"/>
+      <variableProperties datatype="VARCHAR" length="10" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="P_FORECAST_PERIODS" parameter="true">
+      <descriptions defaultDescription="P_FORECAST_PERIODS"/>
+      <variableProperties datatype="INTEGER" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <viewAttributes>
+        <viewAttribute datatype="INTEGER" id="DATE_ID"/>
+        <viewAttribute datatype="INTEGER" id="ACTUAL_DATA"/>
+        <viewAttribute datatype="INTEGER" id="PROJECTED_DATA"/>
+        <viewAttribute datatype="VARCHAR" id="DATE_STR" length="10"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <localVariable>#P_SERVER_IP</localVariable>
+      <localVariable>#P_MEASURE</localVariable>
+      <localVariable>#P_GRANULARITY</localVariable>
+      <localVariable>#P_DATE_START</localVariable>
+      <localVariable>#P_DATE_END</localVariable>
+      <localVariable>#P_FORECAST_PERIODS</localVariable>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+
+ /*
+P_SERVER_IP
+P_MEASURE
+P_GRANULARITY
+P_DATE_START
+P_DATE_END
+P_FORECAST_PERIODS
+*/
+
+
+N	 INT  := 666; 
+V_DATE_NEXT DATE;
+V_DATE_NEXT_STR VARCHAR(10);
+
+V_NUMB_ACT_ROWS INTEGER;
+
+V_WEEK_NEXT_STR VARCHAR(10);
+
+V_DATE_START 	DATE;
+V_DATE_END	DATE;
+
+V_DATA_PERIOD INT;
+V_ID INT;
+V_READY_ROWS INT;
+V_SERVER_IP	VARCHAR(100);
+
+V_MIN_ROWS INT; 
+V_CYCLE INT;
+
+BEGIN
+
+-- RECAST THE INPUTTED DATE FIELDS...
+
+V_DATE_START := TO_DATE(P_DATE_START, 'YYYY-MM-DD');
+V_DATE_END := TO_DATE(P_DATE_END, 'YYYY-MM-DD');
+V_DATA_PERIOD := P_FORECAST_PERIODS + 1;
+V_SERVER_IP := P_SERVER_IP;
+
+-- CREATE A SUBSET OF TIME TO FILTER OUT ANY MULTIPLE DAY ENTRIES WITH TIME
+
+DSET_TIME_BY_DAY =
+	SELECT DATE_SAP, MIN(CALWEEK) AS CALWEEK
+	FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/AT_DATE&quot;
+	WHERE DATE_SAP >= '20100101'
+	GROUP BY DATE_SAP;
+
+
+
+/*   SET up the data for the Time Series Projection
+ 	Matrix of Measure and Granularity
+*/
+
+IF P_MEASURE = 'DURATION' AND P_GRANULARITY = 'DAY' THEN
+
+-- DURATION, DAY
+
+DSET_1 	=
+SELECT TO_INT(DATE_SAP) AS ID ,
+TO_DOUBLE( ROUND(SUM(DURATION_BANDING),0 ) ) AS RAWDATA,
+0 AS PROJ_OUTPUT, 
+DATE_SAP AS DATE_FORMATED	
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(DATE_SAP), DATE_SAP
+ORDER BY TO_INT(DATE_SAP)
+;
+
+
+ELSEIF P_MEASURE = 'DURATION' AND P_GRANULARITY = 'WEEK' THEN
+
+
+-- DURATION, WEEK
+DSET_1 	=
+SELECT  TO_INT(CALWEEK) AS ID ,
+TO_DOUBLE( ROUND(SUM(DURATION_BANDING),0 ) ) AS RAWDATA,
+--TO_DOUBLE( ROUND(SUM(DURATION),0 ) ) AS RAWDATA
+0 AS PROJ_OUTPUT, 
+CALWEEK AS DATE_FORMATED		
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(CALWEEK), CALWEEK
+ORDER BY TO_INT(CALWEEK)
+;
+ELSEIF P_MEASURE = 'DURATION' AND P_GRANULARITY = 'MONTH' THEN
+
+-- DURATION, MONTH
+DSET_1 	=
+SELECT TO_INT(CALMONTH) AS ID ,
+TO_INT( ROUND(SUM(DURATION_BANDING),0 ) ) AS RAWDATA,
+--TO_INT( ROUND(SUM(DURATION),0 ) ) AS RAWDATA,
+0 AS PROJ_OUTPUT, 
+CALMONTH AS DATE_FORMATED			
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(CALMONTH), CALMONTH
+ORDER BY TO_INT(CALMONTH)
+;
+ELSEIF P_MEASURE = 'VISITS' AND P_GRANULARITY = 'DAY' THEN
+
+-- VISITS, DAY
+DSET_1 	=
+SELECT TO_INT(DATE_SAP) AS ID , SUM(NEW_VISIT_1Y_0N) AS RAWDATA	
+,0 AS PROJ_OUTPUT, DATE_SAP AS DATE_FORMATED			
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(DATE_SAP), DATE_SAP
+ORDER BY TO_INT(DATE_SAP)
+;
+
+ELSEIF P_MEASURE = 'VISITS' AND P_GRANULARITY = 'WEEK' THEN
+
+-- VISITS, WEEK
+DSET_1 	=
+SELECT  TO_INT(CALWEEK) AS ID , SUM(NEW_VISIT_1Y_0N) AS RAWDATA	
+,0 AS PROJ_OUTPUT, CALWEEK AS DATE_FORMATED		
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(CALWEEK), CALWEEK
+ORDER BY TO_INT(CALWEEK)
+;
+ELSEIF P_MEASURE = 'VISITS' AND P_GRANULARITY = 'MONTH' THEN
+
+-- VISIT, MONTH
+DSET_1 	=
+SELECT TO_INT(CALMONTH) AS ID , SUM(NEW_VISIT_1Y_0N) AS RAWDATA	
+,0 AS PROJ_OUTPUT, CALMONTH AS DATE_FORMATED			
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY TO_INT(CALMONTH), CALMONTH
+ORDER BY TO_INT(CALMONTH)
+;
+-- NEW VISIT, DAY
+
+ELSEIF P_MEASURE = 'UNIQUE_VISITORS' AND P_GRANULARITY = 'DAY' THEN
+DSET_1 	=
+SELECT TO_INT(DATE_SAP) AS ID, ifnull(unique_visitors,0.001) as RAWDATA
+,0 AS PROJ_OUTPUT, DATE_SAP AS DATE_FORMATED from 
+(
+SELECT DATE_SAP	
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot; 
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY DATE_SAP
+)
+left join
+(
+select unique_visit_date, count(*)  as unique_visitors from (
+select host_ip, min(DATE_SAP) as unique_visit_date FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+group by host_ip) group by unique_visit_date
+)  on DATE_SAP = unique_visit_date
+ORDER BY TO_INT(DATE_SAP)
+;
+
+
+ELSEIF P_MEASURE = 'UNIQUE_VISITORS' AND P_GRANULARITY = 'WEEK' THEN
+
+-- NEW VISIT, WEEK
+
+DSET_1 	=
+SELECT TO_INT(CALWEEK) AS ID , ifnull(unique_visitors,0.001) as RAWDATA
+,0 AS PROJ_OUTPUT, CALWEEK AS DATE_FORMATED	from
+(
+SELECT CALWEEK
+--, COUNT(DISTINCT host_ip) AS RAWDATA	
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot; 
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY CALWEEK
+)
+left join
+(
+select unique_visit_date, count(*)  as unique_visitors from (
+select host_ip, min(CALWEEK) as unique_visit_date FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+group by host_ip) group by unique_visit_date
+)  on calweek = unique_visit_date
+ORDER BY TO_INT(CALWEEK)
+;
+ELSEIF P_MEASURE = 'UNIQUE_VISITORS' AND P_GRANULARITY = 'MONTH' THEN
+
+-- NEW VISIT, MONTH
+DSET_1 	=
+SELECT TO_INT(CALMONTH) AS ID , ifnull(unique_visitors,0.001) as RAWDATA
+,0 AS PROJ_OUTPUT, CALMONTH AS DATE_FORMATED	from
+(
+SELECT CALMONTH
+FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot; 
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+GROUP BY CALMONTH
+)
+left join
+(
+select unique_visit_date, count(*)  as unique_visitors from (
+select host_ip, min(CALMONTH) as unique_visit_date FROM &quot;_SYS_BIC&quot;.&quot;sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES&quot;
+WHERE SERVER_IP = :P_SERVER_IP
+AND DATE_SAP >= TO_CHAR(V_DATE_START, 'YYYYMMDD')
+AND DATE_SAP &lt;= TO_CHAR(V_DATE_END, 'YYYYMMDD')
+group by host_ip) group by unique_visit_date
+)  on calmonth = unique_visit_date
+ORDER BY TO_INT(CALMONTH)
+;
+END IF;
+--  Now step thru creating the set of 4 cols and Act and Proj rows
+
+-- PRELIM: GET THE NUMBER OF ACTUAL ROWS AND SET UP THE WORK SETS
+
+SELECT COUNT(*) INTO V_NUMB_ACT_ROWS FROM :DSET_1;
+
+DSET_1_E = CE_PROJECTION(:DSET_1, [CE_CALC('rownum()', integer) AS &quot;ID&quot;,&quot;RAWDATA&quot;, &quot;PROJ_OUTPUT&quot;, &quot;DATE_FORMATED&quot;]);
+
+-- NOW DETERMINE THE ROWS FOR THE PROJECTED PERIODS
+
+FOR N IN (V_NUMB_ACT_ROWS + 1) .. (V_NUMB_ACT_ROWS + V_DATA_PERIOD) DO
+
+--DETERMINE THE DATE STRING FOR THE PROJECTED ROW...
+
+IF P_GRANULARITY = 'DAY' THEN
+
+V_DATE_NEXT := ADD_DAYS(V_DATE_END, 1) ;
+V_DATE_NEXT_STR := TO_CHAR( V_DATE_NEXT, 'YYYYMMDD') ;
+V_DATE_END := V_DATE_NEXT;
+
+
+ELSEIF P_GRANULARITY = 'WEEK' THEN
+
+V_DATE_NEXT := ADD_DAYS(V_DATE_END, 7);
+SELECT CALWEEK INTO V_DATE_NEXT_STR FROM  
+ :DSET_TIME_BY_DAY
+		WHERE DATE_SAP = TO_CHAR(V_DATE_NEXT, 'YYYYMMDD');
+V_DATE_END := V_DATE_NEXT;
+ 
+
+ELSE
+
+V_DATE_NEXT := ADD_MONTHS(V_DATE_END, 1);
+V_DATE_NEXT_STR := TO_CHAR(V_DATE_NEXT, 'YYYYMM');
+V_DATE_END := V_DATE_NEXT;
+
+END IF;
+
+DSET_1_E = SELECT ID, RAWDATA, PROJ_OUTPUT, DATE_FORMATED FROM :DSET_1_E
+	UNION ALL 
+	SELECT N, NULL AS RAWDATA,  NULL AS PROJECTED_OUTPUT, V_DATE_NEXT_STR FROM DUMMY;
+
+
+END FOR;
+
+--  Build the set for PAL
+
+DSET_PAL = SELECT * FROM :DSET_1_E WHERE ID &lt;= V_NUMB_ACT_ROWS;
+SELECT COUNT(*) INTO V_MIN_ROWS FROM :DSET_PAL;
+V_CYCLE := :V_MIN_ROWS / 2;
+--  set up the PAL call...
+
+DSET_TS_CONTROL_TAB = 
+		SELECT NAME, INTARGS, DOUBLEARGS, STRINGARGS
+		FROM SAP_RDS_BDI_STREAM.&quot;sap.rds-bdi.stream.model.rep::tables.PRED_CONTROL_TAB&quot;
+			WHERE 1 = 2
+			
+		UNION ALL
+		SELECT  'FORECAST_MODEL_NAME' AS NAME
+			, null 			AS INTARGS
+			, null 			AS DOUBLEARGS
+			, 'TESM'		AS STRINGARGS 
+		FROM DUMMY
+
+	UNION ALL
+		SELECT  'THREAD_NUMBER' 	AS NAME
+			, 20 			AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+
+	UNION ALL
+		SELECT  'FORECAST_NUM' 		AS NAME
+			,:V_DATA_PERIOD	AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+
+	UNION ALL
+		SELECT  'STARTTIME'		AS NAME
+			, 0 			AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+
+	UNION ALL
+		SELECT  'CYCLE'		AS NAME
+			, :V_CYCLE 		AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+
+	UNION ALL
+		SELECT  'MODELSELECTION' AS NAME
+			, 0  			AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+		
+	UNION ALL
+		SELECT  'ALPHA'		AS NAME
+			, NULL			AS INTARGS
+			, 0.1			AS DOUBLEARGS
+			, null			AS STRINGARGS 
+	FROM DUMMY
+
+	UNION ALL
+		SELECT  'BETA'		AS NAME
+		, NULL				AS INTARGS
+		, 0.1				AS DOUBLEARGS
+		, null				AS STRINGARGS 
+	FROM DUMMY
+	
+	UNION ALL
+		SELECT  ' GAMMA'	AS NAME
+		, NULL				AS INTARGS
+		, 0.1               AS DOUBLEARGS
+		, null             	AS STRINGARGS 
+	FROM DUMMY
+
+	UNION ALL
+		SELECT  'FORECAST_AUTOMATIC' 	AS NAME
+			, 0 			AS INTARGS
+			, null 			AS DOUBLEARGS
+			, null 			AS STRINGARGS 
+		FROM DUMMY
+		; 
+
+IF V_MIN_ROWS > 10 THEN
+
+--  EXECUTE the PAL call...
+
+--CALL _SYS_AFL.STREAM_TS_PRED_INFO_FORECASTSMOOTHING
+
+CALL SAP_RDS_BDI_STREAM.STREAM_TS_PRED_INFO_FORECASTSMOOTHING
+(:DSET_PAL
+,:DSET_TS_CONTROL_TAB
+,:DSET_TS_OUTPARAMETER_TAB
+,:DSET_TS_FORECASTSMOOTHING_RESULT_TAB	);
+
+/*
+DSET_TS_FORECASTSMOOTHING_RESULT_TAB = select * from SAP_RDS_BDI_STREAM.STREAM_TS_PRED_INFO_FORECASTSMOOTHING
+( 'PLACEHOLDER'= ('$$p1$$',:DSET_PAL)
+, 'PLACEHOLDER'= ('$$p2$$',:DSET_TS_CONTROL_TAB) 
+, 'PLACEHOLDER'= ('$$p3$$', NULL)
+, 'PLACEHOLDER'= ('$$p4$$',NULL)        
+) ; 
+*/
+--  BUILD THE OUTPUT ACTUAL
+
+/*DSET_ACT =
+	SELECT 
+	 DP.ID
+	,DP.RAWDATA
+	,DR.RAWDATA AS OUTPUT
+	,DP.DATE_FORMATED
+	 FROM
+	 :DSET_PAL DP
+	 LEFT JOIN
+	:DSET_TS_FORECASTSMOOTHING_RESULT_TAB DR
+	 ON(DP.ID = DR.ID)
+	 ;
+*/
+-- BUILD THE PROJECTED ONLY ROWS...
+
+DSET_PROJ =
+	SELECT 
+	  DP.ID
+	,DP.RAWDATA
+	,DR.RAWDATA AS OUTPUT
+	,DP.DATE_FORMATED
+	 FROM
+	 :DSET_1_E DP
+	 LEFT JOIN
+	:DSET_TS_FORECASTSMOOTHING_RESULT_TAB DR
+	 ON(DP.ID = DR.ID)
+--	 WHERE DP.ID > V_NUMB_ACT_ROWS
+	 ;
+	 
+-- UNION ACT AND PROJ TOGETHER
+
+DSET_VAR_OUT =
+--	SELECT * FROM :DSET_ACT
+--	UNION
+	SELECT * FROM :DSET_PROJ;
+
+	 --   VAR OUT TIME...
+
+/*
+var_out = SELECT 
+		 ID AS DATE_ID
+		,RAWDATA AS ACTUAL_DATA
+		,OUTPUT AS PROJECTED_DATA
+		,MAP(:p_granularity, 'DAY', to_char(DATE_FORMATED,'YYYY-MM-DD'), left(DATE_FORMATED,4)||'-'||substr(DATE_FORMATED,5,2)) AS DATE_STR
+	 FROM :DSET_VAR_OUT
+	 ORDER BY ID
+	;
+*/
+var_out = SELECT 
+		 ID AS DATE_ID
+		,RAWDATA AS ACTUAL_DATA
+		,OUTPUT AS PROJECTED_DATA
+		,MAP(:p_granularity, 
+		'WEEK',left(DATE_FORMATED,4)||'-'||substr(DATE_FORMATED,5,2),
+		'MONTH',left(DATE_FORMATED,4)||'-'||substr(DATE_FORMATED,5,2),
+		 to_char(DATE_FORMATED,'YYYY-MM-DD')) AS DATE_STR
+	 FROM :DSET_VAR_OUT
+	 ORDER BY ID
+;
+
+ELSE
+var_out = SELECT
+	 null AS DATE_ID
+	, null AS ACTUAL_DATA
+	, null AS PROJECTED_DATA
+	, 'MORE ROWS' AS 	DATE_STR
+FROM DUMMY;
+END IF;
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <attributes>
+      <attribute id="DATE_ID" order="1">
+        <descriptions defaultDescription="LS"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_ID"/>
+      </attribute>
+      <attribute id="DATE_STR" order="4">
+        <descriptions defaultDescription="DATE_STR"/>
+        <keyMapping columnObjectName="Script_View" columnName="DATE_STR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ACTUAL_DATA" order="2" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TIME"/>
+        <measureMapping columnObjectName="Script_View" columnName="ACTUAL_DATA"/>
+      </measure>
+      <measure id="PROJECTED_DATA" order="3" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="RAWDATA"/>
+        <measureMapping columnObjectName="Script_View" columnName="PROJECTED_DATA"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

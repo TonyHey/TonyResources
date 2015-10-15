@@ -1,0 +1,15 @@
+DSA,1,DSA_TIME_PERIOD,2,Time period[in seconds] for window in ESP
+DSA,2,DSA_EXTEN_SKIP,jpeg;ico;png;gif;css;js,Extensions of files to be skipped seperated by semicolon
+DSA,3,DSA_STATUS_CODE_SKIP,404,DSA_STATUS_CODE_SKIP
+IDS_404,1,IDS_404_THRESHOLD,10,Total Number of 404s
+IDS_404,2,IDS_404_EXTEN_SKIP,jpeg;ico;png;gif;css;js,Extensions of files to be skipped seperated by semicolon
+IDS_404,3,IDS_404_TIME_PERIOD,10,Time period[in seconds] for window in ESP
+IDS_404_LOGIN,1,IDS_404_LOGIN_PAGE,/login/login.jsp,Login Page 1
+IDS_404_LOGIN,2,IDS_404_LOGIN_PAGE,/login/welcome.html,Login Page 2
+CSRF,1,CSRF_DOMAIN_NAME,www.sap.com,SAP Domain
+CSRF,2,CSRF_DOMAIN_NAME,www.almhuette-raith.at,domain
+CSRF,3,CSRF_DOMAIN_NAME,www.google.com,search domain
+SQL_INJECTION,4,SQL_INJECTION_REGEX,/exec(\s|\+)+(s|x)p\w+/ix,SQL Injection Type:MS SQL
+SQL_INJECTION,2,SQL_INJECTION_REGEX,/((\%27)|(\'))union/ix,A typical SQL injection: OR
+SQL_INJECTION,1,SQL_INJECTION_REGEX,/((\%3D)|(=))[^\n]*((\%27)|(\')|(\-\-)|(\%3B)|(;))/i,Modified regex for detection of SQL meta-characters: 1'or'1'='1   ;   1'or2>1--
+SQL_INJECTION,3,SQL_INJECTION_REGEX,/\w*((\%27)|(\'))((\%6F)|o|(\%4F))((\%72)|r|(\%52))/ix,A typical SQL injection: OR

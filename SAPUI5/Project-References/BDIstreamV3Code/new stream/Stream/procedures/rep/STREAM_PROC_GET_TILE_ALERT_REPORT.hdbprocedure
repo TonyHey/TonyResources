@@ -1,0 +1,31 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_TILE_ALERT_REPORT" ( 
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_tile_alert_report_output"
+)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ if :SOURCE_IN = 'HADOOP' then
+ VAR_OUT= 	SELECT ALERT_TYPE_NAME,
+ 					SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_INCIDENTS
+ 			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL_HIVE" 
+ 			 WHERE DATE_SQL >= :DATE_FROM_IN 
+ 		     AND   DATE_SQL <= :DATE_TO_IN 
+ 		     GROUP BY ALERT_TYPE_NAME;
+else
+ VAR_OUT= 	SELECT ALERT_TYPE_NAME,
+ 					SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_INCIDENTS
+ 			FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL" 
+ 			 WHERE DATE_SQL >= :DATE_FROM_IN 
+ 		     AND   DATE_SQL <= :DATE_TO_IN 
+ 		     GROUP BY ALERT_TYPE_NAME;
+end if;	
+ 
+END;

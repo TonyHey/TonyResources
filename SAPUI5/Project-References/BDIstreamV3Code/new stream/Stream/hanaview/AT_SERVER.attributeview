@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_SERVER" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_SERVER"/>
+  <metadata changedAt="2015-04-14 16:52:26.778" createdAt="2015-04-14 16:52:26.778"/>
+  <attributes>
+    <attribute id="SERVER_IP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Server IP Address"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="SERVER_IP"/>
+    </attribute>
+    <attribute id="SERVER_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Server Name"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="SERVER_NAME"/>
+    </attribute>
+    <attribute id="SERVER_ATTR_1" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Server Attribute1"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="SERVER_ATTR_1"/>
+    </attribute>
+    <attribute id="SERVER_ATTR_2" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Server Attribute2"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="SERVER_ATTR_2"/>
+    </attribute>
+    <attribute id="SERVER_LATITUDE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Latitude geo-coordinate for  server location"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="LATITUDE"/>
+    </attribute>
+    <attribute id="SERVER_LONGITUDE" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Longitude geo-coordinates for  server location"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" columnName="LONGITUDE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_SERVER" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="47" y="260"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

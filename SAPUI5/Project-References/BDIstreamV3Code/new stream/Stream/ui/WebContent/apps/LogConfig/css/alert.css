@@ -1,0 +1,35 @@
+.chartToolBar .sapMBarContainer .legendIcon {
+	display: none;
+}
+#__page0-scroll{
+	position: relative;
+}
+
+#__page0-scroll .overlay{
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	opacity: 0.6;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+}
+#__page0-scroll #busyIndicatorOverlay{
+	position: relative;
+	left: 50%;
+	top: 15rem;
+}
+#__page0-scroll .overlay.hide{
+	display: none;
+}
+#__page0-scroll .overlay.show{
+	display: block;
+}
+
+#oUploadButton {
+	margin-top: 2px;
+	margin-left: 5px;
+}
+.chartToolBarButton {
+	margin-top: 13px;
+}

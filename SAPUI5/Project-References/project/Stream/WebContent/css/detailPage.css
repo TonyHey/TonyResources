@@ -1,0 +1,174 @@
+/*style for detailPage Title*/
+.detail-page-header-title.sapMLabel {
+	font-size: 19px !important;
+	font-family: '微软雅黑';
+}
+
+.sapUiUfdShellSearch {
+	text-align: center !important;
+}
+
+/* style for detailPage ServerSelect */
+.detail-page-select {
+  border: none !important;
+}
+/* style for detailPage DateRange */
+.detail-page-daterange {
+  width: 230px !important;
+}
+.detail-page-daterange>input {
+    border: none !important;
+}
+/* style for detailPage content */
+.sapMPageWithHeader>section {
+    overflow: inherit !important;
+}
+/* style for detailPage kpiHeader */
+.detail-page-kpi-header {
+    background-color: #c6e5fc !important;
+}
+.detai-page-kpi-number {
+    color: green !important;
+}
+
+.sapMBarContainer .detail-page-circle {
+    margin-left: 10px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 25px;
+    border: 1px solid #EE0000;
+    border-radius: 25px;
+    margin-top: 12px;
+}
+
+.sapMBarContainer .detail-page-circle:hover {
+    border: 2px solid red;
+    width: 23px;
+    height: 23px;
+    line-height: 23px
+}
+
+.sapMBarContainer .detail-page-circle-selected {
+	border: 2px solid red;
+    width: 23px;
+    height: 23px;
+    line-height: 23px
+}
+
+/* kpi style*/
+.kpi-wrapper>div{
+    background: #E8F6F6; 
+}
+
+.kpi-wrapper .kpi-title {
+    font-size: 18px;
+    margin-left: 10px;
+    color: #61605A;
+}
+
+.kpi-wrapper .sapMScrollContScroll {
+    margin-left: 3%;
+}
+
+.kpi-wrapper .WNES.sapSuiteHdrCellSouth, 
+.kpi-wrapper .WNES.sapSuiteHdrCellWest, 
+.kpi-wrapper .NES.sapSuiteHdrCellSouth, 
+.kpi-wrapper .NES.sapSuiteHdrCellNorth {
+    width: 100%;
+}
+
+.kpi-wrapper .kpi-value {
+    margin-top: 25px;
+    margin-left: -60px;
+    font-size: 35px;
+    font-weight: 400;
+    color: #61605A;
+}
+
+.kpi-wrapper .kpi-bottom {
+    margin-top: 25px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.kpi-wrapper .kpi-lastday {
+    color: #61605A;
+    font-size: 16px;
+}
+
+.kpi-wrapper .kpi-lastday-value {
+    font-weight: 700;
+    color: #61605A;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.kpi-wrapper .kpi-percent {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.kpi-wrapper .add {
+    color: #519F40;
+}
+
+.kpi-wrapper .sale {
+    color: red;
+}
+/* kpi style*/
+
+/*actualsAndPredictiveAnalysis*/
+
+.sapSuiteUiCommonsChartContainer {
+    background: white;
+}
+
+.sapSuiteUiCommonsChartContainerWrapper .sapSuiteUiCommonsChartContainerToolBarArea .sapMTB-Solid-CTX {
+    background: white;
+}
+
+.sapUiView>.sapSuiteUiCommonsChartContainer {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.actuals-APA-select-Date a {
+    font-size: 20px;
+    color: #605F59;
+    font-weight: 100;
+    margin-right: 15px;
+    line-height: 24px;
+}
+/*actualsAndPredictiveAnalysis*/
+
+/* [Start] style for Link*/
+.sapMLnk.sapMLnkMaxWidth.detail-page-link {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 40px !important;
+    border-radius: 50%;
+    border: 1px solid red;
+    outline: none !important;
+    background-color: white;
+}
+
+#toolbar .no-border {
+    border: none;
+}
+/* [End] style for Link*/
+
+/* style for page footer */
+.detail-page .detail-page-footer {
+      position: fixed;
+}
+
+/*timeSeriesAnalysis*/
+.sapUiTbCont .sapUiTbInner .time-series-detail-dimen-selected {
+    color: #5DA8FF;
+}

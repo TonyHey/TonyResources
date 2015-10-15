@@ -1,0 +1,497 @@
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 00:00:53
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 00:00:53 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 34224
+2014-09-07 00:00:56 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 2077
+2014-09-07 00:01:03 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 4186
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 01:01:38
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 01:01:38 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 78750
+2014-09-07 01:01:42 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1624
+2014-09-07 01:01:53 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1254
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 02:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 02:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 892
+2014-09-07 02:00:26 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1403
+2014-09-07 02:00:36 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 868
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 03:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 03:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 827
+2014-09-07 03:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1444
+2014-09-07 03:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 856
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 04:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 04:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 690
+2014-09-07 04:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1375
+2014-09-07 04:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 796
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 05:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 05:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 794
+2014-09-07 05:00:29 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1405
+2014-09-07 05:00:40 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 687
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 05:40:14
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 05:40:14 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 2 5 342
+2014-09-07 05:40:14 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 1 2148074254 150
+2014-09-07 05:40:14 10.66.59.248 OPTIONS /RDS_PN/ - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office+Protocol+Discovery 200 0 0 376
+2014-09-07 05:40:31 10.66.59.248 HEAD /RDS_PN/ - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office+Existence+Discovery 200 0 0 1494
+2014-09-07 05:40:31 10.66.59.248 HEAD /RDS_PN/SitePages/Home.aspx - 1111 - 10.31.176.247 Microsoft+Office+Existence+Discovery 401 2 5 131
+2014-09-07 05:40:31 10.66.59.248 HEAD /RDS_PN/SitePages/Home.aspx - 1111 - 10.31.176.247 Microsoft+Office+Existence+Discovery 401 1 2148074254 130
+2014-09-07 05:41:48 10.66.59.248 HEAD /RDS_PN/SitePages/Home.aspx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office+Existence+Discovery 200 0 0 76173
+2014-09-07 05:41:48 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 132
+2014-09-07 05:41:50 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 1419
+2014-09-07 05:41:52 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 1752
+2014-09-07 05:41:52 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 178
+2014-09-07 05:41:53 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 132
+2014-09-07 05:41:53 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 136
+2014-09-07 05:41:53 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 129
+2014-09-07 05:41:53 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 05:41:54 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 272
+2014-09-07 05:41:54 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 354
+2014-09-07 05:41:55 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 721
+2014-09-07 05:42:02 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 6622
+2014-09-07 05:42:08 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5196
+2014-09-07 05:42:24 10.66.59.248 OPTIONS / - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 2 5 348
+2014-09-07 05:42:24 10.66.59.248 OPTIONS / - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 1 2148074254 129
+2014-09-07 05:42:24 10.66.59.248 OPTIONS / - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office+Protocol+Discovery 200 0 64 151
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 06:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 06:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 683
+2014-09-07 06:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1350
+2014-09-07 06:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 699
+2014-09-07 06:05:42 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 06:05:42 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 06:05:42 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 156
+2014-09-07 06:05:42 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 06:05:42 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 06:05:42 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 302
+2014-09-07 06:05:43 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 347
+2014-09-07 06:05:43 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 133
+2014-09-07 06:05:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 699
+2014-09-07 06:05:45 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 884
+2014-09-07 06:05:45 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 233
+2014-09-07 06:05:50 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5135
+2014-09-07 06:05:56 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5011
+2014-09-07 06:18:39 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 134
+2014-09-07 06:18:39 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 06:18:39 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 259
+2014-09-07 06:18:39 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 06:18:41 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 130
+2014-09-07 06:18:41 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 230
+2014-09-07 06:18:41 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 347
+2014-09-07 06:18:41 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 135
+2014-09-07 06:18:42 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 701
+2014-09-07 06:18:42 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 889
+2014-09-07 06:18:44 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 241
+2014-09-07 06:18:49 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5166
+2014-09-07 06:18:55 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 4964
+2014-09-07 06:28:30 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 133
+2014-09-07 06:28:30 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 131
+2014-09-07 06:28:30 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 158
+2014-09-07 06:28:30 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 06:28:30 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 06:28:30 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 193
+2014-09-07 06:28:32 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 349
+2014-09-07 06:28:32 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 135
+2014-09-07 06:28:33 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 711
+2014-09-07 06:28:34 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 1412
+2014-09-07 06:28:34 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 348
+2014-09-07 06:28:40 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5726
+2014-09-07 06:28:46 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 4980
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 07:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 07:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 814
+2014-09-07 07:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1445
+2014-09-07 07:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 738
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 08:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 08:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 877
+2014-09-07 08:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1420
+2014-09-07 08:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 709
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 09:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 09:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1007
+2014-09-07 09:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1378
+2014-09-07 09:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 686
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 10:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 10:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 857
+2014-09-07 10:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1513
+2014-09-07 10:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 704
+2014-09-07 10:02:22 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.27.93.53 Microsoft+Office+Protocol+Discovery 401 2 5 340
+2014-09-07 10:02:22 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.27.93.53 Microsoft+Office+Protocol+Discovery 401 1 2148074254 133
+2014-09-07 10:02:22 10.66.59.248 OPTIONS /RDS_PN/ - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office+Protocol+Discovery 200 0 0 362
+2014-09-07 10:02:27 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 178
+2014-09-07 10:02:27 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 132
+2014-09-07 10:02:27 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I076938 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 141
+2014-09-07 10:02:27 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 160
+2014-09-07 10:02:27 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 132
+2014-09-07 10:02:28 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I076938 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 266
+2014-09-07 10:02:28 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I076938 10.27.93.53 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 340
+2014-09-07 10:02:29 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 920
+2014-09-07 10:02:30 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 1019
+2014-09-07 10:02:30 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 288
+2014-09-07 10:02:40 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 9689
+2014-09-07 10:02:49 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 8409
+2014-09-07 10:03:02 10.66.59.248 OPTIONS / - 1111 GLOBAL\I076938 10.27.93.53 Microsoft+Office+Protocol+Discovery 200 0 0 339
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 2 5 187
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN/ - 1111 - 10.31.176.247 Microsoft+Office+Protocol+Discovery 401 1 2148074254 130
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN/ - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office+Protocol+Discovery 200 0 0 389
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 130
+2014-09-07 10:07:24 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 141
+2014-09-07 10:07:25 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 129
+2014-09-07 10:07:25 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 10:07:25 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 209
+2014-09-07 10:07:25 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 357
+2014-09-07 10:07:26 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 757
+2014-09-07 10:07:26 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 952
+2014-09-07 10:07:28 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 249
+2014-09-07 10:07:33 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5159
+2014-09-07 10:07:39 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5198
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 10:37:44
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 10:37:44 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 135
+2014-09-07 10:37:44 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 134
+2014-09-07 10:37:44 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 163
+2014-09-07 10:37:44 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 130
+2014-09-07 10:37:44 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 133
+2014-09-07 10:37:44 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 202
+2014-09-07 10:37:45 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 345
+2014-09-07 10:37:45 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 10:37:45 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 740
+2014-09-07 10:37:47 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 936
+2014-09-07 10:37:47 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 232
+2014-09-07 10:37:52 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5258
+2014-09-07 10:37:58 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5111
+2014-09-07 10:49:39 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 156
+2014-09-07 10:49:39 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 136
+2014-09-07 10:49:39 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 283
+2014-09-07 10:49:39 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 10:49:39 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 158
+2014-09-07 10:49:40 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 185
+2014-09-07 10:49:40 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 357
+2014-09-07 10:49:40 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 132
+2014-09-07 10:49:41 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 701
+2014-09-07 10:49:41 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 905
+2014-09-07 10:49:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 233
+2014-09-07 10:49:48 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5242
+2014-09-07 10:49:54 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5098
+2014-09-07 10:56:41 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 10:56:41 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 10:56:41 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 168
+2014-09-07 10:56:41 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 10:56:41 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 10:56:41 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 187
+2014-09-07 10:56:42 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 336
+2014-09-07 10:56:42 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 10:56:42 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 700
+2014-09-07 10:56:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 887
+2014-09-07 10:56:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 232
+2014-09-07 10:56:49 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5210
+2014-09-07 10:56:55 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5051
+2014-09-07 10:57:51 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 132
+2014-09-07 10:57:51 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 130
+2014-09-07 10:57:51 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 172
+2014-09-07 10:57:51 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 346
+2014-09-07 10:57:51 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 252
+2014-09-07 10:57:52 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 886
+2014-09-07 10:57:52 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 323
+2014-09-07 10:57:59 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 6080
+2014-09-07 10:58:05 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 4980
+2014-09-07 11:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 856
+2014-09-07 11:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1588
+2014-09-07 11:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 779
+2014-09-07 11:02:40 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 11:02:40 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 11:02:40 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 153
+2014-09-07 11:02:40 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 129
+2014-09-07 11:02:40 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 127
+2014-09-07 11:02:40 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 164
+2014-09-07 11:02:42 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 338
+2014-09-07 11:02:42 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 11:02:42 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 699
+2014-09-07 11:02:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 900
+2014-09-07 11:02:43 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 230
+2014-09-07 11:02:49 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5161
+2014-09-07 11:02:55 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 4935
+2014-09-07 11:11:29 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 132
+2014-09-07 11:11:29 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 11:11:29 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 153
+2014-09-07 11:11:29 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 129
+2014-09-07 11:11:29 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 11:11:29 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 192
+2014-09-07 11:11:30 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 337
+2014-09-07 11:11:30 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 11:11:30 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 708
+2014-09-07 11:11:32 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 899
+2014-09-07 11:11:32 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 233
+2014-09-07 11:11:38 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5275
+2014-09-07 11:11:44 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5081
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 11:34:58
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 11:34:58 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 11:34:58 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 11:34:58 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 257
+2014-09-07 11:34:58 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 11:34:58 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 11:34:58 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 185
+2014-09-07 11:35:00 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 351
+2014-09-07 11:35:00 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 11:35:00 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 694
+2014-09-07 11:35:01 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 918
+2014-09-07 11:35:01 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 263
+2014-09-07 11:35:07 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5244
+2014-09-07 11:35:16 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 7713
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 11:54:56
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 11:54:56 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 134
+2014-09-07 11:54:56 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 132
+2014-09-07 11:54:56 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 154
+2014-09-07 11:54:56 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 128
+2014-09-07 11:54:56 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 128
+2014-09-07 11:54:56 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 187
+2014-09-07 11:54:57 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 344
+2014-09-07 11:54:57 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 133
+2014-09-07 11:54:58 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 700
+2014-09-07 11:54:58 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 893
+2014-09-07 11:55:00 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 361
+2014-09-07 11:55:05 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5150
+2014-09-07 11:55:11 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5123
+2014-09-07 12:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 702
+2014-09-07 12:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1475
+2014-09-07 12:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 673
+2014-09-07 12:07:10 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 131
+2014-09-07 12:07:10 10.66.59.248 OPTIONS /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 130
+2014-09-07 12:07:10 10.66.59.248 OPTIONS /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 200 0 64 154
+2014-09-07 12:07:10 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 2 5 129
+2014-09-07 12:07:10 10.66.59.248 PROPFIND /RDS_PN - 1111 - 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 401 1 2148074254 129
+2014-09-07 12:07:10 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 186
+2014-09-07 12:07:11 10.66.59.248 PROPFIND /RDS_PN - 1111 GLOBAL\I305563 10.31.176.247 Microsoft-WebDAV-MiniRedir/6.1.7601 207 0 0 333
+2014-09-07 12:07:11 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 131
+2014-09-07 12:07:12 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 696
+2014-09-07 12:07:12 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 881
+2014-09-07 12:07:13 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 234
+2014-09-07 12:07:18 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 5075
+2014-09-07 12:07:24 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I305563 10.31.176.247 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 4935
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 13:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 13:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 787
+2014-09-07 13:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1406
+2014-09-07 13:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 700
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 14:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 14:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 929
+2014-09-07 14:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1335
+2014-09-07 14:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 879
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 14:34:59
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 14:34:59 10.66.59.248 GET /RDS_PN/SitePages/RDS_Pricing_Note.ASPX - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 154
+2014-09-07 14:34:59 10.66.59.248 GET /RDS_PN/SitePages/RDS_Pricing_Note.ASPX - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 130
+2014-09-07 14:35:41 10.66.59.248 GET /RDS_PN/SitePages/RDS_Pricing_Note.ASPX - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 42008
+2014-09-07 14:35:41 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/controls-6E924A6.css ctag=2 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 130
+2014-09-07 14:35:41 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/controls-6E924A6.css ctag=2 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 134
+2014-09-07 14:35:41 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/search-7E1AFF02.css ctag=2 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 300
+2014-09-07 14:35:41 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/corev4-8A0ABD2F.css ctag=2 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 377
+2014-09-07 14:35:41 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/controls-6E924A6.css ctag=2 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 470
+2014-09-07 14:35:41 10.66.59.248 GET /RDS_PN/_themes/pn_theme.css - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 163
+2014-09-07 14:35:42 10.66.59.248 GET /_layouts/1033/msstring.js rev=QtiIcPH3HV7LgVSO7vONFg%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 185
+2014-09-07 14:35:42 10.66.59.248 GET /_layouts/1033/ie55up.js rev=UgTcwUTI6YcRzTMBxD93Xg%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 243
+2014-09-07 14:35:42 10.66.59.248 GET /_layouts/1033/init.js rev=7rurhilS20pNrVcviE3PbA%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 510
+2014-09-07 14:35:42 10.66.59.248 GET /_layouts/blank.js rev=QGOYAJlouiWgFRlhHVlMKA%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 210
+2014-09-07 14:35:42 10.66.59.248 GET /ScriptResource.axd d=NnKNBdXs6JI8TywAsX_TllR9uYmGYlzsyrAiAiKX9QHICObQpE634SZuT2C-IlxE_9OqCprw_Cx8DchgyjVl10eUPfjoZU65OwAPyai4kKS9JCnwsNpfac0KqbasNGL5oTQ0uuopE1EK5Rd6CW3lsTKIOj41&t=2e2045e2 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 221
+2014-09-07 14:35:42 10.66.59.248 GET /WebResource.axd d=XGhV1yQ5_7w5lQAZfrmI_2-cOqWIm-YdDkOP-AvW96Xu5NKTC3ESTiOJkyquFRiURgtLKfnVXXAlW8HH9DVh1JounCw1&t=635199830789012606 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 136
+2014-09-07 14:35:42 10.66.59.248 GET /ScriptResource.axd d=aQRWHs9t6cXjka4Gqs9V6dm6yW4269dzkFBOTjvGJHmHuhqSi4ZYlcJBIjCXcy6f_SbtLbsLn3Nlqp_8cUVr9VVlkxZx9tsqlSpQDvesUjvKECh7Th8rOVojR27jXuLniUvYMFot_HBqveh-qQ8mAHX7cVsriCUosCApscqirPoz7nph0&t=2e2045e2 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 344
+2014-09-07 14:35:42 10.66.59.248 GET /_layouts/images/blank.gif - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 141
+2014-09-07 14:35:43 10.66.59.248 GET /_layouts/images/fgimg.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 224
+2014-09-07 14:35:43 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/bgximg-89AA7B6B.png ctag 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 159
+2014-09-07 14:35:43 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/selbg-3373BEF1.png ctag 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 153
+2014-09-07 14:35:43 10.66.59.248 GET /_layouts/images/mossfgimg.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 171
+2014-09-07 14:35:43 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 282
+2014-09-07 14:35:43 10.66.59.248 GET /_layouts/images/gosearch15.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 341
+2014-09-07 14:35:43 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 129
+2014-09-07 14:35:43 10.66.59.248 GET /_layouts/images/minus.gif - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 326
+2014-09-07 14:35:43 10.66.59.248 GET /_layouts/images/favicon.ico - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+8.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 162
+2014-09-07 14:35:43 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 415
+2014-09-07 14:35:44 10.66.59.248 GET /_layouts/sp.core.js rev=7ByNlH%2BvcgRJg%2BRCctdC0w%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 358
+2014-09-07 14:35:44 10.66.59.248 GET /_layouts/1033/core.js rev=thUAOrLfyaU%2Fgyxy0eiMiw%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 538
+2014-09-07 14:35:44 10.66.59.248 GET /_layouts/ScriptResx.ashx culture=en%2Dus&name=SP%2ERes&rev=b6%2FcRx1a6orhAQ%2FcF%2B0ytQ%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 194
+2014-09-07 14:35:44 10.66.59.248 GET /_layouts/cui.js rev=k%2B4HtUzT9%2B3mSycgD7gPaQ%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 594
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/1033/images/formatmap16x16.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 462
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/1033/images/formatmap32x32.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 1015
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/search.js rev=mNvuYQIlFFUBb3Q8Ktm7hw%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 176
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/sp.ui.dialog.js rev=IuXtJ2CrScK6oX4zOTTy%2BA%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 179
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/sp.runtime.js rev=9sKdsC9N6p2BiRk3313M7Q%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 409
+2014-09-07 14:35:46 10.66.59.248 GET /_layouts/sp.js rev=%2FLlKIPQWhhq9mRi404xe%2FA%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 454
+2014-09-07 14:35:47 10.66.59.248 GET /_layouts/inplview.js rev=%2Bhds1ETWRgD4PK1iGBqC1A%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 437
+2014-09-07 14:35:47 10.66.59.248 GET /_layouts/sp.ribbon.js rev=F%2BUEJ66rbXzSvpf7nN69wQ%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 338
+2014-09-07 14:35:47 10.66.59.248 GET /_layouts/SP.UI.MyLinksRibbon.js - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 168
+2014-09-07 14:35:47 10.66.59.248 GET /_layouts/socialdata.js rev=srp8t6aZS%2FjdrW3%2FJrn1iQ%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 210
+2014-09-07 14:35:47 10.66.59.248 GET /_layouts/sp.ui.socialribbon.js rev=q7gLNDKo68UsaWoEc%2FZCug%3D%3D 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 192
+2014-09-07 14:35:55 10.66.59.248 GET /RDS_PN/SitePages/Data_Self_Service.ASPX - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 4180
+2014-09-07 14:35:55 10.66.59.248 GET /RDS_PN/_themes/pn_theme.css - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 211
+2014-09-07 14:35:55 10.66.59.248 GET /_catalogs/theme/Themed/9262B884/forms-B82CF487.css ctag=2 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 224
+2014-09-07 14:35:55 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 430
+2014-09-07 14:36:00 10.66.59.248 GET /_layouts/images/ecbarw.png - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 362
+2014-09-07 14:36:06 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+PackageHead_StandardTemplate_updated.iqy - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 64 19
+2014-09-07 14:36:06 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+PackageHead_StandardTemplate_updated.iqy - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 178
+2014-09-07 14:36:18 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 2 5 144
+2014-09-07 14:36:18 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 137
+2014-09-07 14:36:18 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 823
+2014-09-07 14:36:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 780
+2014-09-07 14:36:20 10.66.59.248 OPTIONS / - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office+Protocol+Discovery 200 0 0 333
+2014-09-07 14:36:56 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+Service_StandardTemplate_updated.iqy - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 64 21
+2014-09-07 14:36:56 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+Service_StandardTemplate_updated.iqy - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 132
+2014-09-07 14:36:56 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+Service_StandardTemplate_updated.iqy - 1111 - 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 133
+2014-09-07 14:36:56 10.66.59.248 GET /RDS_PN/Shared+Documents/QUERY+Service_StandardTemplate_updated.iqy - 1111 GLOBAL\I013475 10.7.109.233 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/4.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 186
+2014-09-07 14:37:07 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 2 5 409
+2014-09-07 14:37:07 10.66.59.248 POST /RDS_PN/_vti_bin/lists.asmx - 1111 - 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 401 1 2148074254 181
+2014-09-07 14:37:10 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 2256
+2014-09-07 14:37:25 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office/14.0+(Windows+NT+6.1;+Microsoft+Excel+14.0.7015;+Pro) 200 0 0 14895
+2014-09-07 14:37:25 10.66.59.248 OPTIONS / - 1111 GLOBAL\I013475 10.7.109.233 Microsoft+Office+Protocol+Discovery 200 0 0 333
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 15:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 15:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 821
+2014-09-07 15:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1406
+2014-09-07 15:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 755
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 15:35:17
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 15:35:17 10.66.59.248 GET /SitePages/Home.aspx - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 250
+2014-09-07 15:35:17 10.66.59.248 GET /SitePages/Home.aspx - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 250
+2014-09-07 15:35:19 10.66.59.248 GET /SitePages/Home.aspx - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 1675
+2014-09-07 15:35:19 10.66.59.248 GET /SiteAssets/SitePages/Home/planning_400_267.jpg - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 272
+2014-09-07 15:35:19 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 441
+2014-09-07 15:35:19 10.66.59.248 GET /SiteAssets/SitePages/Home/planning_400_267.jpg - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 246
+2014-09-07 15:35:21 10.66.59.248 GET /SiteAssets/SitePages/Home/planning_400_267.jpg - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 553
+2014-09-07 15:35:33 10.66.59.248 GET /SitePages/Entry+Page.aspx - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 3592
+2014-09-07 15:35:33 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 269
+2014-09-07 15:35:33 10.66.59.248 GET /SiteCollectionImages/SharePoint+Entities.png - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 443
+2014-09-07 15:35:46 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 495
+2014-09-07 15:35:46 10.66.59.248 GET /Project+Team/Project+Attributes.aspx - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 3334
+2014-09-07 15:35:48 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 520
+2014-09-07 15:35:48 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1145
+2014-09-07 15:35:48 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 255
+2014-09-07 15:35:48 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 267
+2014-09-07 15:35:54 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 5691
+2014-09-07 15:36:01 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 12872
+2014-09-07 15:36:58 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1319
+2014-09-07 15:37:01 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1670
+2014-09-07 15:37:03 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1815
+2014-09-07 15:37:03 10.66.59.248 GET /_layouts/images/loadingcirclests16.gif - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 348
+2014-09-07 15:37:03 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&id=Ribbon.ListItem&lcid=1033&qt=ribbonvisibletabdeep 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 351
+2014-09-07 15:37:03 10.66.59.248 GET /_layouts/wpribbon.aspx WebPartId=g%5Fe64ae7fb%5F4c77%5F43d9%5F82b0%5F0f1cd056d3c5&PageComponentId=WebPartWPQ3&List=e62bb247%2Dfdf2%2D4ff1%2Dadb4%2Dfe506400181e&View=e64ae7fb%2D4c77%2D43d9%2D82b0%2D0f1cd056d3c5&FileUrl=%2FProject%20Team%2FProject%20Attributes%2Easpx 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 380
+2014-09-07 15:37:03 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&lcid=1033&qt=commandhandlers 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 2 5 354
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&id=Ribbon.ListItem&lcid=1033&qt=ribbonvisibletabdeep 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 253
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/wpribbon.aspx WebPartId=g%5Fe64ae7fb%5F4c77%5F43d9%5F82b0%5F0f1cd056d3c5&PageComponentId=WebPartWPQ3&List=e62bb247%2Dfdf2%2D4ff1%2Dadb4%2Dfe506400181e&View=e64ae7fb%2D4c77%2D43d9%2D82b0%2D0f1cd056d3c5&FileUrl=%2FProject%20Team%2FProject%20Attributes%2Easpx 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 251
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&lcid=1033&qt=commandhandlers 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 401 1 2148074254 250
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&lcid=1033&qt=commandhandlers 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 360
+2014-09-07 15:37:04 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1770
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/wpribbon.aspx WebPartId=g%5Fe64ae7fb%5F4c77%5F43d9%5F82b0%5F0f1cd056d3c5&PageComponentId=WebPartWPQ3&List=e62bb247%2Dfdf2%2D4ff1%2Dadb4%2Dfe506400181e&View=e64ae7fb%2D4c77%2D43d9%2D82b0%2D0f1cd056d3c5&FileUrl=%2FProject%20Team%2FProject%20Attributes%2Easpx 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 627
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/commandui.ashx ver=1418040386&id=Ribbon.ListItem&lcid=1033&qt=ribbonvisibletabdeep 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 664
+2014-09-07 15:37:04 10.66.59.248 GET /_layouts/images/QuickTagILikeIt_32.png - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 322
+2014-09-07 15:37:05 10.66.59.248 GET /_layouts/images/SocialTagsAndNotes_32.png - 1111 - 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 260
+2014-09-07 15:37:07 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 1930
+2014-09-07 15:37:14 10.66.59.248 GET /_layouts/wpribbon.aspx WebPartId=g%5F952fe80b%5F0c82%5F4c77%5Faaed%5F7226cbc6fe1a&PageComponentId=WebPartWPQ4&List=77547e2c%2Dc0d0%2D48de%2D8893%2D43e21945010c&View=952fe80b%2D0c82%2D4c77%2Daaed%2D7226cbc6fe1a&FileUrl=%2FProject%20Team%2FProject%20Attributes%2Easpx 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 619
+2014-09-07 15:37:32 10.66.59.248 GET /SiteAssets/SAP_grad_R_pref.gif - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 304 0 0 383
+2014-09-07 15:37:32 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 248
+2014-09-07 15:37:32 10.66.59.248 GET /Project+Team/Project+Attributes.aspx - 1111 GLOBAL\I038196 10.58.41.17 Mozilla/4.0+(compatible;+MSIE+7.0;+Windows+NT+6.1;+WOW64;+Trident/6.0;+SLCC2;+.NET+CLR+2.0.50727;+.NET+CLR+3.5.30729;+.NET+CLR+3.0.30729;+Media+Center+PC+6.0;+.NET4.0C;+.NET4.0E;+InfoPath.3) 200 0 0 2444
+2014-09-07 15:37:32 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 252
+2014-09-07 15:37:32 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 255
+2014-09-07 15:37:32 10.66.59.248 POST /_vti_bin/webs.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 257
+2014-09-07 15:37:39 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 5982
+2014-09-07 15:37:46 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 GLOBAL\I038196 10.58.41.17 Microsoft+Office/14.0+(Windows+NT+6.1;+Access+Web+Datasheet+14.0.7015;+Pro) 200 0 0 12687
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 16:00:20
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 16:00:20 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 691
+2014-09-07 16:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1363
+2014-09-07 16:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 743
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 17:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 17:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 799
+2014-09-07 17:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1378
+2014-09-07 17:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 799
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 18:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 18:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 836
+2014-09-07 18:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1370
+2014-09-07 18:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 769
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 19:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 19:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 838
+2014-09-07 19:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1387
+2014-09-07 19:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 878
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 20:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 20:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1023
+2014-09-07 20:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1422
+2014-09-07 20:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 737
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 21:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 21:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 774
+2014-09-07 21:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1528
+2014-09-07 21:00:26 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 732
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 22:00:21
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 22:00:21 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 673
+2014-09-07 22:00:22 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1387
+2014-09-07 22:00:25 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 722
+#Software: Microsoft Internet Information Services 7.5
+#Version: 1.0
+#Date: 2014-09-07 23:00:47
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
+2014-09-07 23:00:47 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 26819
+2014-09-07 23:00:48 10.66.59.248 POST /_vti_bin/lists.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1527
+2014-09-07 23:00:52 10.66.59.248 POST /_vti_bin/UserGroup.asmx - 1111 SAP_ALL\asa0_packagexchange 10.68.20.163 SAP+NetWeaver+Application+Server+(1.0;740) 200 0 0 1291

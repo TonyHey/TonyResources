@@ -1,0 +1,25 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_ALL_SERVER_IP" ( 
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_all_server_ip_output"
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ if :SOURCE_IN = 'HADOOP' then
+ 
+  
+VAR_OUT = SELECT SERVER_NAME, SERVER_IP FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_ALL" GROUP BY SERVER_IP, SERVER_NAME;
+ 
+  else
+  
+ VAR_OUT = SELECT SERVER_NAME, SERVER_IP FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_ALL" GROUP BY SERVER_IP, SERVER_NAME;
+  
+ end if; 
+ 
+END;

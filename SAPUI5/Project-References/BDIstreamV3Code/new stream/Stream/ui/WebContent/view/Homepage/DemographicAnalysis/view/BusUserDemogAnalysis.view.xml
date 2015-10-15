@@ -1,0 +1,44 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:viz="sap.viz" xmlns:charts="sap.ca.ui.charts" xmlns:commons="sap.suite.ui.commons"
+	xmlns:common="sap.ui.commons"
+	controllerName="sap.ui.demo.myFiori.view.BusUserDemogAnalysis">
+
+	<Page id="BusUserDemogAnalysis" showNavButton="true"
+		title="{i18n>tile.title.Demographic.Analysis}" navButtonPress="handleNavBack">
+		<content>
+		<commons:HeaderContainer id="BusUserDemogAnalysisRoot">
+   			<commons:items>
+ 				<commons:HeaderCell>
+        	<commons:north height="70%">
+          		<commons:HeaderCellItem id="BusUserDemogAnalysisCellitemn">
+            		<commons:content>
+            			<commons:NumericContent id="BusUserDemogAnalysisNumericcontent">
+            			</commons:NumericContent>		
+            		</commons:content>
+          		</commons:HeaderCellItem>
+        	</commons:north>
+        	<commons:south height="30%">
+          		<commons:HeaderCellItem id="BusUserDemogAnalysisCellitems">
+          		<commons:content>
+            		<Label text = "{i18n>Total.number.of.access}"/>	
+            	</commons:content>
+          		</commons:HeaderCellItem>
+        	</commons:south>
+      	</commons:HeaderCell>
+			</commons:items>
+		</commons:HeaderContainer>
+		<charts:ChartToolBar id="BusUserDemogAnalysisToolbar"
+				showFullScreen="false" showPersonalization="false"
+				personalizationPressed="onPersonalizationPressed">
+				<charts:charts>
+				<viz:ui5.Pie id="BusUserDemogAnalysisChart" width="100%"
+					height="400px" showLegend="true" showTitle="true" icon="sap-icon://pie-chart" selectDataPoint="onSelectDataPoint">
+				</viz:ui5.Pie>
+				</charts:charts>
+			</charts:ChartToolBar>
+		</content>
+		<footer>
+		</footer>
+	</Page>
+
+</core:View>

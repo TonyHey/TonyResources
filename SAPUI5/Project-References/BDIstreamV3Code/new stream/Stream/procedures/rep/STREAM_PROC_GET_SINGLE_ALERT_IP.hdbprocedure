@@ -1,0 +1,30 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_SINGLE_ALERT_IP" ( 
+IN SERVER_IP_IN NVARCHAR(100),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_single_alert_ip_output"
+)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+
+if :SOURCE_IN = 'HADOOP' then
+ VAR_OUT = SELECT SERVER_NAME, 
+ 				  SERVER_IP 
+ 				  FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL_HIVE" 
+ 				  WHERE SERVER_IP = :SERVER_IP_IN
+ 				  GROUP BY SERVER_NAME, SERVER_IP;
+else
+ VAR_OUT = SELECT SERVER_NAME, 
+ 				  SERVER_IP 
+ 				  FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL" 
+ 				  WHERE SERVER_IP = :SERVER_IP_IN
+ 				  GROUP BY SERVER_NAME, SERVER_IP;
+end if;                                  
+
+
+END;

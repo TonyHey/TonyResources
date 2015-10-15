@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;Demo&apos;&#x0D;&#x0A;- Original project: &apos;Demo&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Page1.controller.js&#x0D;&#x0A;     Page1.view.js&#x0D;&#x0A;     Page2.controller.js&#x0D;&#x0A;     Page2.view.js" description="Delete elements" element1="WebContent/demo/Page2.controller.js" element2="WebContent/demo/Page2.view.js" element3="WebContent/demo/Page1.view.js" element4="WebContent/demo/Page1.controller.js" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1436509996318" subPackages="false" version="1.0"/>
+</session>

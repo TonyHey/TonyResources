@@ -1,0 +1,39 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.seeders::GENERATE_FORECASTSMOOTH_PROCEDURE" ( ) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+ AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+
+--create local temporary column table "#PAL_FORECASTSMOOTHING_PDATA_TBL" ("ID" INT,"TYPENAME" VARCHAR(100),"DIRECTION" VARCHAR(100));
+create local temporary column table "#PAL_FORECASTSMOOTHING_PDATA_TBL" ("POSITION" INT, "SCHEMA_NAME" VARCHAR(100), "TYPE_NAME" VARCHAR(100), "PARAMETER_TYPE" VARCHAR(100));
+
+
+/* fill temporary table with table types */
+--insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (1, 'SAP_RDS_BDI_STREAM.sap.rds-bdi.stream.model::tables.tt_pal_forecast_smooting_data_t', 'in');
+--insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (2, 'SAP_RDS_BDI_STREAM.sap.rds-bdi.stream.model::tables.tt_pal_control_t', 'in');
+--insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (3, 'SAP_RDS_BDI_STREAM.sap.rds-bdi.stream.model::tables.tt_pal_out_parameter_t', 'out');
+--insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (4, 'SAP_RDS_BDI_STREAM.sap.rds-bdi.stream.model::tables.tt_pal_forecast_smoothing_forecast_t', 'out');
+insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (1, 'SAP_RDS_BDI_STREAM','sap.rds-bdi.stream.model::tables.tt_pal_forecast_smooting_data_t', 'in');
+insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (2, 'SAP_RDS_BDI_STREAM','sap.rds-bdi.stream.model::tables.tt_pal_control_t', 'in');
+insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (3, 'SAP_RDS_BDI_STREAM','sap.rds-bdi.stream.model::tables.tt_pal_out_parameter_t', 'out');
+insert into "#PAL_FORECASTSMOOTHING_PDATA_TBL" values (4, 'SAP_RDS_BDI_STREAM','sap.rds-bdi.stream.model::tables.tt_pal_forecast_smoothing_forecast_t', 'out');
+
+
+
+/* delete AFL function if it is already exists */
+--call SYSTEM.AFL_WRAPPER_ERASER('STREAM_TS_PRED_INFO_FORECASTSMOOTHING');
+CALL SYS.AFLLANG_WRAPPER_PROCEDURE_DROP('SAP_RDS_BDI_STREAM', 'STREAM_TS_PRED_INFO_FORECASTSMOOTHING');
+
+/* select new parameter from stream PAL table and create pal function */
+generatorTable = select * from "#PAL_FORECASTSMOOTHING_PDATA_TBL";
+--CALL SYSTEM.afl_wrapper_generator('STREAM_TS_PRED_INFO_FORECASTSMOOTHING', 'AFLPAL','FORECASTSMOOTHING', :generatorTable);
+CALL SYS.AFLLANG_WRAPPER_PROCEDURE_CREATE('AFLPAL', 'FORECASTSMOOTHING', 'SAP_RDS_BDI_STREAM', 'STREAM_TS_PRED_INFO_FORECASTSMOOTHING',:generatorTable);
+
+drop table "#PAL_FORECASTSMOOTHING_PDATA_TBL";
+
+
+END;

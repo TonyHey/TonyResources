@@ -1,0 +1,192 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_STREAM" ( 
+	IN FROM_DATE_IN NVARCHAR(14),
+	IN TO_DATE_IN NVARCHAR(14),
+	IN DIMENSION_IN NVARCHAR(20),
+	IN SERVERIP_IN NVARCHAR(16),
+	IN SOURCE_IN NVARCHAR(20),
+	OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_stream_output"
+ 	) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA "SAP_RDS_BDI_STREAM"
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ 
+if :SOURCE_IN = 'HADOOP' then
+ 
+if :DIMENSION_IN = 'MONTH'
+then
+month_table = 		
+		SELECT 
+		DATE_GRANULARITY_MONTH AS DATE_GRANULARITY, 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+		SUM(HIT_1Y_0N) AS PAGES, 
+		count(*) AS HITS,
+		SUM(DURATION_BANDING) AS BANDING_SUM, 
+		ROUND(AVG(DURATION_BANDING), 0) AS BANDING_AVG 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		GROUP BY DATE_GRANULARITY_MONTH 
+		ORDER BY DATE_GRANULARITY_MONTH;
+		
+month_page =
+		select 
+		host_ip, 
+		min(DATE_GRANULARITY_MONTH) as unique_visit_date 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		group by host_ip;
+		
+month_visit = 	
+		SELECT 
+		unique_visit_date, 
+		count(*) as unique_visitors 
+		from :month_page
+		group by unique_visit_date;
+		
+		
+ VAR_OUT = 
+ 	select DATE_GRANULARITY, VISITS, UNIQUE_VISITORS, PAGES, HITS, BANDING_SUM, BANDING_AVG 
+ 	from :month_table LEFT JOIN :month_visit on date_granularity = unique_visit_date;
+
+else
+day_table = 
+ 		SELECT 
+		DATE_GRANULARITY_DAY AS DATE_GRANULARITY, 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+		SUM(HIT_1Y_0N) AS PAGES, 
+		count(*) AS HITS,
+		SUM(DURATION_BANDING) AS BANDING_SUM, 
+		ROUND(AVG(DURATION_BANDING), 0) AS BANDING_AVG 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		GROUP BY DATE_GRANULARITY_DAY 
+		ORDER BY DATE_GRANULARITY_DAY;
+ 
+ 
+ day_page =
+		select 
+		host_ip, 
+		min(DATE_GRANULARITY_DAY) as unique_visit_date 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		group by host_ip;
+		
+day_visit = 	
+		SELECT 
+		unique_visit_date, 
+		count(*) as unique_visitors 
+		from :day_page
+		group by unique_visit_date;
+		
+ VAR_OUT = 
+ 	select DATE_GRANULARITY, VISITS, UNIQUE_VISITORS, PAGES, HITS, BANDING_SUM, BANDING_AVG 
+ 	from :day_table LEFT JOIN :day_visit on date_granularity = unique_visit_date;
+ 
+ 
+ end if;
+ 
+ 
+ 
+ else 
+ 
+ 
+if :DIMENSION_IN = 'MONTH'
+then
+month_table = 		
+		SELECT 
+		DATE_GRANULARITY_MONTH AS DATE_GRANULARITY, 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+		SUM(HIT_1Y_0N) AS PAGES, 
+		count(*) AS HITS,
+		SUM(DURATION_BANDING) AS BANDING_SUM, 
+		ROUND(AVG(DURATION_BANDING), 0) AS BANDING_AVG 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		GROUP BY DATE_GRANULARITY_MONTH 
+		ORDER BY DATE_GRANULARITY_MONTH;
+		
+month_page =
+		select 
+		host_ip, 
+		min(DATE_GRANULARITY_MONTH) as unique_visit_date 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		group by host_ip;
+		
+month_visit = 	
+		SELECT 
+		unique_visit_date, 
+		count(*) as unique_visitors 
+		from :month_page
+		group by unique_visit_date;
+		
+		
+ VAR_OUT = 
+ 	select DATE_GRANULARITY, VISITS, UNIQUE_VISITORS, PAGES, HITS, BANDING_SUM, BANDING_AVG 
+ 	from :month_table LEFT JOIN :month_visit on date_granularity = unique_visit_date;
+
+else
+day_table = 
+ 		SELECT 
+		DATE_GRANULARITY_DAY AS DATE_GRANULARITY, 
+		SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+		SUM(HIT_1Y_0N) AS PAGES, 
+		count(*) AS HITS,
+		SUM(DURATION_BANDING) AS BANDING_SUM, 
+		ROUND(AVG(DURATION_BANDING), 0) AS BANDING_AVG 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		GROUP BY DATE_GRANULARITY_DAY 
+		ORDER BY DATE_GRANULARITY_DAY;
+ 
+ 
+ day_page =
+		select 
+		host_ip, 
+		min(DATE_GRANULARITY_DAY) as unique_visit_date 
+		FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+		WHERE 	DATE_SQL >= :FROM_DATE_IN AND   
+				DATE_SQL <= :TO_DATE_IN AND 
+				SERVER_IP = :SERVERIP_IN 
+		group by host_ip;
+		
+day_visit = 	
+		SELECT 
+		unique_visit_date, 
+		count(*) as unique_visitors 
+		from :day_page
+		group by unique_visit_date;
+		
+ VAR_OUT = 
+ 	select DATE_GRANULARITY, VISITS, UNIQUE_VISITORS, PAGES, HITS, BANDING_SUM, BANDING_AVG 
+ 	from :day_table LEFT JOIN :day_visit on date_granularity = unique_visit_date;
+ 
+ 
+ end if;
+ 
+  
+ 
+ 
+
+end if; 
+ 
+END;

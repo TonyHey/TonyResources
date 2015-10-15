@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="ADMIN_VIEWER_MODEL_ACCESS">
+  <descriptions defaultDescription="ADMIN_VIEWER_MODEL_ACCESS"/>
+  <metadata changedAt="2015-04-22 00:32:54.492"/>
+  <securedModels allInformationModels="false">
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_ALERT_TYPE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_DATE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_DURATION_BANDING</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_FILE_TYPE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_HOST_CLIENT</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_SERVER</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_STATUS_CODE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/attributeviews/AT_USER</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_ALERT_DETAIL</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_ALERT_DETAIL_HIVE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaviewext/calculationviews/CA_TS_PRED_INFO</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaviewext/calculationviews/CA_TS_PRED_INFO_HIVE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_ORIGINATING_SITE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_ORIGINATING_SITE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_ALL</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_ALL</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_TIME_SERIES</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_TIME_SERIES</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_DEMOGRAPHIC</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_DEMOGRAPHIC</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_SOURCE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_SOURCE</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_HIVE_USER_NAVIGATIONAL</modelUri>
+    <modelUri>/sap.rds-bdi.stream.hanaview/calculationviews/CA_PAGE_HIT_USER_NAVIGATIONAL</modelUri>
+  </securedModels>
+</Privilege:analyticPrivilege>

@@ -1,0 +1,49 @@
+sap.ui.jsview("sap.rds.bdi.stream.Homepage.view.shell", {
+
+    getControllerName : function() {
+        return "sap.rds.bdi.stream.Homepage.view.shell";
+    },
+
+    createContent : function(oController) {
+        oController.searchField = new sap.m.SearchField({
+            search : function() {
+                alert("search");
+            }
+        }).addStyleClass("shell-search");
+
+        oController.searchItem = new sap.ui.unified.ShellHeadItem({
+            icon: "sap-icon://search",
+            press : function() {
+                alert("search");
+            }
+        });
+        
+        oController.userItem = new sap.ui.unified.ShellHeadUserItem({
+            image : "ui/WebContent/image/user.png",
+            username : "Hi Viki",
+            press: jQuery.proxy(oController.handleUserItemPress, oController)
+        });
+
+        oController.oShell = new sap.ui.unified.Shell("oShell", {
+            icon: "ui/WebContent/image/sap_50x26.png",
+            searchVisible : true,
+            headEndItems: oController.searchItem,
+            user: oController.userItem,
+        });
+        
+        //test begin
+//        oController.userItem1 = new sap.ui.unified.ShellHeadUserItem ({
+//        	username: 'STREAM INTELLIGENCE'
+//        });
+//        
+//        oController.labelShell = new sap.ui.unified.Shell ({
+//        	user: oController.userItem1
+//        });
+//             
+//        oController.oShell.addHeadItem (oController.labelShell);
+        
+        //test end
+
+        return oController.oShell;
+    }
+});

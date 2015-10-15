@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>ProjectDemo</title>
+
+		<script src="resources/sap-ui-core.js"
+                id="sap-ui-bootstrap"
+                data-sap-ui-libs="sap.m, sap.ui.core, sap.ui.commons"
+                data-sap-ui-xx-bindingSyntax="complex"
+                data-sap-ui-resourceroots='{"root": "./"}'
+                data-sap-ui-theme="sap_bluecrystal">
+        </script>
+
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "root"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

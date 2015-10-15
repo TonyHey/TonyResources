@@ -1,0 +1,39 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_TILE_TIME_SERIES" ( 
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_tile_time_series_output"
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ if :SOURCE_IN = 'HADOOP' then
+ 
+ VAR_OUT = SELECT COUNT(DISTINCT HOST_IP) AS UNIQUE_VISITORS, 
+ 				  SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+ 				  SUM(HIT_1Y_0N) AS PAGE_VIEWED, 
+ 				  COUNT(*) AS HITS, 
+ 				  SUM(DURATION_BANDING) AS BANDWIDTH 
+ 				  FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_HIVE_TIME_SERIES" 
+ 				  WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN;
+	
+ else
+ 
+  VAR_OUT = SELECT COUNT(DISTINCT HOST_IP) AS UNIQUE_VISITORS, 
+ 				  SUM(NEW_VISIT_1Y_0N) AS VISITS, 
+ 				  SUM(HIT_1Y_0N) AS PAGE_VIEWED, 
+ 				  COUNT(*) AS HITS, 
+ 				  SUM(DURATION_BANDING) AS BANDWIDTH 
+ 				  FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_PAGE_HIT_TIME_SERIES" 
+ 				  WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN;
+end if; 					
+	
+END;

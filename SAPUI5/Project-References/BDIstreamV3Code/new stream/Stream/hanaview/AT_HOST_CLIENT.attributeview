@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_HOST_CLIENT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_HOST_CLIENT"/>
+  <metadata changedAt="2015-04-14 16:51:57.922" createdAt="2015-04-14 16:51:57.922"/>
+  <attributes>
+    <attribute id="HOST_IP" hidden="false" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Host Client IP Address"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="HOST_IP"/>
+    </attribute>
+    <attribute id="HOST_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Host Client Name"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="HOST_NAME"/>
+    </attribute>
+    <attribute id="COUNTRY" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Host Client Located Country"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="REGION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Host Client Located Region"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="REGION"/>
+    </attribute>
+    <attribute id="CITY" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Host Client Located City"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="CITY"/>
+    </attribute>
+    <attribute id="ZIP_CODE" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZIP Code of Host Client Location"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" columnName="ZIP_CODE"/>
+    </attribute>
+    <attribute id="LATITUDE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Latitude geo-coordinate"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_GEO" columnName="LATITUDE"/>
+    </attribute>
+    <attribute id="LONGITUDE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Longitude geo-coordinates"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_GEO" columnName="LONGITUDE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_GEO"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT"/>
+        <rightTable schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_GEO"/>
+        <leftColumns>
+          <columnName>ZIP_CODE</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>ZIP_CODE</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.DIM_HOST_CLIENT" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="-4" y="276"/>
+        </shape>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_GEO" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="522" y="270"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

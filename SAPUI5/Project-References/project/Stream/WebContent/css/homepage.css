@@ -1,0 +1,304 @@
+/*--------------------CSS for homepage---------------------------*/
+.header-label {
+	position: fixed;
+	top: 15px;
+	left: 55px;
+	z-index: 1000;
+}
+/* change background color of homepage*/
+div#oShell-container-canvascntnt {
+  background-color: white;
+}
+
+/*CSS for homeContent Div*/
+#homeContent {
+    width: 1308px;
+    margin: 0px auto;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+/*CSS for all the Tile's Title*/
+.homepage-tile-title {
+    color: black !important;
+    font-size: 20px !important;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+/*CSS for Vists, Avg. Visit Duration*/
+.homepage-tile-title-margin {
+    margin-top: 7px;
+}
+
+/*CSS for Vists and Avg. Visit Duration*/
+.main-text.sapUiTv.sapUiTvAlignLeft{
+    font-size:40px;
+    color:#3FA9F5;
+    padding-left:12px;
+    padding-top:3px;
+    line-height:40px;
+}
+.homepage-tile-label{
+    padding-left:15px;
+    padding-top:15px;
+}
+.sapUiTv.sapUiTvAlignLeft.homepage-tile-value{
+    padding-left:15px;
+    font-size:16px;
+    font-weight:bolder;    
+}
+.sapUiTv.sapUiTvAlignLeft.homepage-tile-value-trend-positive{
+    color:#8CC640;
+    font-size:18px;
+    padding-left:10px;
+}
+.sapUiTv.sapUiTvAlignLeft.homepage-tile-value-trend-negative{
+    color:red;
+    font-size:18px;
+    padding-left:10px;
+}
+
+/*Set the homeContent div in the center*/
+@media (max-width: 579px) {
+    .small-tile .sapMCustomTile {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .big-tile .sapMCustomTile {
+        width: 420px !important;
+        height: 200px !important;
+    }
+}
+@media (min-width: 580px) and (max-width: 1601px){
+    .small-tile .sapMCustomTile {
+        width: 235px !important;
+        height: 240px !important;
+    }
+    .big-tile .sapMCustomTile {
+        width: 495px !important;
+        height: 240px !important;
+    }
+}
+@media (max-width: 800px) {
+    #homeContent {
+       width: 525px;
+    }
+}
+@media (min-width: 800px) and (max-width: 1120px) {
+    #homeContent {
+        width: 788px;
+    }
+}
+@media (min-width: 1120px) and (max-width: 1380px) {
+    #homeContent {
+       width: 1048px;
+    }
+}
+@media (min-width: 1610px) {
+    #homeContent {
+       width: 1600px;
+    }
+    .small-tile .sapMCustomTile {
+        width: 290px !important;
+        height: 290px !important;
+    }
+    .big-tile .sapMCustomTile {
+        width: 605px !important;
+        height: 290px !important;
+    }
+}
+/*end to Set the homeContent div in the center*/
+
+
+/*Set the row of Overview align with below content*/
+#homeTitle>table {
+    width: 99%;
+}
+#homeTitle {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: -15px;
+}
+/*end Set the homeContent div in the center*/
+
+/*Set the layout of Drag and Drop*/
+#homeContent>ul { 
+    list-style-type: none;
+    margin: 0; 
+    padding: 0; 
+    margin-bottom: 10px;
+}
+#homeContent>ul>li {
+    float: left;
+}
+
+/* HomeTile STYLE*/
+.small-tile, .big-tile {    
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #D7D7D7;
+    border-radius: 10px;
+    float: left;
+}
+.homepage-select {
+    border: 0px !important; 
+}
+#homeTitle .homepage-daterange>input{
+    border: none !important;
+}
+
+/*Style for Top Locations*/
+.mapContainer {
+    position: relative;
+}
+#mapContainer{
+    position: relative;
+}
+
+/*Style for visits*/
+.sapMCustomTile.tile{
+    width:240px;
+    height:240px;
+    border:1px solid #EBEBEB;
+    border-radius:5px;
+    background-color:white;
+}
+.sapMLabel.sapMLabelMaxWidth.sapUiSelectable.title{
+    color:black;
+    font-size:20px;
+    padding-left:15px;
+    padding-top:5px;
+}
+
+/*Style for Traffic Source Analysis*/
+
+.trafficSA-content {
+    background: none;
+}
+.trafficSA-content .trafficSA-header {
+    font-size: 1.5em;
+    font-weight: 100;
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.trafficSA-barChart-page>div {
+    margin-top: -57px;
+}
+
+/*CSS for alerts tile*/
+
+/* Shell Title */
+.shell-header-title{
+    line-height: 40px;
+    font-size: 1rem; 
+    font-family: Arail;
+}
+/*style for timeSeriesAnalysis*/
+.timeSA-header-row {
+	background-color: white;
+}
+
+.detail-page-circle {
+	outline: none !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+}
+
+.detail-page-circle:hover {
+	border: 2px solid red !important;
+}
+
+.timeSA-headerContainer {
+	background-color: #E9F5F7 !important;
+}
+
+.timeSA-maintext {
+	margin-top: 70px;
+	margin-left: -60px;
+	font-size: 40px !important;
+}
+
+.timeSA-maintext-below {
+	margin-top: 45px;
+}
+
+.sapMSlt.timeSA-ip {
+	border: 0px;
+}
+
+.sapMInputBaseInner.timeSA-daterange {
+	border: 0px;
+}
+
+.timeSA-north {
+	font-size: 20px !important;
+	text-align: center !important;
+	margin-top: 5px !important;
+}
+
+.timeSA-north-visits {
+	font-size: 20px !important;
+	margin-top: 5px !important;
+	margin-left: 60px !important; 
+	
+}
+
+.timeSA-lastday {
+	font-size: 17px !important;
+	margin-left: 20px;
+	
+}
+
+.timeSA-number {
+	font-size: 17px !important;
+	font-weight: bolder;
+	margin-left: 5px;
+}
+
+.timeSA-percent-positive {
+	color: green;
+	font-size: 17px !important;
+	font-weight: bolder;
+	margin-left: 5px;
+}
+
+.timeSA-percent-negative {
+	color: red;
+	font-size: 17px !important;
+	font-weight: bolder;
+	margin-left: 8px;
+}
+
+.timeSA-filtertext {
+	font-size: 19px !important;
+	position: relative;
+	left: 1000px !important;
+	cursor: pointer;
+	outline: none;
+}
+
+.timeSA-filtertext:hover {
+	color: blue;
+}
+
+.timeSA-leftSelect {
+	border: 0px !important;
+}
+
+/*style for DemoGraphicAnalysis*/
+.demoAna-north {
+	font-size: 40px !important;
+	margin-left: 60px !important;
+	margin-top: 50px !important;
+	color: #5EB2AE !important;
+}
+
+.sapUiRespGridMedia-Std-Desktop.sapUiRespGridHSpace0>.sapUiRespGridSpanL3 {
+	width: 50% !important;
+}
+
+.timeSA-checked {
+	border: 2px solid red !important;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_DURATION_BANDING" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_DURATION_BANDING"/>
+  <metadata changedAt="2015-04-14 16:51:00.532" createdAt="2015-04-14 16:51:00.532"/>
+  <attributes>
+    <attribute id="DURATION_BANDING" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Duration Banding"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING" columnName="DURATION_BANDING"/>
+    </attribute>
+    <attribute id="BANDING_LOW_LIMIT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Banding Low Limit"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING" columnName="BANDING_LOW_LIMIT"/>
+    </attribute>
+    <attribute id="BANDING_HIGH_LIMIT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Banding High Limit"/>
+      <keyMapping schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING" columnName="BANDING_HIGH_LIMIT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAP_RDS_BDI_STREAM" columnObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="sap.rds-bdi.stream.model.rep::tables.LKUP_DURA_BANDING" modelObjectNameSpace="SAP_RDS_BDI_STREAM" modelObjectType="catalog">
+          <upperLeftCorner x="10" y="255"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

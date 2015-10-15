@@ -1,0 +1,60 @@
+PROCEDURE "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.procedures.rep::STREAM_PROC_GET_ALERT_REPORT" ( 
+IN DATE_FROM_IN NVARCHAR(14),
+IN DATE_TO_IN NVARCHAR(14),
+IN SERVER_IP_IN NVARCHAR(100),
+IN SOURCE_IN NVARCHAR(20),
+OUT VAR_OUT "SAP_RDS_BDI_STREAM"."sap.rds-bdi.stream.model::tables.tt_get_alert_report_output"
+)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	DEFAULT SCHEMA SAP_RDS_BDI_STREAM
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 
+ if :SOURCE_IN = 'HADOOP' then
+ ALERT_TABLE = SELECT ALERT_TYPE_NAME, SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_ATTACK 
+ 				FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL_HIVE" 
+ 				WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					AND   DATE_SQL <=  :DATE_TO_IN 
+ 					AND SERVER_IP =  :SERVER_IP_IN  
+ 				GROUP BY ALERT_TYPE_NAME ORDER BY ALERT_TYPE_NAME;
+ 
+ ALERT_TOTAL = SELECT  SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_ATTACK_TOTAL  
+ 				FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL_HIVE" 
+ 				WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN  
+ 					  AND SERVER_IP =  :SERVER_IP_IN;
+ 
+ VAR_OUT  = select ALERT_TYPE_NAME, 
+ 	               NUMBER_OF_ATTACK, 
+ 	               NUMBER_OF_ATTACK_TOTAL, 
+ 	               ROUND (NUMBER_OF_ATTACK/NUMBER_OF_ATTACK_TOTAL,6) as ALERT_TYPE_PERCENTAGE 
+ 				from  ( :ALERT_TABLE  INNER JOIN :ALERT_TOTAL on 1=1);
+ 
+else
+
+ ALERT_TABLE = SELECT ALERT_TYPE_NAME, SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_ATTACK 
+ 				FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL" 
+ 				WHERE DATE_SQL >=  :DATE_FROM_IN  
+ 					AND   DATE_SQL <=  :DATE_TO_IN 
+ 					AND SERVER_IP =  :SERVER_IP_IN  
+ 				GROUP BY ALERT_TYPE_NAME ORDER BY ALERT_TYPE_NAME;
+ 
+ ALERT_TOTAL = SELECT  SUM (NUMBER_OF_INCIDENTS) as NUMBER_OF_ATTACK_TOTAL  
+ 				FROM "_SYS_BIC"."sap.rds-bdi.stream.hanaview/CA_ALERT_DETAIL" 
+ 				WHERE DATE_SQL >= :DATE_FROM_IN  
+ 					  AND DATE_SQL <= :DATE_TO_IN  
+ 					  AND SERVER_IP =  :SERVER_IP_IN;
+ 
+ VAR_OUT  = select ALERT_TYPE_NAME, 
+ 	               NUMBER_OF_ATTACK, 
+ 	               NUMBER_OF_ATTACK_TOTAL, 
+ 	               ROUND (NUMBER_OF_ATTACK/NUMBER_OF_ATTACK_TOTAL,6) as ALERT_TYPE_PERCENTAGE 
+ 				from  ( :ALERT_TABLE  INNER JOIN :ALERT_TOTAL on 1=1);
+
+end if;                                  
+
+END;
