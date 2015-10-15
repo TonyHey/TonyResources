@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312" />
+<title>option auto</title>
+<style>
+body,ul,li{margin:0; padding:0; font:12px/1.5 arial;}
+ul,li{list-style:none;}
+.wrap{width:400px; margin:20px auto;}
+.hide{display:none;}
+#tab_t{height:25px;border-bottom:1px solid #ccc;}
+#tab_t li{float:left; width:80px; height:24px; line-height:24px; margin:0 0px; text-align:center; border:1px solid #ccc; border-bottom:none; background:#f5f5f5; cursor:pointer}
+#tab_t .act{ position:relative; height:25px; margin-bottom:-1px; background:#fff;}
+#tab_c{border:1px solid #ccc; border-top:none; padding:20px;}
+</style>
+<script>
+window.onload = function(){
+
+    tab("tab_t","li","tab_c","div","onmouseover")
+    function tab(tab_t,tab_t_tag,tab_c,tag_c_tag,evt){
+        var tab_t = document.getElementById(tab_t);
+        var tab_t_li = tab_t.getElementsByTagName(tab_t_tag);
+        var tab_c = document.getElementById(tab_c);
+        var tab_c_li = tab_c.getElementsByTagName(tag_c_tag);
+        var len = tab_t_li.length;
+        var i=0;
+        var timer = null;
+        var num=0;
+        for(i=0; i<len; i++){
+            tab_t_li[i].index = i;
+            tab_t_li[i][evt] = function(){
+              clearInterval(timer);
+                num = this.index;
+                tab_change()
+            }
+            tab_t_li[i].onmouseout = function(){
+                autoplay();
+            }
+        }
+        
+        function tab_change(){
+            for(i=0; i<len; i++){
+                tab_t_li[i].className = '';
+                tab_c_li[i].className = 'hide';
+            }
+            tab_t_li[num].className = 'act';
+            tab_c_li[num].className = '';
+        }
+        
+        function autoplay(){
+          timer = setInterval(function(){
+              num++;
+                if(num>=len) num=0;
+              tab_change();
+            },3000);
+        }
+        autoplay();
+    }
+    
+}
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+  <ul id="tab_t">
+    <li class="act">option 1</li>
+    <li>option 2</li>
+    <li>option 3</li>
+    <li>option 4</li>
+  </ul>
+  <div id="tab_c">
+    <div>content 1</div>
+    <div class="hide">content 2</div>
+    <div class="hide">content 3</div>
+    <div class="hide">content 4</div>
+  </div>
+</div>  
+  
+</body>
+</html>
