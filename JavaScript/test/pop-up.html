@@ -1,66 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>demo</title>
 <style type="text/css">
 /*弹出层的STYLE*/
-html,body {height:100%; margin:0px; font-size:12px;}
 
 .mydiv {
 background-color: #ff6;
 border: 1px solid #f90;
 text-align: center;
 line-height: 40px;
-font-size: 12px;
 font-weight: bold;
 z-index:99;
-width: 300px;
-height: 120px;
-left:50%;/*FF IE7*/
-top: 50%;/*FF IE7*/
-
-margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
-margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
-
-margin-top:0px;
-
-position:fixed!important;/*FF IE7*/
-
-
-
-
+width: 50%;
+height: 50%;
+margin: 0 auto;
+left: 25%;
+top: 25%;
+position:absolute;
 }
-
-
 .bg {
 background-color: gray;
 width: 100%;
 height: 100%;
 left:0;
-top:0;/*FF IE7*/
+top:0;
 opacity:0.5;/*不透明度*/
 z-index:1;
-
-position:fixed!important;/*FF IE7*/
-
-
-
+position:absolute;
 }
 /*The END*/
-
 </style>
 <script type="text/javascript">
 function showDiv(){
 document.getElementById('popDiv').style.display='block';
 document.getElementById('bg').style.display='block';
 }
-
 function closeDiv(){
 document.getElementById('popDiv').style.display='none';
 document.getElementById('bg').style.display='none';
 }
-
 </script>
 </head>
 
@@ -68,12 +48,10 @@ document.getElementById('bg').style.display='none';
 
 <div id="popDiv" class="mydiv" style="display:none;">congrantulation!!!<br/>
 <a href="javascript:closeDiv()">close</a></div>
-<div id="bg" class="bg" style="display:none;" onclick="javascript:closeDiv()"></div>
-
- 
+<div id="bg" class="bg" style="display:none;" onclick="closeDiv()"></div>
 
 <div style="padding-top: 20px;">
-<input type="Submit" name="" value="show" onclick="javascript:showDiv()" />
+<input type="Submit" name="" value="show" onclick="showDiv()" />
 </div>
 </body>
 </html>
