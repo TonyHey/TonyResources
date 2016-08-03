@@ -1,18 +1,3 @@
-// var finishTime = new Date(2018, 05 , 07, 08, 00, 00);
-// setInterval(function() {
-// 	var startTime = new Date();
-// 	var remainning = (finishTime.getTime() - startTime.getTime())/1000;
-// 	var day = Math.floor(remainning / 86400);
-// 	remainning = remainning % 86400;
-// 	var hour = Math.floor(remainning / 3600);
-//     remainning = remainning % 3600;
-//     var minute = Math.floor(remainning / 60)
-//     var secound = Math.floor(remainning % 60);
-//     secound = secound < 10 ? "0" + secound : secound;
-// 	// console.log("距离2018年高考还有："+ day + "天" + hour + "小时" + minute + "分" + secound + "秒");
-// },1000);
-
-
 //男神觉得时机成熟了，手捧99朵披着月季的玫瑰向女神求婚：
 // “女神，嫁给我吧！我发誓，我会对你一辈子好的！”
 // “这个嘛，你先去问问我爸爸，我大伯以及我大姑的意思，他们全部都认可你，我再考虑考虑！对了，如果我爸没有答复，大伯他们肯定是不会同意的；如果大伯没有答复，大姑也是不会同意的。”
@@ -84,7 +69,7 @@ console.log("\nES6 promise实现\n----------------");
 var NanShen = {
     "身高": 180,
     "体重": 80,
-    "年薪": "200K",
+    "年薪": "2000K",
     request: function(obj) {
         // 成功与否随机决定
         // 执行成功的概率为80%
@@ -98,7 +83,7 @@ var NanShen = {
 
 var Request = function(name) {
     return new Promise(function(resolve, reject) {
-        var failed = 0, request = function() {            
+        var failed = 0, request = function() {
             NanShen.request({
                 name: name,
                 success: function() {
@@ -111,7 +96,7 @@ var Request = function(name) {
                         console.log("第一次攻略" + name + "失败，重试一次！");
                         failed = 1;
                         // 重新攻略一次
-                        request();                       
+                        request();
                     } else {
                         console.log("依然没有拿下" + name + "，求婚失败！");
                         reject();
@@ -119,7 +104,7 @@ var Request = function(name) {
                 }
             });
         };
-		
+
         request();
     });
 };
