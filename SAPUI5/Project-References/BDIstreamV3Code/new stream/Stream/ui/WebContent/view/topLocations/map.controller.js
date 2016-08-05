@@ -156,7 +156,7 @@ sap.ui.controller("sap.rds.bdi.stream.Homepage.view.topLocations.map", {
             minWeight: 1
           }
         });
-        
+
         clusteredDataProvider.addEventListener('tap', function (evt) {
             var bubbleInfo = "";
             console.log(evt.target);
