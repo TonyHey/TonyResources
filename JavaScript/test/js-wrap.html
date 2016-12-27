@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <span id="a">span</span>
+        <br /><br />
+        <span id="b">span</span>
+        <script>
+            function $(el){
+                return typeof el == 'string' ? document.getElementById(el) : el;
+            }
+            var wrap = function(el, v){
+                if(typeof v == 'string'){
+                    var tmp = document.createElement('div');
+                    tmp.innerHTML = v;
+                    tmp = tmp.children[0];
+                    var _el = el.cloneNode(true);
+                    tmp.appendChild(_el);
+                    document.body.replaceChild(tmp, el);
+                }else{
+                    var _el = el.cloneNode(true);
+                    v.appendChild(_el);
+                    document.body.replaceChild(v, el);
+                }
+            };
+            // dom
+            var div = document.createElement('div');
+            div.innerHTML = 'div';
+            wrap($('a'), div);
+            //str
+            div = '<div style="color:blue"></div>';
+            wrap($('b'), div)
+        </script>
+    </body>
+</html>
